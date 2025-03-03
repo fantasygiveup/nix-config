@@ -13,7 +13,7 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }:
     let
       system = "x86_64-linux";
       pkgs-unstable = import nixpkgs-unstable {
@@ -27,9 +27,7 @@
           ./hosts/default/configuration.nix
           ./modules/nixos/minecraft-mod-server.nix
           inputs.home-manager.nixosModules.default
-          {
-            home-manager.extraSpecialArgs = { pkgs-unstable = pkgs-unstable; };
-          }
+          { home-manager.extraSpecialArgs = { inherit pkgs-unstable; }; }
         ];
       };
     };
