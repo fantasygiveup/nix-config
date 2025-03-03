@@ -125,6 +125,7 @@ rec {
     pkgs.yarn
     pkgs.zk # zettelkasten cli
     pkgs.zotero # citation tool
+    pkgs.eza # modern ls replacement
   ]);
 
   imports = [
