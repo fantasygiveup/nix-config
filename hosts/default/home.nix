@@ -29,6 +29,7 @@ rec {
     pkgs-unstable.qbittorrent
     pkgs-unstable.signal-desktop
     pkgs-unstable.teams-for-linux
+    pkgs-unstable.wezterm
     pkgs-unstable.yt-dlp
     pkgs.alacritty # terminal of choice
     pkgs.anki
@@ -50,6 +51,7 @@ rec {
     pkgs.drawio
     pkgs.emmet-ls
     pkgs.espeak # speach-module for speechd
+    pkgs.eza # modern ls replacement
     pkgs.filezilla
     pkgs.firefox
     pkgs.foliate # awz3 viewer
@@ -114,7 +116,6 @@ rec {
     pkgs.viber
     pkgs.vlc
     pkgs.vscode-langservers-extracted # cssls
-    pkgs.wezterm
     pkgs.wireshark
     pkgs.xcape
     pkgs.xclip
@@ -125,7 +126,6 @@ rec {
     pkgs.yarn
     pkgs.zk # zettelkasten cli
     pkgs.zotero # citation tool
-    pkgs.eza # modern ls replacement
   ]);
 
   imports = [
