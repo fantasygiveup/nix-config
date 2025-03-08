@@ -50,7 +50,7 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild switch --flake .#your-hostname'
       nixosConfigurations = {
-        # Run 'make os st321'.
+        # Run 'make nixos st321'.
         st321 = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [

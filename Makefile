@@ -9,14 +9,14 @@ clean:
 update:
 	nix flake update
 
-os:
+nixos:
 	@if [ -z "$(filter $@,$(MAKECMDGOALS))" ]; then \
 		echo "Please provide an argument: make $@ <argument>"; \
 		exit 1; \
 	fi
 	@$(MAKE) --no-print-directory os-arg BASE=$@ ARG=$(word 2,$(MAKECMDGOALS))
 
-os-arg:
+nixos-arg:
 	@sudo cp -r "$(project_dir)"/* /etc/nixos
 	@sudo nixos-rebuild switch --show-trace --upgrade --flake "/etc/nixos#$(ARG)"
 
@@ -27,11 +27,11 @@ home:
 	fi
 	@$(MAKE) --no-print-directory home-arg BASE=$@ ARG=$(word 2,$(MAKECMDGOALS))
 
-home-arg:
+homemanager-arg:
 	@home-manager switch --flake ".#$(ARG)"
 
 # Prevent Make from treating `<argument>` as an unknown target
 %:
 	@true
 
-.PHONY:  clean update os os-arg home home-arg
+.PHONY:  clean update nixos nixos-arg home homemanager-arg
