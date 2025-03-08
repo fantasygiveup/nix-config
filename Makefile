@@ -6,14 +6,32 @@ clean:
 	nix-collect-garbage -d
 	sudo /run/current-system/bin/switch-to-configuration boot
 
-upgrade:
+update:
 	nix flake update
 
-# Note: to make it work for both the home-manager flake and the nixosConfigurations flake I use the
-# same attribute name.
-%:
-	sudo cp -r "$(project_dir)"/* /etc/nixos
-	sudo nixos-rebuild switch --show-trace --upgrade --flake /etc/nixos#$(@:%=%)
-	home-manager switch --flake .#$(@:%=%)
+os:
+	@if [ -z "$(filter $@,$(MAKECMDGOALS))" ]; then \
+		echo "Please provide an argument: make $@ <argument>"; \
+		exit 1; \
+	fi
+	@$(MAKE) --no-print-directory os-arg BASE=$@ ARG=$(word 2,$(MAKECMDGOALS))
 
-.PHONY: purge upgrade
+os-arg:
+	@sudo cp -r "$(project_dir)"/* /etc/nixos
+	@sudo nixos-rebuild switch --show-trace --upgrade --flake "/etc/nixos#$(ARG)"
+
+home:
+	@if [ -z "$(filter $@,$(MAKECMDGOALS))" ]; then \
+		echo "Please provide an argument: make $@ <argument>"; \
+		exit 1; \
+	fi
+	@$(MAKE) --no-print-directory home-arg BASE=$@ ARG=$(word 2,$(MAKECMDGOALS))
+
+home-arg:
+	@home-manager switch --flake ".#$(ARG)"
+
+# Prevent Make from treating `<argument>` as an unknown target
+%:
+	@true
+
+.PHONY:  clean update os os-arg home home-arg
