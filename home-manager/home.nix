@@ -31,30 +31,18 @@
       #   });
       # })
     ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-    };
+    # Configure your nixpkgs instance.
+    config = { allowUnfree = true; };
   };
 
-  # TODO: Set your username
   home = {
     username = "idanko";
     homeDirectory = "/home/idanko";
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
-
-  # Enable home-manager and git
-  programs.home-manager.enable = true;
-  programs.git.enable = true;
-  programs.zsh.enable = true;
-  programs.bash.enable = false;
+  # Shell prompt.
+  # See https://nix-community.github.io/home-manager/options.xhtml#opt-programs.starship.enable
   programs.starship.enable = true;
-  programs.starship.enableZshIntegration = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
@@ -64,127 +52,176 @@
     "openssl-1.1.1w" # required for viber
   ];
 
+  # Add stuff for your user as you see fit:
+  # programs.neovim.enable = true;
+  # home.packages = with pkgs; [ steam ];
+
   home.packages = with pkgs; ([
     # (pkgs.callPackage ../../modules/nixos/fdir.nix { })
-    (pkgs.google-cloud-sdk.withExtraComponents
-      [ pkgs.google-cloud-sdk.components.gke-gcloud-auth-plugin ])
-    pkgs.neovim
-    pkgs.qbittorrent
-    pkgs.signal-desktop
-    pkgs.teams-for-linux
-    pkgs.wezterm
-    pkgs.yt-dlp
-    # pkgs-unstable.neovim
-    # pkgs-unstable.qbittorrent
-    # pkgs-unstable.signal-desktop
-    # pkgs-unstable.teams-for-linux
-    # pkgs-unstable.wezterm
-    # pkgs-unstable.yt-dlp
-    pkgs.alacritty # terminal of choice
-    pkgs.anki
-    pkgs.ansible
-    pkgs.bemenu
-    pkgs.bloomrpc
-    pkgs.ccls # Language Server Protocol based on Clang
-    pkgs.clang-tools
-    pkgs.cliphist
-    pkgs.clipnotify
-    pkgs.cmake
-    pkgs.dconf
-    pkgs.dconf-editor
-    pkgs.delve # golang debugger
-    pkgs.devcontainer
-    pkgs.discord
-    pkgs.dive # inspect docker images
-    pkgs.docker-compose
-    pkgs.drawio
-    pkgs.emmet-ls
-    pkgs.espeak # speach-module for speechd
-    pkgs.eza # modern ls replacement
-    pkgs.filezilla
-    pkgs.firefox
-    pkgs.foliate # awz3 viewer
-    pkgs.gimp
-    pkgs.gnome-tweaks
-    pkgs.gnomeExtensions.dash-to-dock
-    pkgs.gnomeExtensions.unite # merge title with gnome top dock
-    pkgs.go
-    pkgs.golangci-lint # golang linter package
-    pkgs.golines # split long code lines in golang
-    pkgs.google-chrome
-    pkgs.gopls # golang language server protocol
-    pkgs.gotools # set of go language code tools
-    pkgs.graphviz
-    pkgs.imagemagick
-    pkgs.imv # image viewer
-    pkgs.inkscape
-    pkgs.krita
-    pkgs.kubectl
-    pkgs.lazygit
-    pkgs.lf # terminal file manager
-    pkgs.libnotify # provides notify-send
-    pkgs.libreoffice-fresh # ms office, but better
-    pkgs.libxml2 # xmllint
-    pkgs.lua-language-server
-    pkgs.luajit # lua interpreter
-    pkgs.luarocks
-    pkgs.meld # diff folders and files
-    pkgs.memtester # memory test
-    pkgs.mpv
-    pkgs.ngrok # route tcp from the public internet url to your host machine
-    pkgs.nix-index # for nix-locate
-    pkgs.nixd
-    pkgs.nixfmt-classic
-    pkgs.nodePackages.eslint # javascript linter
-    pkgs.nodePackages.prettier # javascript formatter
-    pkgs.nodePackages.typescript-language-server # typescript language server protocol
-    pkgs.nodejs
-    pkgs.obs-studio # record camera and desktop
-    pkgs.opera
-    pkgs.papirus-icon-theme
-    pkgs.pgformatter
-    pkgs.pistol # file previewer written in go
-    pkgs.pkgs.pandoc # convert/generate documents in different formats
-    pkgs.prismlauncher # minecraft launcher
-    pkgs.pyright # python code formatter
-    pkgs.rlwrap # wrap a command to make stdin interactive
-    pkgs.sbcl
-    pkgs.shfmt # shell files formatter
-    pkgs.slack
-    pkgs.speechd # speech-dispatcher for foliate
-    pkgs.stylua
-    pkgs.tailwindcss-language-server
-    pkgs.telegram-desktop
-    pkgs.terraform
-    pkgs.terraform-ls
-    pkgs.texliveFull
-    pkgs.thunderbird
-    pkgs.tmux
-    pkgs.typescript
-    pkgs.vagrant
-    pkgs.viber
-    pkgs.vlc
-    pkgs.vscode-langservers-extracted # cssls
-    pkgs.wireshark
-    pkgs.xcape
-    pkgs.xclip
-    pkgs.xorg.xev
-    pkgs.xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
-    pkgs.xorg.xmodmap
-    pkgs.yapf
-    pkgs.yarn
-    pkgs.zk # zettelkasten cli
-    pkgs.zotero # citation tool
+    (google-cloud-sdk.withExtraComponents
+      [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
+    unstable.neovim
+    unstable.qbittorrent
+    unstable.signal-desktop
+    unstable.teams-for-linux
+    unstable.wezterm
+    unstable.yt-dlp
+    alacritty # terminal of choice
+    anki
+    ansible
+    bemenu
+    bloomrpc
+    ccls # Language Server Protocol based on Clang
+    clang-tools
+    cliphist
+    clipnotify
+    cmake
+    dconf
+    dconf-editor
+    delve # golang debugger
+    devcontainer
+    discord
+    dive # inspect docker images
+    docker-compose
+    drawio
+    emmet-ls
+    espeak # speach-module for speechd
+    eza # modern ls replacement
+    filezilla
+    firefox
+    foliate # awz3 viewer
+    gimp
+    gnome-tweaks
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.unite # merge title with gnome top dock
+    go
+    golangci-lint # golang linter package
+    golines # split long code lines in golang
+    google-chrome
+    gopls # golang language server protocol
+    gotools # set of go language code tools
+    graphviz
+    imagemagick
+    imv # image viewer
+    inkscape
+    krita
+    kubectl
+    lazygit
+    lf # terminal file manager
+    libnotify # provides notify-send
+    libreoffice-fresh # ms office, but better
+    libxml2 # xmllint
+    lua-language-server
+    luajit # lua interpreter
+    luarocks
+    meld # diff folders and files
+    memtester # memory test
+    mpv
+    ngrok # route tcp from the public internet url to your host machine
+    nix-index # for nix-locate
+    nixd
+    nixfmt-classic
+    nodePackages.eslint # javascript linter
+    nodePackages.prettier # javascript formatter
+    nodePackages.typescript-language-server # typescript language server protocol
+    nodejs
+    obs-studio # record camera and desktop
+    opera
+    papirus-icon-theme
+    pgformatter
+    pistol # file previewer written in go
+    pandoc # convert/generate documents in different formats
+    prismlauncher # minecraft launcher
+    pyright # python code formatter
+    rlwrap # wrap a command to make stdin interactive
+    sbcl
+    shfmt # shell files formatter
+    slack
+    speechd # speech-dispatcher for foliate
+    stylua
+    tailwindcss-language-server
+    telegram-desktop
+    terraform
+    terraform-ls
+    texliveFull
+    thunderbird
+    tmux
+    typescript
+    vagrant
+    viber
+    vlc
+    vscode-langservers-extracted # cssls
+    wireshark
+    xcape
+    xclip
+    xorg.xev
+    xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
+    xorg.xmodmap
+    yapf
+    yarn
+    zk # zettelkasten cli
+    zotero # citation tool
   ]);
 
-  home.file = { };
+  # Enable home-manager and git
+  programs.git = { enable = true; };
+  programs.fzf = {
+    enable = true;
+    # Sets $FZF_DEFAULT_COMMAND environment variable.
+    fileWidgetCommand = "rg --files $RG_OPTS_FILTER";
+    defaultOptions = [
+      "--no-mouse"
+      "--layout=reverse"
+      "--height 40%"
+      "--border"
+      "--multi"
+      "--exact"
+      "--preview-window=hidden"
+      "--bind='alt-w:execute-silent(echo -n {} | $CLIPBOARD_COPY_COMMAND)'"
+      "--bind='ctrl-e:print-query'"
+      "--bind='ctrl-b:half-page-up'"
+      "--bind='ctrl-f:half-page-down'"
+      "--bind='ctrl-u:preview-half-page-up'"
+      "--bind='ctrl-d:preview-half-page-down'"
+      "--bind='alt-p:toggle-preview'"
+      "--bind='ctrl-a:toggle-all'"
+      "--color=gutter:-1,fg:-1,fg+:-1,pointer:1,hl:2,hl+:2,bg+:8"
+    ];
+  };
+
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    defaultKeymap = "emacs";
+    shellAliases = {
+      urldecode =
+        "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
+      urlencode =
+        "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
+    };
+  };
 
   home.sessionVariables = {
+    VISUAL = "${pkgs.neovim}/bin/nvim";
+    EDITOR = "${pkgs.neovim}/bin/nvim";
+    MANPAGER = "${pkgs.neovim}/bin/nvim +Man!";
+    MANWIDTH = "80";
+    # TODO(idanko): better names.
+    SEARCH_EXCLUDED_DIRS =
+      "SCCS,RCS,CVS,MCVS,.git,.svn,.hg,.bzr,vendor,deps,node_modules,dist,venv,elm-stuff,.clj-kondo,.lsp,.cpcache,.ccls-cache,_build,.elixir_ls";
+    RG_OPTS_FILTER = "--hidden --glob=!{$SEARCH_EXCLUDED_DIRS}";
+    CLIPBOARD_COPY_COMMAND = "${pkgs.xclip}/bin/xclip -in -selection c";
+    # for ${pkgs.zk}/bin/zk.
+    ZK_NOTEBOOK_DIR = "$HOME/github.com/fantasygiveup/zettelkasten";
+
     # Fix the libsqlite.so not found issue for https://github.com/kkharji/sqlite.lua.
     LD_LIBRARY_PATH =
       "${pkgs.lib.makeLibraryPath (with pkgs; [ sqlite ])}:$LD_LIBRARY_PATH";
   };
 
+  home.file = { };
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.11";
+  programs.home-manager.enable = true;
 }

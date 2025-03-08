@@ -265,7 +265,6 @@
     ethtool
     fd
     file
-    fzf
     gdb
     gettext
     git
