@@ -50,6 +50,7 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild switch --flake .#your-hostname'
       nixosConfigurations = {
+        # Run 'make os st321'.
         st321 = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
@@ -62,6 +63,7 @@
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager switch --flake .#your-username@your-hostname'
       homeConfigurations = {
+        # Run 'make home idanko@st321'.
         "idanko@st321" = home-manager.lib.homeManagerConfiguration {
           pkgs =
             nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
