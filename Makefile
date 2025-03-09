@@ -14,7 +14,7 @@ nixos:
 		echo "Please provide an argument: make $@ <argument>"; \
 		exit 1; \
 	fi
-	@$(MAKE) --no-print-directory os-arg BASE=$@ ARG=$(word 2,$(MAKECMDGOALS))
+	@$(MAKE) --no-print-directory nixos-arg BASE=$@ ARG=$(word 2,$(MAKECMDGOALS))
 
 nixos-arg:
 	@sudo cp -r "$(project_dir)"/* /etc/nixos
