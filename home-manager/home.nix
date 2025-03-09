@@ -2,15 +2,8 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 { inputs, outputs, lib, config, pkgs, ... }:
 let
-  ignore-search-patterns = [
-    "SCCS"
-    "RCS"
-    "CVS"
-    "MCVS"
-    ".git"
-    ".svn"
-    ".hg"
-    ".bzr"
+  # Base patterns to exclude from the search. Can be used with "fd".
+  ignore-search-patterns-base = [
     "vendor"
     "deps"
     "node_modules"
@@ -25,9 +18,13 @@ let
     ".elixir_ls"
     ".cache"
   ];
-  ripgrep-filter = "--hidden --glob='!{${
-      builtins.concatStringsSep "," ignore-search-patterns
-    }}'";
+
+  ignore-search-patterns-extra = ignore-search-patterns-base
+    ++ [ "SCCS" "RCS" "CVS" "MCVS" ".git" ".svn" ".hg" ".bzr" ];
+
+  ripgrep-ignore-filter =
+    "--glob='!{${builtins.concatStringsSep "," ignore-search-patterns-extra}}'";
+
 in rec {
   # You can import other home-manager modules here
   imports = [
@@ -60,7 +57,12 @@ in rec {
       # })
     ];
     # Configure your nixpkgs instance.
-    config = { allowUnfree = true; };
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "openssl-1.1.1w" # required by viber
+      ];
+    };
   };
 
   home = {
@@ -73,7 +75,9 @@ in rec {
     EDITOR = "${pkgs.neovim}/bin/nvim";
     MANPAGER = "${pkgs.neovim}/bin/nvim +Man!";
     MANWIDTH = "80";
-    RIPGREP_FILTER = ripgrep-filter;
+    RIPGREP_IGNORE_SEARCH_FILTER = ripgrep-ignore-filter;
+    FD_IGNORE_SEARCH_FILTER = lib.concatMapStrings (str: " --exclude '${str}'")
+      ignore-search-patterns-base;
     CLIPBOARD_COPY_COMMAND = "${pkgs.xclip}/bin/xclip -in -selection c";
     # for "${pkgs.zk}/bin/zk".
     ZK_NOTEBOOK_DIR = "$HOME/github.com/fantasygiveup/zettelkasten";
@@ -107,7 +111,7 @@ in rec {
   programs.fzf = {
     enable = true;
     defaultCommand =
-      "${pkgs.ripgrep}/bin/rg --files --hidden ${ripgrep-filter}";
+      "${pkgs.ripgrep}/bin/rg --files --hidden ${ripgrep-ignore-filter}";
     fileWidgetCommand = programs.fzf.defaultCommand;
     defaultOptions = [
       "--no-mouse"
@@ -153,11 +157,6 @@ in rec {
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  # Allow unfree packages
-  nixpkgs.config.permittedInsecurePackages = [
-    "openssl-1.1.1w" # required for viber
-  ];
-
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
@@ -185,7 +184,6 @@ in rec {
     drawio
     emmet-ls
     espeak # speach-module for speechd
-    fdir
     filezilla
     firefox
     foliate # awz3 viewer
