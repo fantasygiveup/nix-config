@@ -57,16 +57,16 @@ function _fzf_project {
         fzf \
         --ansi \
         --prompt "${FZF_PROJECT_PROMPT}" \
-        --preview="tree -C -L 1 $HOME/{}" \
+        --preview="tree -C -L 1 $FZF_PROJECT_ROOT_DIRECTORY/{}" \
         --preview-window=$(_fzf_project_preview_window))
 
-    if [ "$line" != "" ] && [ -d "$HOME/$line" ]; then
+    if [ "$line" != "" ] && [ -d "$FZF_PROJECT_ROOT_DIRECTORY/$line" ]; then
         if [ "$#" -gt 0 ]; then
             case $1 in
                 '--print') printf "%s\n" "$line";;
             esac
         else
-            builtin cd -- "$HOME/$line"
+            builtin cd -- "$FZF_PROJECT_ROOT_DIRECTORY/$line"
         fi
     fi
 
