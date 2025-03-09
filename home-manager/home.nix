@@ -44,6 +44,7 @@
   # See https://nix-community.github.io/home-manager/options.xhtml#opt-programs.starship.enable
   programs.starship.enable = true;
 
+  # TODO(idanko): check more about sd-switch.
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
@@ -55,6 +56,8 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
+
+  # TODO(idanko): split packages and configuration for xorg and wayland.
 
   home.packages = with pkgs; ([
     # (pkgs.callPackage ../../modules/nixos/fdir.nix { })
@@ -86,7 +89,6 @@
     drawio
     emmet-ls
     espeak # speach-module for speechd
-    eza # modern ls replacement
     filezilla
     firefox
     foliate # awz3 viewer
@@ -106,7 +108,6 @@
     inkscape
     krita
     kubectl
-    lazygit
     lf # terminal file manager
     libnotify # provides notify-send
     libreoffice-fresh # ms office, but better
@@ -161,14 +162,56 @@
     yarn
     zk # zettelkasten cli
     zotero # citation tool
+    fzf-project
+    fdir
   ]);
+
+  home.sessionVariables = {
+    VISUAL = "${pkgs.neovim}/bin/nvim";
+    EDITOR = "${pkgs.neovim}/bin/nvim";
+    MANPAGER = "${pkgs.neovim}/bin/nvim +Man!";
+    MANWIDTH = "80";
+    # TODO(idanko): revisit variables. Move common parts to a let expression.
+    SEARCH_EXCLUDED_DIRS =
+      "SCCS,RCS,CVS,MCVS,.git,.svn,.hg,.bzr,vendor,deps,node_modules,dist,venv,elm-stuff,.clj-kondo,.lsp,.cpcache,.ccls-cache,_build,.elixir_ls,.cache";
+    RG_OPTS_FILTER =
+      "--hidden --glob='!{SCCS,RCS,CVS,MCVS,.git,.svn,.hg,.bzr,vendor,deps,node_modules,dist,venv,elm-stuff,.clj-kondo,.lsp,.cpcache,.ccls-cache,_build,.elixir_ls,.cache}'";
+    CLIPBOARD_COPY_COMMAND = "${pkgs.xclip}/bin/xclip -in -selection c";
+    # for "${pkgs.zk}/bin/zk".
+    ZK_NOTEBOOK_DIR = "$HOME/github.com/fantasygiveup/zettelkasten";
+
+    # Fix the libsqlite.so not found issue for https://github.com/kkharji/sqlite.lua.
+    LD_LIBRARY_PATH =
+      "${pkgs.lib.makeLibraryPath (with pkgs; [ sqlite ])}:$LD_LIBRARY_PATH";
+  };
+
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting = { enable = true; };
+    defaultKeymap = "emacs";
+    shellAliases = {
+      urldecode =
+        "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
+      urlencode =
+        "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
+      lg = "${pkgs.lazygit}/bin/lazygit";
+      e = "$EDITOR";
+    };
+    # TODO(idanko): find a better way to integrate with fzf-project.
+    initExtra = ''
+      . "${pkgs.fzf-project}/bin/fzf-project"
+    '';
+  };
 
   # Enable home-manager and git
   programs.git = { enable = true; };
   programs.fzf = {
     enable = true;
-    # Sets $FZF_DEFAULT_COMMAND environment variable.
-    fileWidgetCommand = "rg --files $RG_OPTS_FILTER";
+    fileWidgetCommand =
+      "${pkgs.ripgrep}/bin/rg --files --hidden --glob='!{SCCS,RCS,CVS,MCVS,.git,.svn,.hg,.bzr,vendor,deps,node_modules,dist,venv,elm-stuff,.clj-kondo,.lsp,.cpcache,.ccls-cache,_build,.elixir_ls,.cache}'";
+    defaultCommand =
+      "${pkgs.ripgrep}/bin/rg --files --hidden --glob='!{SCCS,RCS,CVS,MCVS,.git,.svn,.hg,.bzr,vendor,deps,node_modules,dist,venv,elm-stuff,.clj-kondo,.lsp,.cpcache,.ccls-cache,_build,.elixir_ls,.cache}'";
     defaultOptions = [
       "--no-mouse"
       "--layout=reverse"
@@ -189,39 +232,25 @@
     ];
   };
 
-  programs.zsh = {
+  programs.eza = {
     enable = true;
-    autosuggestion.enable = true;
-    defaultKeymap = "emacs";
-    shellAliases = {
-      urldecode =
-        "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
-      urlencode =
-        "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
-    };
+    extraOptions = [ "--group-directories-first" "--header" ];
+    icons = "auto";
   };
 
-  home.sessionVariables = {
-    VISUAL = "${pkgs.neovim}/bin/nvim";
-    EDITOR = "${pkgs.neovim}/bin/nvim";
-    MANPAGER = "${pkgs.neovim}/bin/nvim +Man!";
-    MANWIDTH = "80";
-    # TODO(idanko): better names.
-    SEARCH_EXCLUDED_DIRS =
-      "SCCS,RCS,CVS,MCVS,.git,.svn,.hg,.bzr,vendor,deps,node_modules,dist,venv,elm-stuff,.clj-kondo,.lsp,.cpcache,.ccls-cache,_build,.elixir_ls";
-    RG_OPTS_FILTER = "--hidden --glob=!{$SEARCH_EXCLUDED_DIRS}";
-    CLIPBOARD_COPY_COMMAND = "${pkgs.xclip}/bin/xclip -in -selection c";
-    # for ${pkgs.zk}/bin/zk.
-    ZK_NOTEBOOK_DIR = "$HOME/github.com/fantasygiveup/zettelkasten";
-
-    # Fix the libsqlite.so not found issue for https://github.com/kkharji/sqlite.lua.
-    LD_LIBRARY_PATH =
-      "${pkgs.lib.makeLibraryPath (with pkgs; [ sqlite ])}:$LD_LIBRARY_PATH";
+  programs.direnv = {
+    enable = true;
+    silent = true;
+    nix-direnv.enable = true;
+    config = {
+      # Disable the timeout warning.
+      warn_timeout = "0";
+    };
   };
 
   home.file = { };
 
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.11";
+
   programs.home-manager.enable = true;
 }

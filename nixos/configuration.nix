@@ -290,7 +290,6 @@
     pkg-config
     psmisc # provides: fuser, killall, pstree, peekfd
     python3
-    ripgrep
     rsync
     tree
     unzip
