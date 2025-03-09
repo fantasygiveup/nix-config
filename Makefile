@@ -25,10 +25,10 @@ home:
 		echo "Please provide an argument: make $@ <argument>"; \
 		exit 1; \
 	fi
-	@$(MAKE) --no-print-directory home-arg BASE=$@ ARG=$(word 2,$(MAKECMDGOALS))
+	@$(MAKE) --no-print-directory homemanager-arg BASE=$@ ARG=$(word 2,$(MAKECMDGOALS))
 
 homemanager-arg:
-	@home-manager switch --flake ".#$(ARG)"
+	@home-manager switch --show-trace --flake ".#$(ARG)"
 
 # Prevent Make from treating `<argument>` as an unknown target
 %:
