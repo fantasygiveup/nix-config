@@ -1,6 +1,34 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, ... }:
+let
+  ignore-search-patterns = [
+    "SCCS"
+    "RCS"
+    "CVS"
+    "MCVS"
+    ".git"
+    ".svn"
+    ".hg"
+    ".bzr"
+    "vendor"
+    "deps"
+    "node_modules"
+    "dist"
+    "venv"
+    "elm-stuff"
+    ".clj-kondo"
+    ".lsp"
+    ".cpcache"
+    ".ccls-cache"
+    "_build"
+    ".elixir_ls"
+    ".cache"
+  ];
+  ripgrep-filter = "--hidden --glob='!{${
+      builtins.concatStringsSep "," ignore-search-patterns
+    }}'";
+in rec {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -38,6 +66,83 @@
   home = {
     username = "idanko";
     homeDirectory = "/home/idanko";
+  };
+
+  home.sessionVariables = {
+    VISUAL = "${pkgs.neovim}/bin/nvim";
+    EDITOR = "${pkgs.neovim}/bin/nvim";
+    MANPAGER = "${pkgs.neovim}/bin/nvim +Man!";
+    MANWIDTH = "80";
+    RIPGREP_FILTER = ripgrep-filter;
+    CLIPBOARD_COPY_COMMAND = "${pkgs.xclip}/bin/xclip -in -selection c";
+    # for "${pkgs.zk}/bin/zk".
+    ZK_NOTEBOOK_DIR = "$HOME/github.com/fantasygiveup/zettelkasten";
+
+    # Fix the libsqlite.so not found issue for https://github.com/kkharji/sqlite.lua.
+    LD_LIBRARY_PATH =
+      "${pkgs.lib.makeLibraryPath (with pkgs; [ sqlite ])}:$LD_LIBRARY_PATH";
+  };
+
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting = { enable = true; };
+    defaultKeymap = "emacs";
+    shellAliases = {
+      urldecode =
+        "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
+      urlencode =
+        "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
+      lg = "${pkgs.lazygit}/bin/lazygit";
+      e = "$EDITOR";
+    };
+    # TODO(idanko): find a better way to integrate with fzf-project.
+    initExtra = ''
+      . "${pkgs.fzf-project}/bin/fzf-project"
+    '';
+  };
+
+  # Enable home-manager and git
+  programs.git = { enable = true; };
+  programs.fzf = {
+    enable = true;
+    defaultCommand =
+      "${pkgs.ripgrep}/bin/rg --files --hidden ${ripgrep-filter}";
+    fileWidgetCommand = programs.fzf.defaultCommand;
+    defaultOptions = [
+      "--no-mouse"
+      "--layout=reverse"
+      "--height 40%"
+      "--border"
+      "--multi"
+      "--exact"
+      "--preview-window=hidden"
+      "--bind='alt-w:execute-silent(echo -n {} | $CLIPBOARD_COPY_COMMAND)'"
+      "--bind='ctrl-e:print-query'"
+      "--bind='ctrl-b:half-page-up'"
+      "--bind='ctrl-f:half-page-down'"
+      "--bind='ctrl-u:preview-half-page-up'"
+      "--bind='ctrl-d:preview-half-page-down'"
+      "--bind='alt-p:toggle-preview'"
+      "--bind='ctrl-a:toggle-all'"
+      "--color=gutter:-1,fg:-1,fg+:-1,pointer:1,hl:2,hl+:2,bg+:8"
+    ];
+  };
+
+  programs.eza = {
+    enable = true;
+    extraOptions = [ "--group-directories-first" "--header" ];
+    icons = "auto";
+  };
+
+  programs.direnv = {
+    enable = true;
+    silent = true;
+    nix-direnv.enable = true;
+    config = {
+      # Disable the timeout warning.
+      warn_timeout = "0";
+    };
   };
 
   # Shell prompt.
@@ -166,88 +271,6 @@
     zk # zettelkasten cli
     zotero # citation tool
   ]);
-
-  home.sessionVariables = {
-    VISUAL = "${pkgs.neovim}/bin/nvim";
-    EDITOR = "${pkgs.neovim}/bin/nvim";
-    MANPAGER = "${pkgs.neovim}/bin/nvim +Man!";
-    MANWIDTH = "80";
-    # TODO(idanko): revisit variables. Move common parts to a let expression.
-    SEARCH_EXCLUDED_DIRS =
-      "SCCS,RCS,CVS,MCVS,.git,.svn,.hg,.bzr,vendor,deps,node_modules,dist,venv,elm-stuff,.clj-kondo,.lsp,.cpcache,.ccls-cache,_build,.elixir_ls,.cache";
-    RG_OPTS_FILTER =
-      "--hidden --glob='!{SCCS,RCS,CVS,MCVS,.git,.svn,.hg,.bzr,vendor,deps,node_modules,dist,venv,elm-stuff,.clj-kondo,.lsp,.cpcache,.ccls-cache,_build,.elixir_ls,.cache}'";
-    CLIPBOARD_COPY_COMMAND = "${pkgs.xclip}/bin/xclip -in -selection c";
-    # for "${pkgs.zk}/bin/zk".
-    ZK_NOTEBOOK_DIR = "$HOME/github.com/fantasygiveup/zettelkasten";
-
-    # Fix the libsqlite.so not found issue for https://github.com/kkharji/sqlite.lua.
-    LD_LIBRARY_PATH =
-      "${pkgs.lib.makeLibraryPath (with pkgs; [ sqlite ])}:$LD_LIBRARY_PATH";
-  };
-
-  programs.zsh = {
-    enable = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting = { enable = true; };
-    defaultKeymap = "emacs";
-    shellAliases = {
-      urldecode =
-        "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
-      urlencode =
-        "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
-      lg = "${pkgs.lazygit}/bin/lazygit";
-      e = "$EDITOR";
-    };
-    # TODO(idanko): find a better way to integrate with fzf-project.
-    initExtra = ''
-      . "${pkgs.fzf-project}/bin/fzf-project"
-    '';
-  };
-
-  # Enable home-manager and git
-  programs.git = { enable = true; };
-  programs.fzf = {
-    enable = true;
-    fileWidgetCommand =
-      "${pkgs.ripgrep}/bin/rg --files --hidden --glob='!{SCCS,RCS,CVS,MCVS,.git,.svn,.hg,.bzr,vendor,deps,node_modules,dist,venv,elm-stuff,.clj-kondo,.lsp,.cpcache,.ccls-cache,_build,.elixir_ls,.cache}'";
-    defaultCommand =
-      "${pkgs.ripgrep}/bin/rg --files --hidden --glob='!{SCCS,RCS,CVS,MCVS,.git,.svn,.hg,.bzr,vendor,deps,node_modules,dist,venv,elm-stuff,.clj-kondo,.lsp,.cpcache,.ccls-cache,_build,.elixir_ls,.cache}'";
-    defaultOptions = [
-      "--no-mouse"
-      "--layout=reverse"
-      "--height 40%"
-      "--border"
-      "--multi"
-      "--exact"
-      "--preview-window=hidden"
-      "--bind='alt-w:execute-silent(echo -n {} | $CLIPBOARD_COPY_COMMAND)'"
-      "--bind='ctrl-e:print-query'"
-      "--bind='ctrl-b:half-page-up'"
-      "--bind='ctrl-f:half-page-down'"
-      "--bind='ctrl-u:preview-half-page-up'"
-      "--bind='ctrl-d:preview-half-page-down'"
-      "--bind='alt-p:toggle-preview'"
-      "--bind='ctrl-a:toggle-all'"
-      "--color=gutter:-1,fg:-1,fg+:-1,pointer:1,hl:2,hl+:2,bg+:8"
-    ];
-  };
-
-  programs.eza = {
-    enable = true;
-    extraOptions = [ "--group-directories-first" "--header" ];
-    icons = "auto";
-  };
-
-  programs.direnv = {
-    enable = true;
-    silent = true;
-    nix-direnv.enable = true;
-    config = {
-      # Disable the timeout warning.
-      warn_timeout = "0";
-    };
-  };
 
   home.file = { };
 
