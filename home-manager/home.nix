@@ -165,7 +165,6 @@ in rec {
   # TODO(idanko): split packages and configuration for xorg and wayland.
 
   home.packages = with pkgs; ([
-    # (pkgs.callPackage ../../modules/nixos/fdir.nix { })
     (google-cloud-sdk.withExtraComponents
       [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
     alacritty # terminal of choice
