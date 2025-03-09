@@ -27,10 +27,11 @@
 [ -z "${FZF_PROJECT_ROOT_DIRECTORY-}" ] && FZF_PROJECT_ROOT_DIRECTORY="$HOME"
 [ -z "${FZF_PROJECT_SEARCH_PATTERN-}" ] && FZF_PROJECT_SEARCH_PATTERN="'^\.git$|^\.hg$|^\.bzr$|^\.svn$'"
 [ -z "${FZF_PROJECT_FD_IGNORE_FILTER-}" ] && FZF_PROJECT_FD_IGNORE_FILTER="--exclude 'vendor' --exclude 'deps' --exclude 'node_modules' --exclude 'dist' --exclude 'venv' --exclude 'elm-stuff' --exclude '.clj-kondo' --exclude '.lsp' --exclude '.cpcache' --exclude '.ccls-cache' --exclude '_build' --exclude '.elixir_ls' --exclude '.cache'"
-[ -z "${FZF_PROJECT_CMD-}" ] && FZF_PROJECT_CMD="fd --hidden --case-sensitive --base-directory ${FZF_PROJECT_ROOT_DIRECTORY} "$FD_IGNORE_FILTER" --relative-path --prune ${FZF_PROJECT_SEARCH_PATTERN}"
+[ -z "${FZF_PROJECT_CMD-}" ] && FZF_PROJECT_CMD="fd --hidden --case-sensitive --base-directory ${FZF_PROJECT_ROOT_DIRECTORY} "$FZF_PROJECT_FD_IGNORE_FILTER" --relative-path --prune ${FZF_PROJECT_SEARCH_PATTERN}"
 [ -z "${FZF_PROJECT_PREVIEW_FZF_SETTINGS-}" ] && FZF_PROJECT_PREVIEW_FZF_SETTINGS="nohidden|hidden,down"
 [ -z "${FZF_PROJECT_PREVIEW_COLUMNS_THRESHOLD-}" ] && FZF_PROJECT_PREVIEW_COLUMNS_THRESHOLD="160"
 [ -z "${FZF_PROJECT_PROMPT-}" ] && FZF_PROJECT_PROMPT='Project> '
+[ -z "${FZF_PROJECT_KEY-}" ] && FZF_PROJECT_KEY='^g'
 
 function fzf_project_redraw_prompt {
     local precmd
@@ -74,4 +75,4 @@ function _fzf_project {
 
 zle -N _fzf_project
 
-bindkey ${FZF_PROJECT_TRIGGER_KEYMAP:-'^g'} _fzf_project
+bindkey "${FZF_PROJECT_KEY}" _fzf_project
