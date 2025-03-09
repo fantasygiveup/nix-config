@@ -149,6 +149,7 @@
     '';
   };
 
+  # TODO(idanko): move the font configuration to a module.
   fonts = {
     enableDefaultPackages = true;
     fontDir.enable = true;
@@ -255,6 +256,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  # TODO(idanko): revisit packages.
   environment.systemPackages = with pkgs; [
     automake
     home-manager

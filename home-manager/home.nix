@@ -63,12 +63,6 @@
     # (pkgs.callPackage ../../modules/nixos/fdir.nix { })
     (google-cloud-sdk.withExtraComponents
       [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
-    unstable.neovim
-    unstable.qbittorrent
-    unstable.signal-desktop
-    unstable.teams-for-linux
-    unstable.wezterm
-    unstable.yt-dlp
     alacritty # terminal of choice
     anki
     ansible
@@ -89,9 +83,11 @@
     drawio
     emmet-ls
     espeak # speach-module for speechd
+    fdir
     filezilla
     firefox
     foliate # awz3 viewer
+    fzf-project
     gimp
     gnome-tweaks
     gnomeExtensions.dash-to-dock
@@ -108,6 +104,7 @@
     inkscape
     krita
     kubectl
+    lazygit # convenient git tui
     lf # terminal file manager
     libnotify # provides notify-send
     libreoffice-fresh # ms office, but better
@@ -128,10 +125,10 @@
     nodejs
     obs-studio # record camera and desktop
     opera
+    pandoc # convert/generate documents in different formats
     papirus-icon-theme
     pgformatter
     pistol # file previewer written in go
-    pandoc # convert/generate documents in different formats
     prismlauncher # minecraft launcher
     pyright # python code formatter
     rlwrap # wrap a command to make stdin interactive
@@ -148,6 +145,12 @@
     thunderbird
     tmux
     typescript
+    unstable.neovim
+    unstable.qbittorrent
+    unstable.signal-desktop
+    unstable.teams-for-linux
+    unstable.wezterm
+    unstable.yt-dlp
     vagrant
     viber
     vlc
@@ -162,8 +165,6 @@
     yarn
     zk # zettelkasten cli
     zotero # citation tool
-    fzf-project
-    fdir
   ]);
 
   home.sessionVariables = {
