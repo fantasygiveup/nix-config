@@ -167,6 +167,7 @@ in rec {
     alacritty # terminal of choice
     anki
     ansible
+    bemenu-commander
     bemenu
     bloomrpc
     ccls # Language Server Protocol based on Clang
