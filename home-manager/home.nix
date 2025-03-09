@@ -234,6 +234,7 @@ in rec {
     pistol # file previewer written in go
     prismlauncher # minecraft launcher
     pyright # python code formatter
+    ripgrep
     rlwrap # wrap a command to make stdin interactive
     sbcl
     shfmt # shell files formatter
