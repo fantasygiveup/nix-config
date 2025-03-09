@@ -105,18 +105,21 @@ in rec {
     shellAliases = {
       urldecode =
         "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
+
       urlencode =
         "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
+
       lg = "${pkgs.lazygit}/bin/lazygit";
       e = "$EDITOR";
     };
+
     # TODO: find a better way to integrate with fzf-project.
     initExtra = ''
       . "${pkgs.fzf-project}/bin/fzf-project"
     '';
   };
 
-  # Enable home-manager and git
+  # Enable git.
   programs.git = { enable = true; };
 
   programs.fzf = {
