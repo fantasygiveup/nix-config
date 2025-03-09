@@ -2,6 +2,7 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 { inputs, outputs, lib, config, pkgs, ... }:
 let
+
   # Base patterns to exclude from the search. Can be used with "fd".
   ignore-search-patterns-base = [
     "vendor"
@@ -56,12 +57,13 @@ in rec {
       #   });
       # })
     ];
+
     # Configure your nixpkgs instance.
     config = {
       allowUnfree = true;
-      permittedInsecurePackages = [
-        "openssl-1.1.1w" # required by viber
-      ];
+
+      # Required by Viber.
+      permittedInsecurePackages = [ "openssl-1.1.1w" ];
     };
   };
 
@@ -76,9 +78,17 @@ in rec {
     MANPAGER = "${pkgs.neovim}/bin/nvim +Man!";
     MANWIDTH = "80";
     RIPGREP_IGNORE_SEARCH_FILTER = ripgrep-ignore-filter;
-    FD_IGNORE_SEARCH_FILTER = lib.concatMapStrings (str: " --exclude '${str}'")
+
+    # Used by the "fzf-project" utility and "neovim".
+    FZF_PROJECT_ROOT_DIRECTORY = "$HOME";
+
+    FZF_PROJECT_FD_IGNORE_FILTER =
+      lib.concatMapStrings (str: " --exclude '${str}'")
       ignore-search-patterns-base;
+
+    FZF_PROJECT_SEARCH_PATTERN = "'^.git$|^.hg$|^.bzr$|^.svn$'";
     CLIPBOARD_COPY_COMMAND = "${pkgs.xclip}/bin/xclip -in -selection c";
+
     # for "${pkgs.zk}/bin/zk".
     ZK_NOTEBOOK_DIR = "$HOME/github.com/fantasygiveup/zettelkasten";
 
@@ -100,7 +110,7 @@ in rec {
       lg = "${pkgs.lazygit}/bin/lazygit";
       e = "$EDITOR";
     };
-    # TODO(idanko): find a better way to integrate with fzf-project.
+    # TODO: find a better way to integrate with fzf-project.
     initExtra = ''
       . "${pkgs.fzf-project}/bin/fzf-project"
     '';
@@ -108,6 +118,7 @@ in rec {
 
   # Enable home-manager and git
   programs.git = { enable = true; };
+
   programs.fzf = {
     enable = true;
     defaultCommand =
@@ -144,24 +155,24 @@ in rec {
     silent = true;
     nix-direnv.enable = true;
     config = {
+
       # Disable the timeout warning.
       warn_timeout = "0";
     };
   };
 
-  # Shell prompt.
+  # The modern shell prompt.
   # See https://nix-community.github.io/home-manager/options.xhtml#opt-programs.starship.enable
   programs.starship.enable = true;
 
-  # TODO(idanko): check more about sd-switch.
+  # TODO: check more about sd-switch.
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+  # NOTE: It is still necessary to set "programs.gnupg.agent = true" in the NixOS configuration for full integration.
+  programs.gpg = { enable = true; };
 
-  # TODO(idanko): split packages and configuration for xorg and wayland.
+  # TODO: split packages and configuration for xorg and wayland.
 
   home.packages = with pkgs; ([
     alacritty # terminal of choice

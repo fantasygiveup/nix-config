@@ -64,7 +64,7 @@
   networking.hostName = "st321";
   # Bootloader.
 
-  # TODO(idanko): move to hardware-configuration
+  # TODO: move to hardware-configuration
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -149,7 +149,7 @@
     '';
   };
 
-  # TODO(idanko): move the font configuration to a module.
+  # TODO: move the font configuration to a module.
   fonts = {
     enableDefaultPackages = true;
     fontDir.enable = true;
@@ -256,7 +256,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # TODO(idanko): revisit packages.
+  # TODO: revisit packages.
   environment.systemPackages = with pkgs; [
     automake
     home-manager
@@ -302,6 +302,11 @@
     zip
   ];
 
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
   programs.wireshark.enable = true;
 
   # To make the linker (ldd) works with the not nix native binaries.
@@ -314,14 +319,17 @@
     defaultUserShell = pkgs.zsh;
     users = {
       idanko = {
-        # TODO: You can set an initial password for your user.
+
+        # NOTE: You can set an initial password for your user.
         # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
         # Be sure to change it (using passwd) after rebooting!
-        # initialPassword = "correcthorsebatterystaple";
+        # initialPassword = "yourpassword";
         isNormalUser = true;
+
         openssh.authorizedKeys.keys = [
           # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
         ];
+
         # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
         extraGroups = [
           "networkmanager"
