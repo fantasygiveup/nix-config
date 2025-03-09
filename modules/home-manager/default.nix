@@ -3,4 +3,6 @@
 {
   # List your module files here
   # my-module = import ./my-module.nix;
+
+  cliphist-clipboard-service = import ./cliphist-clipboard-service.nix;
 }

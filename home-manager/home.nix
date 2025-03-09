@@ -32,6 +32,10 @@ in rec {
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
 
+    # X11 clipboard history module.
+    # TODO: disable in wayland.
+    outputs.homeManagerModules.cliphist-clipboard-service
+
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
 
@@ -121,6 +125,9 @@ in rec {
 
   # Enable git.
   programs.git = { enable = true; };
+
+  # Enable the X11 clipboard history daemon.
+  cliphist-clipboard-service.enable = true;
 
   programs.fzf = {
     enable = true;
