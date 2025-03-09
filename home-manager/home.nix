@@ -165,8 +165,6 @@ in rec {
   # TODO(idanko): split packages and configuration for xorg and wayland.
 
   home.packages = with pkgs; ([
-    (google-cloud-sdk.withExtraComponents
-      [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
     alacritty # terminal of choice
     anki
     ansible
@@ -200,6 +198,7 @@ in rec {
     golangci-lint # golang linter package
     golines # split long code lines in golang
     google-chrome
+    google-cloud-sdk-with-gke
     gopls # golang language server protocol
     gotools # set of go language code tools
     graphviz
