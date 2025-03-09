@@ -22,7 +22,7 @@
 #
 
 # Search for and navigate projects in the file system.
-# Requirements: "zsh", "fzf", "fd", "xargs", "dirname", "sort", "perl", "tput", "tree".
+# Requirements: "zsh", "fzf", "fd", "xargs", "dirname", "awk", "sort", "perl", "tput", "tree".
 
 [ -z "${FZF_PROJECT_ROOT_DIRECTORY-}" ] && FZF_PROJECT_ROOT_DIRECTORY="$HOME"
 [ -z "${FZF_PROJECT_SEARCH_PATTERN-}" ] && FZF_PROJECT_SEARCH_PATTERN="'^\.git$|^\.hg$|^\.bzr$|^\.svn$'"
@@ -54,6 +54,7 @@ function _fzf_project {
     local line=$(eval ${FZF_PROJECT_CMD} | \
         sort -u | \
         xargs dirname | \
+        awk '!x[$0]++' | \
         fzf \
         --ansi \
         --prompt "${FZF_PROJECT_PROMPT}" \
