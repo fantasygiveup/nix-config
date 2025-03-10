@@ -5,4 +5,5 @@
   # my-module = import ./my-module.nix;
 
   cliphist-clipboard-service = import ./cliphist-clipboard-service.nix;
+  gitconfig = import ./gitconfig.nix;
 }
