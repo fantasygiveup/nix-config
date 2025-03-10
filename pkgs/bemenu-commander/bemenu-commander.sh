@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-font_size="${BEMENU_COMMANDER_FONT_SIZE:-"14"}"
+font_size="${BEMENU_COMMANDER_FONT_SIZE:-"13"}"
 font="${BEMENU_COMMANDER_FONT:-"JetBrainsMono Nerd Font Mono Bold ${font_size}"}"
 color_bg="${BEMENU_COMMANDER_COLOR_BG:-"#000000"}"
 color_text="${BEMENU_COMMANDER_COLOR_FG:-"#cdd6f4"}"
