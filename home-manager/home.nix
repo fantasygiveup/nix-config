@@ -183,8 +183,31 @@ in rec {
   # NOTE: It is still necessary to set "programs.gnupg.agent = true" in the NixOS configuration for full integration.
   programs.gpg = { enable = true; };
 
-  # TODO: split packages and configuration for xorg and wayland.
+  # GTK configuration.
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Numix-Square";
+      package = pkgs.numix-icon-theme-square;
+    };
+  };
 
+  # QT configuration.
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk3";
+  };
+
+  # Xresources configuration.
+  xresources.properties = {
+    "Xft.lcdfilter" = "lcddefault";
+    "Xft.hintstyle" = "hintslight";
+    "Xft.hinting" = true;
+    "Xft.antialias" = true;
+    "Xft.rgba" = "rgb";
+  };
+
+  # TODO: split packages and configuration for xorg and wayland.
   home.packages = with pkgs; ([
     alacritty # terminal of choice
     anki
