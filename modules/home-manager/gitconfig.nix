@@ -25,10 +25,10 @@ in {
         # Full reset.
         ra = "!git clean --force -d -x && git reset --hard";
 
-        # Find a pattern in logs.
+        # Find a pattern in all logs.
         ss = "!git log -p --all -S";
 
-        # Find deleted files.
+        # Find in deleted files by a pattern.
         sd = "log --diff-filter=D --summary --oneline -S";
 
         # Pretty print logs: single line format.
