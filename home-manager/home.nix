@@ -36,6 +36,7 @@ in rec {
     # TODO: disable in wayland.
     outputs.homeManagerModules.cliphist-clipboard-service
     outputs.homeManagerModules.gitconfig
+    outputs.homeManagerModules.dconfiguration
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -71,6 +72,15 @@ in rec {
       permittedInsecurePackages = [ "openssl-1.1.1w" ];
     };
   };
+
+  # Enable gitconfig. See modules/home-manager/gitconfig.nix.
+  gitconfig.enable = true;
+
+  # Enable the X11 clipboard history daemon. See modules/home-manager/cliphist-clipboard-service.nix.
+  cliphist-clipboard-service.enable = true;
+
+  # Enable dconf configuration. See modules/home-manager/dconf.nix.
+  dconfiguration.enable = true;
 
   home = {
     username = "idanko";
@@ -123,12 +133,6 @@ in rec {
       . "${pkgs.fzf-project}/bin/fzf-project"
     '';
   };
-
-  # Enable git.
-  gitconfig.enable = true;
-
-  # Enable the X11 clipboard history daemon.
-  cliphist-clipboard-service.enable = true;
 
   programs.fzf = {
     enable = true;

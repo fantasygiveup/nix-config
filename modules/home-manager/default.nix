@@ -6,4 +6,5 @@
 
   cliphist-clipboard-service = import ./cliphist-clipboard-service.nix;
   gitconfig = import ./gitconfig.nix;
+  dconfiguration = import ./dconfiguration.nix;
 }
