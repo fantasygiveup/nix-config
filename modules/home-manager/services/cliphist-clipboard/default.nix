@@ -1,17 +1,15 @@
 { lib, config, pkgs, ... }:
 
-let cfg = config.cliphist-clipboard-service;
+let cfg = config.services.cliphist-clipboard;
 in {
-  options.cliphist-clipboard-service = {
-    enable = lib.mkEnableOption "Enable 'cliphist-clipboard-service' module";
+  options.services.cliphist-clipboard = {
+    enable = lib.mkEnableOption
+      "X11 clipboard history service based on cliphist, xclip and clipnotify";
   };
 
   config = lib.mkIf cfg.enable {
-    systemd.user.services.cliphist-clipboard-service = {
-      Unit = {
-        Description =
-          "X11 service: listens for clipboard events and pipes them to 'cliphist'.";
-      };
+    systemd.user.services.cliphist-clipboard = {
+      Unit = { Description = "X11 based clipboard events listener"; };
       Service = {
         ExecStart = ''
           ${pkgs.bash}/bin/bash -c 'while ${pkgs.clipnotify}/bin/clipnotify; do ${pkgs.xclip}/bin/xclip -o -selection c | ${pkgs.cliphist}/bin/cliphist store; done'

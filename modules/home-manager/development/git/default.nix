@@ -1,8 +1,8 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
-let cfg = config.gitconfig;
+let cfg = config.development.git;
 in {
-  options.gitconfig = {
+  options.development.git = {
     enable = lib.mkEnableOption "Enable git configuration";
   };
 
@@ -17,10 +17,10 @@ in {
         p = "push";
 
         # Open lazygit.
-        lz = "!lazygit";
+        lz = "!${pkgs.lazygit}/bin/lazygit";
 
         # Open the lazygit log.
-        lZ = "!lazygit log";
+        lZ = "!${pkgs.lazygit}/bin/lazygit log";
 
         # Full reset.
         ra = "!git clean --force -d -x && git reset --hard";
@@ -83,5 +83,7 @@ in {
         }
       ];
     };
+
+    home.packages = with pkgs; [ lazygit ];
   };
 }

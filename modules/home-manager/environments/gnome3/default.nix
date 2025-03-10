@@ -1,14 +1,14 @@
 { config, pkgs, lib, ... }:
 
-let cfg = config.dconfiguration;
+let cfg = config.environments.gnome3;
 in {
-  options.dconfiguration = {
-    enable = lib.mkEnableOption "Enable dconf configuration";
+  options.environments.gnome3 = {
+    enable = lib.mkEnableOption "Enable Gnome3 configuration";
   };
 
   config = lib.mkIf cfg.enable {
 
-    # To see changes using gnome-tweaks (or any other method) use `dconf watch /` command.
+    # To see changes using GNOME Tweaks (or any other method), use the dconf watch / command.
     dconf = {
       enable = true;
       settings = {
@@ -20,7 +20,7 @@ in {
           font-antialiasing = "rgba";
           font-hinting = "slight";
           clock-show-weekday = true;
-          enable-hot-corners = false; # disable top-left hot corner.
+          enable-hot-corners = false; # disable the top-left hot corner.
         };
         "org/gnome/desktop/input-sources" = {
           sources = [
@@ -60,7 +60,7 @@ in {
           };
         "org/gnome/settings-daemon/plugins/color" = {
           night-light-enabled = true;
-          night-light-temperature = (lib.gvariant.mkUint32 3700);
+          night-light-temperature = (lib.gvariant.mkUint32 2800);
         };
 
         "org/gnome/shell" = {
