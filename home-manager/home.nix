@@ -14,6 +14,7 @@
     outputs.homeManagerModules."services/clipist-clipboard"
     outputs.homeManagerModules."development/git"
     outputs.homeManagerModules."development/search"
+    outputs.homeManagerModules."misc/wezterm-plus-tmux"
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -54,6 +55,7 @@
   services.cliphist-clipboard.enable = true;
   development.git.enable = true;
   development.search.enable = true;
+  misc.wezterm-plus-tmux.enable = true;
 
   home = {
     username = "idanko";
@@ -213,7 +215,6 @@
     terraform-ls
     texliveFull
     thunderbird
-    tmux
     typescript
     unstable.elixir
     unstable.elixir-ls
@@ -222,7 +223,6 @@
     unstable.qbittorrent
     unstable.signal-desktop
     unstable.teams-for-linux
-    unstable.wezterm
     unstable.yt-dlp
     vagrant
     viber
