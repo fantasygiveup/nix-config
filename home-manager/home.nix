@@ -97,17 +97,6 @@
     icons = "auto";
   };
 
-  programs.direnv = {
-    enable = true;
-    silent = true;
-    nix-direnv.enable = true;
-    config = {
-
-      # Disable the timeout warning.
-      warn_timeout = "0";
-    };
-  };
-
   # The modern shell prompt.
   # See https://nix-community.github.io/home-manager/options.xhtml#opt-programs.starship.enable
   programs.starship.enable = true;
