@@ -137,8 +137,8 @@
     alacritty # terminal of choice
     anki
     ansible
-    bemenu-commander
     bemenu
+    bemenu-commander
     bloomrpc
     ccls # Language Server Protocol based on Clang
     clang-tools
@@ -215,6 +215,9 @@
     thunderbird
     tmux
     typescript
+    unstable.elixir
+    unstable.elixir-ls
+    unstable.erlang
     unstable.neovim
     unstable.qbittorrent
     unstable.signal-desktop
