@@ -16,6 +16,7 @@ in {
       extraConfig = "";
     };
 
+    # TODO: revisit plugins.
     xdg.configFile."tmux/tmux.conf".source = ./tmux.conf;
     programs.tmux.enable = true;
   };
