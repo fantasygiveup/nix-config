@@ -6,6 +6,7 @@ in {
     enable = lib.mkEnableOption "Enable wezterm plus tmux configuration";
   };
 
+  # TODO: integrate with dark theme.
   config = lib.mkIf cfg.enable {
     xdg.configFile."wezterm/wezterm.lua".source = ./wezterm.lua;
 
