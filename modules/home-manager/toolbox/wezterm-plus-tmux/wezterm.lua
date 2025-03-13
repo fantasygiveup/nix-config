@@ -19,53 +19,53 @@ config.window_decorations = "NONE"
 config.cell_width = 0.9 -- font tracking
 config.inactive_pane_hsb = { saturation = 0.9, brightness = 0.93 }
 
--- Catppuccin latte theme.
+-- Catppuccin mocha theme.
 config.colors = {
-  foreground = "#4c4f69",
-  background = "#eff1f5",
-  cursor_bg = "#4c4f69",
-  cursor_fg = "#eff1f5",
-  split = "#dce0e8",
-  selection_bg = "#4c4f69",
-  selection_fg = "#eff1f5",
+  foreground = "#cdd6f4",
+  background = "#1e1e2e",
+  cursor_bg = "#cdd6f4",
+  cursor_fg = "#1e1e2e",
+  split = "#11111b",
+  selection_bg = "#cdd6f4",
+  selection_fg = "#1e1e2e",
 
   ansi = {
-    "#bcc0cc",
-    "#d20f39",
-    "#40a02b",
-    "#df8e1d",
-    "#1e66f5",
-    "#ea76cb",
-    "#04a5e5",
-    "#dce0e8",
+    "#45475a",
+    "#f38ba8",
+    "#a6e3a1",
+    "#f9e2af",
+    "#89b4fa",
+    "#f5c2e7",
+    "#89dceb",
+    "#11111b",
   },
   brights = {
-    "#bcc0cc",
-    "#de0332",
-    "#37ab20",
-    "#ec8e10",
-    "#1462ff",
-    "#f26ecd",
-    "#0090e9",
-    "#434872",
+    "#4d4d52",
+    "#ec92a8",
+    "#addba9",
+    "#f4e2b4",
+    "#8fb4f4",
+    "#f1c6e7",
+    "#90d7e4",
+    "#d0d6f1",
   },
   tab_bar = {
-    background = "#eff1f5",
-    -- Hide + button sign.
+    background = "#1e1e2e",
+    -- Disable new tab by hiding under bg color.
     new_tab = {
-      fg_color = "#eff1f5",
-      bg_color = "#eff1f5",
+      fg_color = "#1e1e2e",
+      bg_color = "#1e1e2e",
     },
     new_tab_hover = {
-      fg_color = "#eff1f5",
-      bg_color = "#eff1f5",
+      fg_color = "#1e1e2e",
+      bg_color = "#1e1e2e",
     },
   },
 }
 
 config.window_frame = {
-  active_titlebar_bg = "#bcc0cc",
-  inactive_titlebar_bg = "#bcc0cc",
+  active_titlebar_bg = "#45475a",
+  inactive_titlebar_bg = "#45475a",
 }
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
