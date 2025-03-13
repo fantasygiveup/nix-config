@@ -19,6 +19,7 @@
     outputs.homeManagerModules."toolbox/wezterm-plus-tmux"
     outputs.homeManagerModules."toolbox/lf"
     outputs.homeManagerModules."toolbox/lazygit"
+    outputs.homeManagerModules."toolbox/zk"
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -63,6 +64,7 @@
   toolbox.wezterm-plus-tmux.enable = true;
   toolbox.lf.enable = true;
   toolbox.lazygit.enable = true;
+  toolbox.zk.enable = true;
 
   home = {
     username = "idanko";

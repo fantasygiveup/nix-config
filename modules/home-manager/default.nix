@@ -7,4 +7,5 @@
   "toolbox/wezterm-plus-tmux" = import ./toolbox/wezterm-plus-tmux;
   "toolbox/lf" = import ./toolbox/lf;
   "toolbox/lazygit" = import ./toolbox/lazygit;
+  "toolbox/zk" = import ./toolbox/zk;
 }
