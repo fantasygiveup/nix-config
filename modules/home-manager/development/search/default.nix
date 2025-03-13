@@ -78,6 +78,6 @@ in {
       initExtra = ''. "${pkgs.fzf-project}/bin/fzf-project" '';
     };
 
-    home.packages = with pkgs; [ ripgrep fd fzf fzf-project ];
+    home.packages = [ pkgs.ripgrep pkgs.fd pkgs.fzf pkgs.fzf-project ];
   });
 }

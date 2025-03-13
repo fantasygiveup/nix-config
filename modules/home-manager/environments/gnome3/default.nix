@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let cfg = config.environments.gnome3;
 in {
@@ -107,5 +107,12 @@ in {
         };
       };
     };
+
+    home.packages = [
+      pkgs.gnome-tweaks
+      pkgs.gnomeExtensions.dash-to-dock
+      pkgs.gnomeExtensions.unite
+      pkgs.papirus-icon-theme
+    ];
   };
 }

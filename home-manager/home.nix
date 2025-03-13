@@ -10,11 +10,12 @@
 
     # X11 clipboard history module.
     # TODO: disable in wayland.
-    # TODO: consider to merge options.
+    # TODO: consider to merge options to avoid repeatedly adding a new entry.
     outputs.homeManagerModules."environments/gnome3"
     outputs.homeManagerModules."services/clipist-clipboard"
     outputs.homeManagerModules."development/git"
     outputs.homeManagerModules."development/search"
+    outputs.homeManagerModules."development/code"
     outputs.homeManagerModules."toolbox/wezterm-plus-tmux"
     outputs.homeManagerModules."toolbox/lf"
     outputs.homeManagerModules."toolbox/lazygit"
@@ -58,6 +59,7 @@
   services.cliphist-clipboard.enable = true;
   development.git.enable = true;
   development.search.enable = true;
+  development.code.enable = true;
   toolbox.wezterm-plus-tmux.enable = true;
   toolbox.lf.enable = true;
   toolbox.lazygit.enable = true;
@@ -141,41 +143,25 @@
 
   # TODO: split packages and configuration for xorg and wayland.
   home.packages = with pkgs; [
-    alacritty # terminal of choice
     anki
-    ansible
     bemenu
     bemenu-commander
-    bloomrpc
-    ccls # Language Server Protocol based on Clang
-    clang-tools
     cliphist
     clipnotify
-    cmake
     dconf
     dconf-editor
-    delve # golang debugger
     devcontainer
     discord
     dive # inspect docker images
     docker-compose
     drawio
-    emmet-ls
     espeak # speach-module for speechd
     filezilla
     firefox
     foliate # awz3 viewer
     gimp
-    gnome-tweaks
-    gnomeExtensions.dash-to-dock
-    gnomeExtensions.unite # merge title with gnome top dock
-    go
-    golangci-lint # golang linter package
-    golines # split long code lines in golang
     google-chrome
     google-cloud-sdk-with-gke
-    gopls # golang language server protocol
-    gotools # set of go language code tools
     graphviz
     imagemagick
     imv # image viewer
@@ -184,45 +170,20 @@
     kubectl
     libnotify # provides notify-send
     libreoffice-fresh # ms office, but better
-    libxml2 # xmllint
-    lua-language-server
-    luajit # lua interpreter
-    luarocks
     meld # diff folders and files
     memtester # memory test
     mpv
     ngrok # route tcp from the public internet url to your host machine
     nix-index # for nix-locate
-    nixd
-    nixfmt-classic
-    nodePackages.eslint # javascript linter
-    nodePackages.prettier # javascript formatter
-    nodePackages.typescript-language-server # typescript language server protocol
-    nodejs
     obs-studio # record camera and desktop
     opera
     pandoc # convert/generate documents in different formats
-    papirus-icon-theme
-    pgformatter
-    pistol # file previewer written in go
     prismlauncher # minecraft launcher
-    pyright # python code formatter
-    rlwrap # wrap a command to make stdin interactive
-    sbcl
-    shfmt # shell files formatter
     slack
     speechd # speech-dispatcher for foliate
-    stylua
-    tailwindcss-language-server
     telegram-desktop
-    terraform
-    terraform-ls
     texliveFull
     thunderbird
-    typescript
-    unstable.elixir
-    unstable.elixir-ls
-    unstable.erlang
     unstable.neovim
     unstable.qbittorrent
     unstable.signal-desktop
@@ -231,14 +192,12 @@
     vagrant
     viber
     vlc
-    vscode-langservers-extracted # cssls
     wireshark
     xcape
     xclip
     xorg.xev
     xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
     xorg.xmodmap
-    yapf
     yarn
     zk # zettelkasten cli
     zotero # citation tool

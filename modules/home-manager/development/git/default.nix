@@ -84,6 +84,6 @@ in {
       ];
     };
 
-    home.packages = with pkgs; [ lazygit ];
+    home.packages = [ pkgs.lazygit ];
   };
 }
