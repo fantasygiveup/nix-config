@@ -182,7 +182,6 @@
     inkscape
     krita
     kubectl
-    lf # terminal file manager
     libnotify # provides notify-send
     libreoffice-fresh # ms office, but better
     libxml2 # xmllint
