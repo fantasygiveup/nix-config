@@ -102,6 +102,15 @@
 
       bc = "${pkgs.bc}/bin/bc -l"; # the calculator with advanced capabilities.
     };
+    envExtra = ''
+      zstyle ':completion:*' menu select                  # select menu enabled
+      zstyle ':completion::complete:*' gain-privileges 1  # complete commands start with sudo
+      zstyle ':completion:*' rehash true                  # automatically find executables.
+      zstyle ':completion:*:*:make:*' tag-order 'targets' # makefiles completion
+
+      setopt COMPLETE_ALIASES       # auto-complete aliases
+      setopt interactivecomments    # enable hash comment command
+    '';
   };
 
   programs.eza = {

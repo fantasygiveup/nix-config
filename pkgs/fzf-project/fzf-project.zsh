@@ -24,6 +24,7 @@
 # Search for and navigate projects in the file system.
 # Requirements: "zsh", "fzf", "fd", "xargs", "dirname", "awk", "sort", "perl", "tput", "tree".
 
+# TODO: do not define the fallback global variables.
 [ -z "${FZF_PROJECT_ROOT_DIRECTORY-}" ] && FZF_PROJECT_ROOT_DIRECTORY="$HOME"
 [ -z "${FZF_PROJECT_SEARCH_PATTERN-}" ] && FZF_PROJECT_SEARCH_PATTERN="'^\.git$|^\.hg$|^\.bzr$|^\.svn$'"
 [ -z "${FZF_PROJECT_FD_IGNORE_FILTER-}" ] && FZF_PROJECT_FD_IGNORE_FILTER="--exclude 'vendor' --exclude 'deps' --exclude 'node_modules' --exclude 'dist' --exclude 'venv' --exclude 'elm-stuff' --exclude '.clj-kondo' --exclude '.lsp' --exclude '.cpcache' --exclude '.ccls-cache' --exclude '_build' --exclude '.elixir_ls' --exclude '.cache'"
@@ -33,17 +34,17 @@
 [ -z "${FZF_PROJECT_PROMPT-}" ] && FZF_PROJECT_PROMPT='Project> '
 [ -z "${FZF_PROJECT_KEY-}" ] && FZF_PROJECT_KEY='^g'
 
-function fzf_project_redraw_prompt {
+function _fzf_project_redraw_prompt {
     local precmd
     for precmd in $precmd_functions; do
         $precmd
     done
     zle reset-prompt
 }
-zle -N fzf_project_redraw_prompt
+zle -N _fzf_project_redraw_prompt
 
 function _fzf_project_preview_window {
-    states=("${(s[|])FZF_PROJECT_PREVIEW_FZF_SETTINGS}")
+    local states=("${(s[|])FZF_PROJECT_PREVIEW_FZF_SETTINGS}")
     [ "${#states[@]}" -eq 1 ] && echo "${FZF_PROJECT_PREVIEW_FZF_SETTINGS}" && return
     [ "${#states[@]}" -gt 2 ] && echo "${FZF_PROJECT_PREVIEW_FZF_SETTINGS}" && return
     [ $(tput cols) -lt "${FZF_PROJECT_PREVIEW_COLUMNS_THRESHOLD}" ] && echo "${states[2]}" && return
@@ -71,9 +72,7 @@ function _fzf_project {
         fi
     fi
 
-    zle && zle fzf_project_redraw_prompt || true
+    zle && zle _fzf_project_redraw_prompt || true
 }
 
 zle -N _fzf_project
-
-bindkey "${FZF_PROJECT_KEY}" _fzf_project

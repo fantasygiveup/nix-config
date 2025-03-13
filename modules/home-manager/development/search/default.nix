@@ -73,11 +73,20 @@ in {
       ];
     };
 
-    # TODO: find a better way to integrate with fzf-project.
     programs.zsh = {
-      initExtra = ''. "${pkgs.fzf-project}/bin/fzf-project" '';
+      initExtra = ''
+        # TODO: find a better solution to integrate with fzf-project.
+        . "${pkgs.fzf-project}/bin/fzf-project"
+        bindkey '^g' _fzf_project
+
+        # TODO: find a better solution to integrate with fzf-notes.
+        . "${pkgs.fzf-notes}/bin/fzf-notes"
+        stty -ixon # unbind ctrl-s
+        bindkey '^s' _fzf_notes
+      '';
     };
 
-    home.packages = [ pkgs.ripgrep pkgs.fd pkgs.fzf pkgs.fzf-project ];
+    home.packages =
+      [ pkgs.ripgrep pkgs.fd pkgs.fzf pkgs.fzf-project pkgs.fzf-notes ];
   });
 }
