@@ -9,7 +9,7 @@ in {
       settings = {
         gui.theme = {
           lightTheme = true;
-          activeBorderColor = [ "blue" "bold" ];
+          activeBorderColor = [ "green" "bold" ];
           inactiveBorderColor = [ "black" ];
           selectedLineBgColor = [ "default" ];
         };
