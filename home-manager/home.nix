@@ -97,6 +97,8 @@
 
       lg = "${pkgs.lazygit}/bin/lazygit";
       e = "$EDITOR";
+
+      bc = "${pkgs.bc}/bin/bc -l"; # the calculator with advanced capabilities.
     };
   };
 
