@@ -1,8 +1,8 @@
 { lib, config, pkgs, ... }:
 
-let cfg = config.misc.wezterm-plus-tmux;
+let cfg = config.toolbox.wezterm-plus-tmux;
 in {
-  options.misc.wezterm-plus-tmux = {
+  options.toolbox.wezterm-plus-tmux = {
     enable = lib.mkEnableOption "Enable wezterm plus tmux configuration";
   };
 
