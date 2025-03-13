@@ -68,7 +68,6 @@ config.window_frame = {
   inactive_titlebar_bg = "#bcc0cc",
 }
 
-config.hide_tab_bar_if_only_one_tab = false
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   return { { Text = ""} }
 end)
