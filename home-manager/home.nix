@@ -99,8 +99,11 @@
 
       lg = "${pkgs.lazygit}/bin/lazygit";
       e = "$EDITOR";
-
       bc = "${pkgs.bc}/bin/bc -l"; # the calculator with advanced capabilities.
+
+      # Generate 32 bytes size password with /dev/urandom.
+      genpass = ''
+        LC_CTYPE=C LC_ALL=C </dev/urandom tr -dc 'A-Za-z-1-9-_!' | head "-c''${1:-32}"; echo'';
     };
     envExtra = ''
       zstyle ':completion:*' menu select                  # select menu enabled
