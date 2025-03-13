@@ -10,11 +10,13 @@
 
     # X11 clipboard history module.
     # TODO: disable in wayland.
+    # TODO: consider to merge options.
     outputs.homeManagerModules."environments/gnome3"
     outputs.homeManagerModules."services/clipist-clipboard"
     outputs.homeManagerModules."development/git"
     outputs.homeManagerModules."development/search"
     outputs.homeManagerModules."toolbox/wezterm-plus-tmux"
+    outputs.homeManagerModules."toolbox/lf"
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -56,6 +58,7 @@
   development.git.enable = true;
   development.search.enable = true;
   toolbox.wezterm-plus-tmux.enable = true;
+  toolbox.lf.enable = true;
 
   home = {
     username = "idanko";
