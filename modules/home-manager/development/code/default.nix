@@ -44,6 +44,7 @@ in {
       pkgs.pyright # python formatter
       pkgs.rlwrap # wrap a command to make stdin interactive
       pkgs.sbcl # common lisp compiler
+      pkgs.schemacrawler # generate graphs from sql databases
       pkgs.shfmt # shell files formatter
       pkgs.stylua
       pkgs.stylua
