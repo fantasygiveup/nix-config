@@ -23,6 +23,7 @@ in {
       pkgs.cmake
       pkgs.delve # golang debugger
       pkgs.emmet-ls # emmet support based on lsp
+      pkgs.erun # elixir <file.exs> wrapper
       pkgs.eslint
       pkgs.go
       pkgs.golangci-lint
