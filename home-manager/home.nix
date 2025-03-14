@@ -15,7 +15,7 @@
     outputs.homeManagerModules."services/clipist-clipboard"
     outputs.homeManagerModules."development/git"
     outputs.homeManagerModules."development/search"
-    outputs.homeManagerModules."development/code"
+    outputs.homeManagerModules."development/core"
     outputs.homeManagerModules."toolbox/wezterm-plus-tmux"
     outputs.homeManagerModules."toolbox/lf"
     outputs.homeManagerModules."toolbox/lazygit"
@@ -60,7 +60,7 @@
   services.cliphist-clipboard.enable = true;
   development.git.enable = true;
   development.search.enable = true;
-  development.code.enable = true;
+  development.core.enable = true;
   toolbox.wezterm-plus-tmux.enable = true;
   toolbox.lf.enable = true;
   toolbox.lazygit.enable = true;

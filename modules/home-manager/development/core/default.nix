@@ -1,8 +1,8 @@
 { lib, config, pkgs, ... }:
 
-let cfg = config.development.code;
+let cfg = config.development.core;
 in {
-  options.development.code = {
+  options.development.core = {
     enable = lib.mkEnableOption
       "Enable the collection of compilers, linters, checkers, formatters, lsp servers, etc.";
   };
