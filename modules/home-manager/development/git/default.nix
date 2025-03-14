@@ -70,7 +70,7 @@ in {
             };
 
           };
-          condition = "gitdir:~/bitbucket.dentsplysirona.com";
+          condition = "gitdir:~/bitbucket.dentsplysirona.com/";
         }
         {
           contents = {
@@ -79,7 +79,7 @@ in {
               name = "Illia Danko";
             };
           };
-          condition = "gitdir:~/github.com/strongsdcom";
+          condition = "gitdir:~/github.com/strongsdcom/";
         }
       ];
     };
