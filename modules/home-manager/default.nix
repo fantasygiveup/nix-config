@@ -1,6 +1,6 @@
 {
   "environments/gnome3" = import ./environments/gnome3;
-  "services/clipist-clipboard" = import ./services/cliphist-clipboard;
+  "services/cliphist-clipboard" = import ./services/cliphist-clipboard;
   "development/git" = import ./development/git;
   "development/search" = import ./development/search;
   "development/core" = import ./development/core;

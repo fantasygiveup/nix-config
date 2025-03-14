@@ -12,7 +12,7 @@
     # TODO: disable in wayland.
     # TODO: consider to merge options to avoid repeatedly adding a new entry.
     outputs.homeManagerModules."environments/gnome3"
-    outputs.homeManagerModules."services/clipist-clipboard"
+    outputs.homeManagerModules."services/cliphist-clipboard"
     outputs.homeManagerModules."development/git"
     outputs.homeManagerModules."development/search"
     outputs.homeManagerModules."development/core"
