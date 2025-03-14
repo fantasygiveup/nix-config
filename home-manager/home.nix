@@ -77,9 +77,6 @@
     MANPAGER = "${pkgs.neovim}/bin/nvim +Man!";
     MANWIDTH = "80";
 
-    # for "${pkgs.zk}/bin/zk".
-    ZK_NOTEBOOK_DIR = "$HOME/github.com/fantasygiveup/zettelkasten";
-
     # Fix the libsqlite.so not found issue for https://github.com/kkharji/sqlite.lua.
     LD_LIBRARY_PATH =
       "${pkgs.lib.makeLibraryPath (with pkgs; [ sqlite ])}:$LD_LIBRARY_PATH";
@@ -97,7 +94,6 @@
       urlencode =
         "${pkgs.python3}/bin/python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
 
-      lg = "${pkgs.lazygit}/bin/lazygit";
       e = "$EDITOR";
       bc = "${pkgs.bc}/bin/bc -l"; # the calculator with advanced capabilities.
 
