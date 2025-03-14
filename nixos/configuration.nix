@@ -259,7 +259,6 @@
   # TODO: revisit packages.
   environment.systemPackages = with pkgs; [
     automake
-    home-manager
     bc
     dmidecode
     dnsutils
@@ -273,6 +272,7 @@
     gnat # core development tools: compilers, linkers, etc.
     gnumake
     hdparm
+    home-manager
     htop
     inotify-tools # required by elixir mix
     iperf
