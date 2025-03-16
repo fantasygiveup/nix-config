@@ -302,6 +302,11 @@
     zip
   ];
 
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
