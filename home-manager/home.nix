@@ -100,6 +100,9 @@
       # Generate 32 bytes size password with /dev/urandom.
       genpass = ''
         LC_CTYPE=C LC_ALL=C </dev/urandom tr -dc 'A-Za-z-1-9-_!' | head "-c''${1:-32}"; echo'';
+
+      # Enable the emacs-like navigation.
+      sqlite3 = "${pkgs.rlwrap}/bin/rlwrap ${pkgs.sqlite}/bin/sqlite3";
     };
     envExtra = ''
       zstyle ':completion:*' menu select                  # select menu enabled
