@@ -120,7 +120,10 @@
 
   # The modern shell prompt.
   # See https://nix-community.github.io/home-manager/options.xhtml#opt-programs.starship.enable
-  programs.starship.enable = true;
+  programs.starship = {
+    enable = true;
+    settings = { gcloud = { disabled = true; }; };
+  };
 
   # TODO: check more about sd-switch.
   # Nicely reload system units when changing configs
