@@ -43,7 +43,7 @@ in {
       pkgs.pgformatter # sql formatter # TODO: integrate with neovim
       pkgs.prettierd
       pkgs.pyright # python formatter
-      pkgs.rlwrap # wrap a command to make stdin interactive
+      pkgs.rlwrap # enable the emacs navigation.
       pkgs.sbcl # common lisp compiler
       pkgs.schemacrawler # generate graphs from sql databases
       pkgs.shfmt # shell files formatter
