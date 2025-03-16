@@ -4,6 +4,7 @@ stdenv.mkDerivation {
   version = "1.0.0";
   # Avoid the "> variable $src or $srcs should point to the source" error.
   dontUnpack = true;
+  # TODO: consider to use with makeWrapper.
   installPhase = ''
     runHook preInstall
     mkdir -p "$out/bin"
