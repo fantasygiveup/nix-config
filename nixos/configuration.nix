@@ -5,6 +5,7 @@
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
     # outputs.nixosModules.example
+    outputs.nixosModules."misc/fonts/core"
 
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
@@ -63,6 +64,8 @@
   ### Customization start ###
   networking.hostName = "st321";
   # Bootloader.
+
+  misc.fonts.core.enable = true;
 
   # TODO: move to hardware-configuration
   boot.loader.systemd-boot.enable = true;
@@ -137,6 +140,7 @@
   };
 
   # Postgresql.
+  # TODO: move to the local development module.
   services.postgresql = {
     enable = true;
     # Fix elixir language mix psql integration issue. We need set `trust` to avoid auth problem for
@@ -147,108 +151,6 @@
       host  all all 127.0.0.1/32 trust
       host  all all ::1/128      trust
     '';
-  };
-
-  # TODO: move the font configuration to a module.
-  fonts = {
-    enableDefaultPackages = true;
-    fontDir.enable = true;
-    enableGhostscriptFonts = true;
-    packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "JetBrainsMono" "IosevkaTerm" ]; })
-      ubuntu_font_family
-      corefonts # Microsoft free fonts
-      fira-code # Monospace font with programming ligatures
-      fira-mono # Mozilla's typeface for Firefox OS
-      font-awesome
-      google-fonts
-      liberation_ttf
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-      noto-fonts-extra
-      roboto # Android
-      source-han-sans
-    ];
-    fontconfig = {
-      localConf = ''
-        <?xml version='1.0'?>
-        <!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
-        <fontconfig>
-            <match target="font">
-                <edit name="antialias" mode="assign">
-                    <!-- false,true -->
-                    <bool>true</bool>
-                </edit>
-                <edit name="hinting" mode="assign">
-                    <!-- false,true -->
-                    <bool>true</bool>
-                </edit>
-                <edit name="autohint" mode="assign">
-                    <!-- false,true -->
-                    <bool>true</bool>
-                </edit>
-                <edit mode="assign" name="hintstyle">
-                    <!-- hintnone,hintslight,hintmedium,hintfull -->
-                    <const>hintslight</const>
-                </edit>
-                <edit name="rgba" mode="assign">
-                    <!-- rgb,bgr,v-rgb,v-bgr -->
-                    <const>rgb</const>
-                </edit>
-                <edit mode="assign" name="lcdfilter">
-                    <!-- lcddefault,lcdlight,lcdlegacy,lcdnone -->
-                    <const>lcddefault</const>
-                </edit>
-                <!-- https://wiki.archlinux.org/title/Microsoft_fonts !-->
-                <edit name="embeddedbitmap" mode="assign">
-                    <bool>false</bool>
-                </edit>
-            </match>
-            <!-- Fallback fonts preference order -->
-            <alias>
-                <family>sans-serif</family>
-                <prefer>
-                    <family>Ubuntu</family>
-                    <family>Noto Color Emoji</family>
-                </prefer>
-            </alias>
-            <alias>
-                <family>serif</family>
-                <prefer>
-                    <family>Ubuntu</family>
-                    <family>Noto Color Emoji</family>
-                </prefer>
-            </alias>
-            <alias>
-                <family>monospace</family>
-                <prefer>
-                    <family>Ubuntu Mono</family>
-                    <family>Noto Color Emoji</family>
-                </prefer>
-            </alias>
-            <!-- https://wiki.archlinux.org/title/Microsoft_fonts !-->
-            <alias binding="same">
-                <family>Helvetica</family>
-                <accept>
-                    <family>Arial</family>
-                </accept>
-            </alias>
-            <alias binding="same">
-                <family>Times</family>
-                <accept>
-                    <family>Times New Roman</family>
-                </accept>
-            </alias>
-            <alias binding="same">
-                <family>Courier</family>
-                <accept>
-                    <family>Courier New</family>
-                </accept>
-            </alias>
-        </fontconfig>
-      '';
-    };
   };
 
   # Enable docker.
