@@ -20,7 +20,6 @@
     outputs.homeManagerModules."toolbox/lf"
     outputs.homeManagerModules."toolbox/lazygit"
     outputs.homeManagerModules."toolbox/zk"
-    outputs.homeManagerModules."misc/fonts/standard"
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -50,7 +49,6 @@
 
     # Configure your nixpkgs instance.
     config = {
-      # TODO: per a pacakge configuration.
       allowUnfree = true;
 
       # Required by Viber.
@@ -67,7 +65,6 @@
   toolbox.lf.enable = true;
   toolbox.lazygit.enable = true;
   toolbox.zk.enable = true;
-  misc.fonts.standard.enable = true;
 
   home = {
     username = "idanko";

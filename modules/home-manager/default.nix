@@ -8,5 +8,4 @@
   "toolbox/lf" = import ./toolbox/lf;
   "toolbox/lazygit" = import ./toolbox/lazygit;
   "toolbox/zk" = import ./toolbox/zk;
-  "misc/fonts/standard" = import ./misc/fonts/standard;
 }
