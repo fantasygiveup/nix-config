@@ -20,6 +20,7 @@
     outputs.homeManagerModules."toolbox/lf"
     outputs.homeManagerModules."toolbox/lazygit"
     outputs.homeManagerModules."toolbox/zk"
+    outputs.homeManagerModules."toolbox/fzf/notes-zsh"
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -64,6 +65,8 @@
   toolbox.wezterm-plus-tmux.enable = true;
   toolbox.lf.enable = true;
   toolbox.lazygit.enable = true;
+  toolbox.fzf.project-zsh.enable = true;
+  toolbox.fzf.notes-zsh.enable = true;
   toolbox.zk.enable = true;
 
   home = {
@@ -162,10 +165,7 @@
   # TODO: split packages and configuration for xorg and wayland.
   home.packages = with pkgs; [
     anki
-    bemenu
     bemenu-commander
-    cliphist
-    clipnotify
     dconf
     dconf-editor
     devcontainer

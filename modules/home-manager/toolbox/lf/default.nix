@@ -5,6 +5,9 @@ in {
     enable = lib.mkEnableOption "Enable lf terminal file manager";
   };
 
+  # Used for "fzf-project" integration. See the "commands" attribute.
+  imports = [ ../fzf/project-zsh ];
+
   config = lib.mkIf cfg.enable {
     programs.lf = {
       enable = true;
@@ -31,6 +34,14 @@ in {
                 printf '%s' "''${target}" | eval "$CLIPBOARD_COPY_COMMAND"
             }}
         '';
+        fzf-project = ''
+          ''${{
+                set -f
+                FZF_DEFAULT_OPTS="''${FZF_DEFAULT_OPTS} --height 100% --reverse"
+                res="$(zsh -c '. ~/.config/misc/fzf-project.zsh && _fzf_project --print || echo -n')"
+                [ -n $res ] && lf -remote "send $id cd \"$HOME/$res\""
+            }}
+        '';
       };
 
       keybindings = {
@@ -44,6 +55,7 @@ in {
         "=" = "push %touch<space>";
         "D" = "delete";
         "<c-c>" = "reload";
+        "<c-g>" = "fzf-project";
         "," = null;
         ",gg" = "$lazygit";
       };

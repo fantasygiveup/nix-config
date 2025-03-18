@@ -8,4 +8,5 @@
   "toolbox/lf" = import ./toolbox/lf;
   "toolbox/lazygit" = import ./toolbox/lazygit;
   "toolbox/zk" = import ./toolbox/zk;
+  "toolbox/fzf/notes-zsh" = import ./toolbox/fzf/notes-zsh;
 }

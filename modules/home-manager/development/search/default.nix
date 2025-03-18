@@ -53,6 +53,8 @@ in {
       defaultCommand =
         "${pkgs.ripgrep}/bin/rg --files --hidden ${ripgrep-ignore-filter}";
       fileWidgetCommand = programs.fzf.defaultCommand;
+
+      # FZF_DEFAULT_OPTS environment variable.
       defaultOptions = [
         "--no-mouse"
         "--layout=reverse"
@@ -73,20 +75,6 @@ in {
       ];
     };
 
-    programs.zsh = {
-      initExtra = ''
-        # TODO: find a better solution to integrate with fzf-project.
-        . "${pkgs.fzf-project}/bin/fzf-project"
-        bindkey '^g' _fzf_project
-
-        # TODO: find a better solution to integrate with fzf-notes.
-        . "${pkgs.fzf-notes}/bin/fzf-notes"
-        stty -ixon # unbind ctrl-s
-        bindkey '^s' _fzf_notes
-      '';
-    };
-
-    home.packages =
-      [ pkgs.ripgrep pkgs.fd pkgs.fzf pkgs.fzf-project pkgs.fzf-notes ];
+    home.packages = [ pkgs.ripgrep pkgs.fd pkgs.fzf ];
   });
 }
