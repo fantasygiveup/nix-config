@@ -115,6 +115,9 @@
 
       setopt COMPLETE_ALIASES       # auto-complete aliases
       setopt interactivecomments    # enable hash comment command
+
+      # Enable clipboard sharing between containers and the host.
+      xhost + &>/dev/null || true
     '';
   };
 
