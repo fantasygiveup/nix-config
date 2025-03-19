@@ -31,15 +31,15 @@ in {
       pkgs.gopls # go lsp
       pkgs.gotools # set of go language tools
       pkgs.libxml2 # xmllint
-      pkgs.lua-language-server
       pkgs.luajit # lua interpreter
+      pkgs.lua-language-server
       pkgs.luarocks # lua package manager
       pkgs.nixd # nix lsp
       pkgs.nixfmt-classic # nix formatter
+      pkgs.nodejs # javascript/typescript interpreter
       pkgs.nodePackages.eslint # javascript linter
       pkgs.nodePackages.prettier
       pkgs.nodePackages.typescript-language-server
-      pkgs.nodejs # javascript/typescript interpreter
       pkgs.pgformatter # sql formatter # TODO: integrate with neovim
       pkgs.prettierd
       pkgs.pyright # python formatter
@@ -47,7 +47,6 @@ in {
       pkgs.sbcl # common lisp compiler
       pkgs.schemacrawler # generate graphs from sql databases
       pkgs.shfmt # shell files formatter
-      pkgs.stylua
       pkgs.stylua
       pkgs.tailwindcss-language-server
       pkgs.terraform
