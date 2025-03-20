@@ -17,6 +17,9 @@ nixos:
 	@$(MAKE) --no-print-directory nixos-arg BASE=$@ ARG=$(word 2,$(MAKECMDGOALS))
 
 nixos-arg:
+	@sudo rm -rf /tmp/nixos.bak
+	@sudo mv /etc/nixos /tmp/nixos.bak
+	@sudo mkdir -p /etc/nixos
 	@sudo cp -r "$(project_dir)"/* /etc/nixos
 	@sudo nixos-rebuild switch --show-trace --upgrade --flake "/etc/nixos#$(ARG)"
 

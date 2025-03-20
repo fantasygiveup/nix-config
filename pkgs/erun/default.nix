@@ -22,7 +22,7 @@ stdenv.mkDerivation {
   '';
 
   meta = {
-    description = "Executes elixir exs files";
+    description = "Elixir script interface";
     license = lib.licenses.mit;
     platforms = lib.platforms.all;
     homepage = "https://github.com/fantasygiveup/nix-config";

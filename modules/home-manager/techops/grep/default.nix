@@ -1,11 +1,8 @@
 { lib, config, pkgs, ... }:
 
-let cfg = config.development.search;
+let cfg = config.techops.grep;
 in {
-  options.development.search = {
-    enable = lib.mkEnableOption
-      "Enable search configuration for programs, such as fzf, rg and fd";
-  };
+  options.techops.grep = { enable = lib.mkEnableOption "Enable text search"; };
 
   config = lib.mkIf cfg.enable (let
     # Base patterns to exclude from the search. Can be used with "fd".

@@ -3,7 +3,7 @@
 let cfg = config.misc.fonts.core;
 in {
   options.misc.fonts.core = {
-    enable = lib.mkEnableOption "Enable core fonts settings";
+    enable = lib.mkEnableOption "Enable core fonts coniguration";
   };
 
   config = lib.mkIf cfg.enable {

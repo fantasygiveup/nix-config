@@ -6,6 +6,9 @@
     # If you want to use modules your own flake exports (from modules/nixos):
     # outputs.nixosModules.example
     outputs.nixosModules."misc/fonts/core"
+    outputs.nixosModules."toolkit/core"
+    outputs.nixosModules."toolkit/extra"
+    outputs.nixosModules."toolkit/net"
 
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
@@ -37,10 +40,7 @@
       # })
     ];
     # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-    };
+    config = { allowUnfree = true; };
   };
 
   nix = let flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
@@ -61,15 +61,13 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
+  misc.fonts.core.enable = true;
+  toolkit.core.enable = true;
+  toolkit.extra.enable = true;
+  toolkit.net.enable = true;
+
   ### Customization start ###
   networking.hostName = "st321";
-  # Bootloader.
-
-  misc.fonts.core.enable = true;
-
-  # TODO: move to hardware-configuration
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.networkmanager.enable = true;
 
@@ -156,53 +154,8 @@
   # Enable docker.
   virtualisation.docker.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  # TODO: revisit packages.
-  environment.systemPackages = with pkgs; [
-    automake
-    bc
-    dmidecode
-    dnsutils
-    dos2unix # Convert between DOS and Unix line endings
-    ethtool
-    fd
-    file
-    gdb
-    gettext
-    git
-    gnat # core development tools: compilers, linkers, etc.
-    gnumake
-    hdparm
-    home-manager
-    htop
-    inotify-tools # required by elixir mix
-    iperf
-    ispell
-    jq # json parser
-    lshw
-    lsof
-    neofetch
-    netcat
-    nmap
-    openssl
-    p7zip
-    pbzip2 # parallel (de-)compression
-    pciutils
-    pigz
-    pixz
-    pkg-config
-    psmisc # provides: fuser, killall, pstree, peekfd
-    python3
-    rsync
-    tree
-    unzip
-    usbutils
-    wget
-    whois
-    yq # jq but for yaml
-    zip
-  ];
+  # Most of the system packages come through the modules.
+  environment.systemPackages = with pkgs; [ ];
 
   services.mullvad-vpn = {
     enable = true;
@@ -233,9 +186,7 @@
         # initialPassword = "yourpassword";
         isNormalUser = true;
 
-        openssh.authorizedKeys.keys = [
-          # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
-        ];
+        openssh.authorizedKeys.keys = [ ];
 
         # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
         extraGroups = [

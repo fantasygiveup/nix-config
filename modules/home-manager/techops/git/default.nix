@@ -1,8 +1,8 @@
 { lib, config, pkgs, ... }:
 
-let cfg = config.development.git;
+let cfg = config.techops.git;
 in {
-  options.development.git = {
+  options.techops.git = {
     enable = lib.mkEnableOption "Enable git configuration";
   };
 

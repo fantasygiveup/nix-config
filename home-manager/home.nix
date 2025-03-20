@@ -11,16 +11,18 @@
     # X11 clipboard history module.
     # TODO: disable in wayland.
     # TODO: consider to merge options to avoid repeatedly adding a new entry.
-    outputs.homeManagerModules."environments/gnome3"
     outputs.homeManagerModules."services/cliphist-clipboard"
-    outputs.homeManagerModules."development/git"
-    outputs.homeManagerModules."development/search"
-    outputs.homeManagerModules."development/core"
     outputs.homeManagerModules."toolbox/wezterm-plus-tmux"
     outputs.homeManagerModules."toolbox/lf"
     outputs.homeManagerModules."toolbox/lazygit"
     outputs.homeManagerModules."toolbox/zk"
     outputs.homeManagerModules."toolbox/fzf/notes-zsh"
+    outputs.homeManagerModules."environments/gnome3"
+    outputs.homeManagerModules."techops/dev"
+    outputs.homeManagerModules."techops/git"
+    outputs.homeManagerModules."techops/grep"
+    outputs.homeManagerModules."techops/net"
+    outputs.homeManagerModules."techops/os"
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -57,17 +59,22 @@
     };
   };
 
-  environments.gnome3.enable = true;
   services.cliphist-clipboard.enable = true;
-  development.git.enable = true;
-  development.search.enable = true;
-  development.core.enable = true;
+
   toolbox.wezterm-plus-tmux.enable = true;
   toolbox.lf.enable = true;
   toolbox.lazygit.enable = true;
+  toolbox.zk.enable = true;
   toolbox.fzf.project-zsh.enable = true;
   toolbox.fzf.notes-zsh.enable = true;
-  toolbox.zk.enable = true;
+
+  environments.gnome3.enable = true;
+
+  techops.dev.enable = true;
+  techops.git.enable = true;
+  techops.grep.enable = true;
+  techops.net.enable = true;
+  techops.os.enable = true;
 
   home = {
     username = "idanko";
@@ -168,6 +175,7 @@
   # TODO: split packages and configuration for xorg and wayland.
   home.packages = with pkgs; [
     anki
+    bc
     bemenu-commander
     dconf
     dconf-editor
@@ -194,6 +202,7 @@
     meld # diff folders and files
     memtester # memory test
     mpv
+    neofetch
     ngrok # route tcp from the public internet url to your host machine
     nix-index # for nix-locate
     obs-studio # record camera and desktop
