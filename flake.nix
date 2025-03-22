@@ -62,10 +62,17 @@
             hostname = "st321";
             user = mainUser;
           };
-          modules = [
-            # > Our main nixos configuration file <
-            ./nixos/configuration.nix
-          ];
+          modules = [ ./nixos/configuration.nix ];
+        };
+
+        # Run 'make nixos st123'.
+        st123 = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+            hostname = "st123";
+            user = mainUser;
+          };
+          modules = [ ./nixos/configuration.nix ];
         };
       };
 
@@ -74,16 +81,22 @@
       homeConfigurations = {
         # Run 'make home idanko@st321'.
         "idanko@st321" = home-manager.lib.homeManagerConfiguration {
-          pkgs =
-            nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs;
             user = mainUser;
           };
-          modules = [
-            # > Our main home-manager configuration file <
-            ./home-manager/home.nix
-          ];
+          modules = [ ./home-manager/home.nix ];
+        };
+
+        # Run 'make home idanko@st123'.
+        "idanko@st123" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            user = mainUser;
+          };
+          modules = [ ./home-manager/home.nix ];
         };
       };
     };
