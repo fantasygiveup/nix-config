@@ -68,6 +68,9 @@ in {
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+
   misc.fonts.core.enable = true;
   toolkit.core.enable = true;
   toolkit.extra.enable = true;
