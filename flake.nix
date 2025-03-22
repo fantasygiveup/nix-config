@@ -28,6 +28,11 @@
       # This is a function that generates an attribute by calling a function you
       # pass to it, with each system as an argument
       forAllSystems = nixpkgs.lib.genAttrs systems;
+
+      mainUser = {
+        username = "idanko";
+        homeDirectory = "/home/idanko";
+      };
     in {
       # Your custom packages
       # Accessible through 'nix build', 'nix shell', etc
@@ -52,7 +57,11 @@
       nixosConfigurations = {
         # Run 'make nixos st321'.
         st321 = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = {
+            inherit inputs outputs;
+            hostname = "st321";
+            user = mainUser;
+          };
           modules = [
             # > Our main nixos configuration file <
             ./nixos/configuration.nix
@@ -67,7 +76,10 @@
         "idanko@st321" = home-manager.lib.homeManagerConfiguration {
           pkgs =
             nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            user = mainUser;
+          };
           modules = [
             # > Our main home-manager configuration file <
             ./home-manager/home.nix

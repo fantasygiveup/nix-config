@@ -1,6 +1,12 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, ... }@moduleArgs:
+
+let
+  hostname = moduleArgs.hostname;
+  username = moduleArgs.user.username;
+
+in {
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -10,6 +16,7 @@
     outputs.nixosModules."toolkit/extra"
     outputs.nixosModules."toolkit/net"
 
+    # TODO: try to fix the random reboot issue with such modules.
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
@@ -67,7 +74,7 @@
   toolkit.net.enable = true;
 
   ### Customization start ###
-  networking.hostName = "st321";
+  networking.hostName = hostname;
 
   networking.networkmanager.enable = true;
 
@@ -174,12 +181,11 @@
 
   programs.zsh.enable = true;
 
-  # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users = {
     defaultUserShell = pkgs.zsh;
-    users = {
-      idanko = {
-
+    users = builtins.listToAttrs [{
+      name = username;
+      value = {
         # NOTE: You can set an initial password for your user.
         # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
         # Be sure to change it (using passwd) after rebooting!
@@ -201,7 +207,7 @@
           "input"
         ];
       };
-    };
+    }];
   };
 
   # This setups a SSH server. Very important if you're setting up a headless system.
