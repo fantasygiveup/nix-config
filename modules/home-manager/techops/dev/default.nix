@@ -59,6 +59,9 @@ in {
       yq # jq but for yaml
     ];
 
+    # Enable iex persisting command history.
+    home.sessionVariables = { ERL_AFLAGS = "-kernel shell_history enabled"; };
+
     programs.zsh.shellAliases = {
       luajit = "${pkgs.rlwrap}/bin/rlwrap ${pkgs.luajit}/bin/luajit";
     };
