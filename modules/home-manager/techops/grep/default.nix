@@ -42,7 +42,6 @@ in {
 
       FZF_PROJECT_SEARCH_PATTERN = "'^.git$|^.hg$|^.bzr$|^.svn$'";
       CLIPBOARD_COPY_COMMAND = "${pkgs.xclip}/bin/xclip -in -selection c";
-
     };
 
     programs.fzf = {
