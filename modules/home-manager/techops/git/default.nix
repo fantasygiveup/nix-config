@@ -15,6 +15,7 @@ in {
         c = "commit";
         g = "pull";
         p = "push";
+        co = "checkout";
 
         # Open lazygit.
         lz = "!${pkgs.lazygit}/bin/lazygit";
