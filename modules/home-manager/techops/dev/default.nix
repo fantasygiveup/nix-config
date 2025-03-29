@@ -64,6 +64,8 @@ in {
 
     programs.zsh.shellAliases = {
       luajit = "${pkgs.rlwrap}/bin/rlwrap ${pkgs.luajit}/bin/luajit";
+      psqldev =
+        ''${pkgs.postgresql}/bin/psql -h localhost -p 5432 -U postgres -p ""'';
     };
   };
 }
