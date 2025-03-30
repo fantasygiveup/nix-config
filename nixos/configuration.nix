@@ -1,30 +1,15 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{ inputs, outputs, lib, config, pkgs, ... }@moduleArgs:
+{ inputs, outputs, lib, config, pkgs, ... }:
 
-let
-  hostname = moduleArgs.hostname;
-  username = moduleArgs.user.username;
-
-in {
+{
   # You can import other NixOS modules here
-  imports = [
-    # If you want to use modules your own flake exports (from modules/nixos):
-    # outputs.nixosModules.example
-    outputs.nixosModules."misc/fonts/core"
-    outputs.nixosModules."toolkit/core"
-    outputs.nixosModules."toolkit/extra"
-    outputs.nixosModules."toolkit/net"
-
+  imports = (builtins.attrValues outputs.nixosModules) ++ [
     # TODO: try to fix the random reboot issue with such modules.
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
 
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
-
-    # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
 
@@ -71,20 +56,23 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  user.main.enable = true;
   misc.fonts.core.enable = true;
   toolkit.core.enable = true;
   toolkit.extra.enable = true;
+  toolkit.postgres = {
+    enable = true;
+    localdev = true;
+  };
   toolkit.net.enable = true;
+  net.core.enable = true;
+  sys.i18n.enable = true;
 
-  ### Customization start ###
-  networking.hostName = hostname;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
-  networking.networkmanager.enable = true;
-
-  # Bluetooth.
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot =
-    true; # powers up the default Bluetooth controller on boot
   # Using Bluetooth headset buttons to control media player.
   systemd.user.services.mpris-proxy = {
     description = "Mpris proxy";
@@ -95,23 +83,6 @@ in {
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LANGUAGE = "en_US.UTF-8";
-    LC_ALL = "en_US.UTF-8";
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
 
   services.logind.extraConfig = ''
     HandleLidSwitchExternalPower=ignore
@@ -147,20 +118,6 @@ in {
     #media-session.enable = true;
   };
 
-  # Postgresql.
-  # TODO: move to the local development module.
-  services.postgresql = {
-    enable = true;
-    # Fix elixir language mix psql integration issue. We need set `trust` to avoid auth problem for
-    # local development.
-    authentication = pkgs.lib.mkOverride 10 ''
-      # default value of services.postgresql.authentication
-      local all all              trust
-      host  all all 127.0.0.1/32 trust
-      host  all all ::1/128      trust
-    '';
-  };
-
   # Enable docker.
   virtualisation.docker.enable = true;
 
@@ -183,35 +140,6 @@ in {
   programs.nix-ld.enable = true;
 
   programs.zsh.enable = true;
-
-  users = {
-    defaultUserShell = pkgs.zsh;
-    users = builtins.listToAttrs [{
-      name = username;
-      value = {
-        # NOTE: You can set an initial password for your user.
-        # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
-        # Be sure to change it (using passwd) after rebooting!
-        # initialPassword = "yourpassword";
-        isNormalUser = true;
-
-        openssh.authorizedKeys.keys = [ ];
-
-        # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-        extraGroups = [
-          "networkmanager"
-          "wheel"
-          "docker"
-          "wireshark"
-          "power"
-          "postgres"
-          "audio"
-          "video"
-          "input"
-        ];
-      };
-    }];
-  };
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.

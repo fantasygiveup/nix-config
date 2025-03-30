@@ -1,30 +1,12 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{ inputs, outputs, lib, config, pkgs, ... }@moduleArgs:
+{ inputs, outputs, lib, config, pkgs, users, ... }:
 
-let user = moduleArgs.user;
-
-in {
+{
   # You can import other home-manager modules here
-  imports = [
+  imports = builtins.attrValues outputs.homeManagerModules ++ [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
-
-    # X11 clipboard history module.
-    # TODO: disable in wayland.
-    # TODO: consider to merge options to avoid repeatedly adding a new entry.
-    outputs.homeManagerModules."services/cliphist-clipboard"
-    outputs.homeManagerModules."toolbox/wezterm-plus-tmux"
-    outputs.homeManagerModules."toolbox/lf"
-    outputs.homeManagerModules."toolbox/lazygit"
-    outputs.homeManagerModules."toolbox/zk"
-    outputs.homeManagerModules."toolbox/fzf/notes-zsh"
-    outputs.homeManagerModules."environments/gnome3"
-    outputs.homeManagerModules."techops/dev"
-    outputs.homeManagerModules."techops/git"
-    outputs.homeManagerModules."techops/grep"
-    outputs.homeManagerModules."techops/net"
-    outputs.homeManagerModules."techops/os"
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -79,8 +61,8 @@ in {
   techops.os.enable = true;
 
   home = {
-    username = user.username;
-    homeDirectory = user.homeDirectory;
+    username = users.main.username;
+    homeDirectory = users.main.homeDirectory;
   };
 
   home.sessionVariables = {

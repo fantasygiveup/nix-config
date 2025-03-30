@@ -29,7 +29,7 @@
       # pass to it, with each system as an argument
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
-      mainUser = {
+      users.main = {
         username = "idanko";
         homeDirectory = "/home/idanko";
       };
@@ -58,9 +58,8 @@
         # Run 'make nixos st321'.
         st321 = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs;
+            inherit inputs outputs users;
             hostname = "st321";
-            user = mainUser;
           };
           modules = [ ./nixos/configuration.nix ];
         };
@@ -68,9 +67,8 @@
         # Run 'make nixos st123'.
         st123 = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs;
+            inherit inputs outputs users;
             hostname = "st123";
-            user = mainUser;
           };
           modules = [ ./nixos/configuration.nix ];
         };
@@ -82,20 +80,14 @@
         # Run 'make home idanko@st321'.
         "idanko@st321" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs;
-            user = mainUser;
-          };
+          extraSpecialArgs = { inherit inputs outputs users; };
           modules = [ ./home-manager/home.nix ];
         };
 
         # Run 'make home idanko@st123'.
         "idanko@st123" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs;
-            user = mainUser;
-          };
+          extraSpecialArgs = { inherit inputs outputs users; };
           modules = [ ./home-manager/home.nix ];
         };
       };
