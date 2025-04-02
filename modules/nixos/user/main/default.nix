@@ -1,10 +1,10 @@
 { lib, config, pkgs, users, ... }:
 
 let cfg = config.user.main;
-in {
-  options.user.main = { enable = lib.mkEnableOption "Enable main user"; };
+in with lib; {
+  options.user.main = { enable = mkEnableOption "Enable main user"; };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     users = {
       defaultUserShell = pkgs.zsh;
       users = builtins.listToAttrs [{

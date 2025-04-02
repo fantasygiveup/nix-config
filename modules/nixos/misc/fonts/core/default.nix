@@ -1,12 +1,12 @@
 { lib, config, pkgs, ... }:
 
 let cfg = config.misc.fonts.core;
-in {
+in with lib; {
   options.misc.fonts.core = {
-    enable = lib.mkEnableOption "Enable core fonts coniguration";
+    enable = mkEnableOption "Enable core fonts coniguration";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     fonts = {
       enableDefaultPackages = true;
       fontDir.enable = true;

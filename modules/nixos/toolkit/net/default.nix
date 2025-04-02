@@ -1,12 +1,9 @@
 { lib, config, pkgs, ... }:
 
 let cfg = config.toolkit.net;
-in {
-  options.toolkit.net = {
-    enable = lib.mkEnableOption "Enable networking tools";
-  };
+in with lib; {
+  options.toolkit.net = { enable = mkEnableOption "Enable networking tools"; };
 
-  config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ ethtool ];
-  };
+  config =
+    mkIf cfg.enable { environment.systemPackages = with pkgs; [ ethtool ]; };
 }

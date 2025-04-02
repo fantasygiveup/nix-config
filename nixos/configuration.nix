@@ -58,64 +58,24 @@
   user.main.enable = true;
   misc.fonts.core.enable = true;
   toolkit.core.enable = true;
+  toolkit.de.gnome3.enable = true;
   toolkit.extra.enable = true;
   toolkit.postgres = {
     enable = true;
     localdev = true;
   };
   toolkit.net.enable = true;
-  net.core.enable = true;
+  sys.time.enable = true;
+  sys.net.core.enable = true;
   sys.i18n.enable = true;
+  sys.media.sound.enable = true;
+  sys.media.bluetooth.enable = true;
+  sys.media.printing.enable = true;
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-
-  # Using Bluetooth headset buttons to control media player.
-  systemd.user.services.mpris-proxy = {
-    description = "Mpris proxy";
-    after = [ "network.target" "sound.target" ];
-    wantedBy = [ "default.target" ];
-    serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
-  };
-
-  # Set your time zone.
-  time.timeZone = "Europe/Warsaw";
-
+  # TODO: use only for st123.
   services.logind.extraConfig = ''
     HandleLidSwitchExternalPower=ignore
   '';
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us,ua";
-    variant = "";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
 
   # Enable docker.
   virtualisation.docker.enable = true;

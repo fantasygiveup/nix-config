@@ -1,12 +1,12 @@
 { lib, config, pkgs, ... }:
 
 let cfg = config.toolkit.core;
-in {
+in with lib; {
   options.toolkit.core = {
-    enable = lib.mkEnableOption "Enable system core packages";
+    enable = mkEnableOption "Enable system core packages";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       # b2sum base32 base64 basename basenc cat chcon chgrp chmod chown chroot cksum comm coreutils cp
       # csplit cut date dd df dir dircolors dirname du echo env expand expr factor false fmt fold
