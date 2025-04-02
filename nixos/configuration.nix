@@ -5,10 +5,9 @@
 {
   # You can import other NixOS modules here
   imports = (builtins.attrValues outputs.nixosModules) ++ [
-    # TODO: try to fix the random reboot issue with such modules.
-    # Or modules from other flakes (such as nixos-hardware):
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
+    inputs.hardware.nixosModules.common-cpu-amd
+    inputs.hardware.nixosModules.common-pc-ssd
+    inputs.hardware.nixosModules.gigabyte-b650
 
     ./hardware-configuration.nix
   ];

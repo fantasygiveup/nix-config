@@ -29,6 +29,7 @@ in {
       usbutils
 
       lshw # list hardware
+      dmidecode # hardware info
       lsof # list open files
 
       file
