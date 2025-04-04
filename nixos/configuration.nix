@@ -62,33 +62,19 @@
   toolkit.extra.enable = true;
   toolkit.postgres = {
     enable = true;
-    localdev = true;
+    trust-localhost = true;
   };
+  toolkit.wireshark.enable = true;
+  toolkit.mullvad-vpn.enable = true;
   toolkit.net.enable = true;
+  toolkit.gnupg.enable = true;
   sys.time.enable = true;
   sys.net.core.enable = true;
   sys.i18n.enable = true;
   sys.media.sound.enable = true;
   sys.media.bluetooth.enable = true;
   sys.media.printing.enable = true;
-
-  # Enable docker.
-  virtualisation.docker.enable = true;
-
-  # Most of the system packages come through the modules.
-  environment.systemPackages = with pkgs; [ ];
-
-  services.mullvad-vpn = {
-    enable = true;
-    package = pkgs.mullvad-vpn;
-  };
-
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  programs.wireshark.enable = true;
+  sys.virt.docker.enable = true;
 
   # To make the linker (ldd) works with the not nix native binaries.
   programs.nix-ld.enable = true;

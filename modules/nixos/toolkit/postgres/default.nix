@@ -1,11 +1,11 @@
-{ lib, config, pkgs, services, ... }:
+{ lib, config, pkgs, services, users, ... }:
 
 let cfg = config.toolkit.postgres;
 in with lib; {
   options.toolkit.postgres = {
     enable = mkEnableOption "Enable postgres service configuration";
 
-    localdev = mkOption {
+    trust-localhost = mkOption {
       type = types.bool;
       default = false;
       description =
@@ -14,10 +14,17 @@ in with lib; {
   };
 
   config = mkMerge [
-    (mkIf cfg.enable { services.postgresql.enable = true; })
+    (mkIf cfg.enable {
+      services.postgresql.enable = true;
+      users = {
+        users = builtins.listToAttrs [{
+          name = users.main.username;
+          value = { extraGroups = [ "postgres" ]; };
+        }];
+      };
+    })
 
-    (mkIf cfg.localdev {
-      # Trust localhost.
+    (mkIf cfg.trust-localhost {
       services.postgresql.authentication = mkOverride 10 ''
         # default value of services.postgresql.authentication
         local all all              trust

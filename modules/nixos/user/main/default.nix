@@ -18,18 +18,7 @@ in with lib; {
 
           openssh.authorizedKeys.keys = [ ];
 
-          # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-          extraGroups = [
-            "networkmanager"
-            "wheel"
-            "docker"
-            "wireshark"
-            "power"
-            "postgres"
-            "audio"
-            "video"
-            "input"
-          ];
+          extraGroups = [ "wheel" "power" "video" "input" ];
         };
       }];
     };
