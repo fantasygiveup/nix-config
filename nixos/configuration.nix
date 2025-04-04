@@ -72,11 +72,6 @@
   sys.media.bluetooth.enable = true;
   sys.media.printing.enable = true;
 
-  # TODO: use only for st123.
-  services.logind.extraConfig = ''
-    HandleLidSwitchExternalPower=ignore
-  '';
-
   # Enable docker.
   virtualisation.docker.enable = true;
 
