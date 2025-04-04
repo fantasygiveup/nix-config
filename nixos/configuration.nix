@@ -55,6 +55,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  programs.zsh.enable = true;
+
   user.main.enable = true;
   misc.fonts.core.enable = true;
   toolkit.core.enable = true;
@@ -78,8 +80,6 @@
 
   # To make the linker (ldd) works with the not nix native binaries.
   programs.nix-ld.enable = true;
-
-  programs.zsh.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.11";
