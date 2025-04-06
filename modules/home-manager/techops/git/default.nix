@@ -1,12 +1,10 @@
 { lib, config, pkgs, ... }:
 
 let cfg = config.techops.git;
-in {
-  options.techops.git = {
-    enable = lib.mkEnableOption "Enable git configuration";
-  };
+in with lib; {
+  options.techops.git = { enable = mkEnableOption "Enable git configuration"; };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     programs.git = {
       enable = true;
       aliases = {

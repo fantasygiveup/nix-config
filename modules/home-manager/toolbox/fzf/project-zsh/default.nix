@@ -1,11 +1,11 @@
 { lib, config, pkgs, ... }:
 let cfg = config.toolbox.fzf.project-zsh;
-in {
+in with lib; {
   options.toolbox.fzf.project-zsh = {
-    enable = lib.mkEnableOption "Enable fzf-project for zsh";
+    enable = mkEnableOption "Enable fzf-project for zsh";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     home.file.".config/misc/fzf-project.zsh".source = ./fzf-project.zsh;
     programs.zsh = {
       initExtra = ''

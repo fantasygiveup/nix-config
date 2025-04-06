@@ -1,10 +1,10 @@
 { lib, config, pkgs, ... }:
 
 let cfg = config.techops.grep;
-in {
-  options.techops.grep = { enable = lib.mkEnableOption "Enable text search"; };
+in with lib; {
+  options.techops.grep = { enable = mkEnableOption "Enable text search"; };
 
-  config = lib.mkIf cfg.enable (let
+  config = mkIf cfg.enable (let
     # Base patterns to exclude from the search. Can be used with "fd".
     ignore-search-patterns-base = [
       "vendor"
@@ -37,7 +37,7 @@ in {
       FZF_PROJECT_ROOT_DIRECTORY = "$HOME";
 
       FZF_PROJECT_FD_IGNORE_FILTER =
-        lib.concatMapStrings (str: " --exclude '${str}'")
+        concatMapStrings (str: " --exclude '${str}'")
         ignore-search-patterns-base;
 
       FZF_PROJECT_SEARCH_PATTERN = "'^.git$|^.hg$|^.bzr$|^.svn$'";

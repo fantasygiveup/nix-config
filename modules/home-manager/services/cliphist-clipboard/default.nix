@@ -1,13 +1,13 @@
 { lib, config, pkgs, ... }:
 
 let cfg = config.services.cliphist-clipboard;
-in {
+in with lib; {
   options.services.cliphist-clipboard = {
-    enable = lib.mkEnableOption
+    enable = mkEnableOption
       "X11 clipboard history service based on cliphist, xclip and clipnotify";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     systemd.user.services.cliphist-clipboard = {
       Unit = { Description = "X11 based clipboard events listener"; };
       Service = {

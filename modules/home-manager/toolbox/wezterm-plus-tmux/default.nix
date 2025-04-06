@@ -1,13 +1,13 @@
 { lib, config, pkgs, ... }:
 
 let cfg = config.toolbox.wezterm-plus-tmux;
-in {
+in with lib; {
   options.toolbox.wezterm-plus-tmux = {
-    enable = lib.mkEnableOption "Enable wezterm plus tmux configuration";
+    enable = mkEnableOption "Enable wezterm plus tmux configuration";
   };
 
   # TODO: integrate with dark theme.
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     xdg.configFile."wezterm/wezterm.lua".source = ./wezterm.lua;
 
     programs.wezterm = {

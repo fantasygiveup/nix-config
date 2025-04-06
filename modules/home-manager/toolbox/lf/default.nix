@@ -1,14 +1,14 @@
 { lib, config, pkgs, ... }:
 let cfg = config.toolbox.lf;
-in {
+in with lib; {
   options.toolbox.lf = {
-    enable = lib.mkEnableOption "Enable lf terminal file manager";
+    enable = mkEnableOption "Enable lf terminal file manager";
   };
 
   # Used for "fzf-project" integration. See the "commands" attribute.
   imports = [ ../fzf/project-zsh ];
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     programs.lf = {
       enable = true;
       settings = {

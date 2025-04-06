@@ -1,12 +1,10 @@
 { lib, config, ... }:
 
 let cfg = config.toolbox.zk;
-in {
-  options.toolbox.zk = {
-    enable = lib.mkEnableOption "Enable zettelkasten cli";
-  };
+in with lib; {
+  options.toolbox.zk = { enable = mkEnableOption "Enable zettelkasten cli"; };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     programs.zk = { enable = true; };
 
     xdg.configFile."zk/config.toml".source = ./config.toml;

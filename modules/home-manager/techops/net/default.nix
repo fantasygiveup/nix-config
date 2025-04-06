@@ -1,10 +1,10 @@
 { lib, config, pkgs, ... }:
 
 let cfg = config.techops.net;
-in {
+in with lib; {
   options.techops.net = {
-    enable = lib.mkEnableOption "Enable network configuration tools";
+    enable = mkEnableOption "Enable network configuration tools";
   };
 
-  config = lib.mkIf cfg.enable { home.packages = with pkgs; [ iperf ]; };
+  config = mkIf cfg.enable { home.packages = with pkgs; [ iperf ]; };
 }

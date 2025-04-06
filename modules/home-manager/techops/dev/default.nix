@@ -1,13 +1,13 @@
 { lib, config, pkgs, ... }:
 
 let cfg = config.techops.dev;
-in {
+in with lib; {
   options.techops.dev = {
-    enable = lib.mkEnableOption
+    enable = mkEnableOption
       "Enable a collection of the base programming language tools";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     xdg.configFile."eslint/eslintrc.json".source = ./eslint/eslintrc.json;
     xdg.configFile."prettier/prettier.config.js".source =
       ./prettier/prettier.config.js;

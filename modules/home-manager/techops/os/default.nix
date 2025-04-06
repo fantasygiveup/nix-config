@@ -1,12 +1,12 @@
 { lib, config, pkgs, ... }:
 
 let cfg = config.techops.os;
-in {
+in with lib; {
   options.techops.os = {
-    enable = lib.mkEnableOption "Enable system configuration tools";
+    enable = mkEnableOption "Enable system configuration tools";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     xdg.configFile."clang-format/clang-format".source =
       ./clang-format/clang-format;
 

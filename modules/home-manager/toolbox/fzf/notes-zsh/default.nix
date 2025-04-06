@@ -1,11 +1,11 @@
 { lib, config, pkgs, ... }:
 let cfg = config.toolbox.fzf.notes-zsh;
-in {
+in with lib; {
   options.toolbox.fzf.notes-zsh = {
-    enable = lib.mkEnableOption "Enable fzf-notes for zsh";
+    enable = mkEnableOption "Enable fzf-notes for zsh";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     home.file.".config/misc/fzf-notes.zsh".source = ./fzf-notes.zsh;
     home.file.".config/misc/fzf-notes-previewer".source = ./fzf-notes-previewer;
 

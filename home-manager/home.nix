@@ -44,6 +44,8 @@
   };
 
   services.cliphist-clipboard.enable = true;
+  services.gpg.enable = true;
+  services.sd-switch.enable = true;
 
   toolbox.wezterm-plus-tmux.enable = true;
   toolbox.lf.enable = true;
@@ -51,6 +53,7 @@
   toolbox.zk.enable = true;
   toolbox.fzf.project-zsh.enable = true;
   toolbox.fzf.notes-zsh.enable = true;
+  toolbox.eza.enable = true;
 
   environment.gnome3.enable = true;
 
@@ -60,77 +63,11 @@
   techops.net.enable = true;
   techops.os.enable = true;
 
-  home = {
-    username = users.main.username;
-    homeDirectory = users.main.homeDirectory;
-  };
+  user.home.main.enable = true;
 
-  home.sessionVariables = {
-    VISUAL = "${pkgs.neovim}/bin/nvim";
-    EDITOR = "${pkgs.neovim}/bin/nvim";
-    MANPAGER = "${pkgs.neovim}/bin/nvim +Man!";
-    MANWIDTH = "80";
-
-    # Fix the libsqlite.so not found issue for https://github.com/kkharji/sqlite.lua.
-    LD_LIBRARY_PATH =
-      "${pkgs.lib.makeLibraryPath (with pkgs; [ sqlite ])}:$LD_LIBRARY_PATH";
-  };
-
-  programs.zsh = {
-    enable = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting = { enable = true; };
-    defaultKeymap = "emacs";
-    shellAliases = {
-      urldecode =
-        "${pkgs.python3}/bin/python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
-
-      urlencode =
-        "${pkgs.python3}/bin/python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
-
-      e = "$EDITOR";
-      bc = "${pkgs.bc}/bin/bc -l"; # the calculator with advanced capabilities.
-
-      # Generate 32 bytes size password with /dev/urandom.
-      genpass = ''
-        LC_CTYPE=C LC_ALL=C </dev/urandom tr -dc 'A-Za-z-1-9-_!' | head "-c''${1:-32}"; echo'';
-
-      # Enable the emacs-like navigation.
-      sqlite3 = "${pkgs.rlwrap}/bin/rlwrap ${pkgs.sqlite}/bin/sqlite3";
-    };
-    envExtra = ''
-      zstyle ':completion:*' menu select                  # select menu enabled
-      zstyle ':completion::complete:*' gain-privileges 1  # complete commands start with sudo
-      zstyle ':completion:*' rehash true                  # automatically find executables.
-      zstyle ':completion:*:*:make:*' tag-order 'targets' # makefiles completion
-
-      setopt COMPLETE_ALIASES       # auto-complete aliases
-      setopt interactivecomments    # enable hash comment command
-
-      # Enable clipboard sharing between containers and the host.
-      xhost + &>/dev/null || true
-    '';
-  };
-
-  programs.eza = {
-    enable = true;
-    extraOptions = [ "--group-directories-first" "--header" ];
-    icons = "auto";
-  };
-
-  # The modern shell prompt.
-  # See https://nix-community.github.io/home-manager/options.xhtml#opt-programs.starship.enable
-  programs.starship = {
-    enable = true;
-    settings = { gcloud = { disabled = true; }; };
-  };
-
-  # TODO: check more about sd-switch.
-  # Nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
-
-  # NOTE: It is still necessary to set "programs.gnupg.agent = true" in the NixOS configuration for full integration.
-  programs.gpg = { enable = true; };
+  shell.env.vars.enable = true;
+  shell.zsh.enable = true;
+  shell.starship.enable = true;
 
   # GTK configuration.
   gtk = {
