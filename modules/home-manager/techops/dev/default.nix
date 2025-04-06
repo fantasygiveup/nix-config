@@ -14,6 +14,8 @@ in with lib; {
     xdg.configFile."stylua/stylua.toml".source = ./stylua/stylua.toml;
     xdg.configFile."yamllint/config.yaml".source = ./yamllint/config.yaml;
 
+    nixpkgs.allowedUnfree = [ "terraform" ];
+
     home.packages = with pkgs; [
       ansible
       delve # go debugger
@@ -24,10 +26,12 @@ in with lib; {
       go
       golangci-lint
       golines
+      google-cloud-sdk-with-gke
       gopls # go lsp
       gotools # set of go language tools
       inotify-tools # required by elixir mix
       jq # cli json processor
+      kubectl
       libxml2 # xmllint
       lua-language-server
       luajit # lua interpreter
@@ -49,13 +53,16 @@ in with lib; {
       tailwindcss-language-server
       terraform
       terraform-ls
+      texliveFull
       typescript
       unstable.elixir
       unstable.elixir-ls
       unstable.erlang
       vscode-langservers-extracted # cssls
+      pandoc # convert/generate documents in different formats
       yamllint
       yapf # python formatter # TODO: inegrate with neovim
+      yarn
       yq # jq but for yaml
     ];
 

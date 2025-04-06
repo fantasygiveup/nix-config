@@ -15,7 +15,7 @@
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
     ];
-    config = { allowUnfree = true; };
+    config = { };
   };
 
   nix = let flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;

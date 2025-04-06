@@ -7,6 +7,8 @@ in with lib; {
   };
 
   config = mkIf cfg.enable {
+    nixpkgs.allowedUnfree = [ "corefonts" ];
+
     fonts = {
       enableDefaultPackages = true;
       fontDir.enable = true;

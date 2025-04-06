@@ -6,5 +6,14 @@ in with lib; {
     enable = mkEnableOption "Enable network configuration tools";
   };
 
-  config = mkIf cfg.enable { home.packages = with pkgs; [ iperf ]; };
+  config = mkIf cfg.enable {
+    nixpkgs.allowedUnfree = [ "ngrok" ];
+
+    home.packages = with pkgs; [
+      filezilla
+      iperf
+      ngrok # route tcp from the public internet url to your host machine
+      wireshark
+    ];
+  };
 }

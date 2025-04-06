@@ -1,10 +1,8 @@
 { config, lib, pkgs, ... }:
 
-let cfg = config.environment.gnome3;
+let cfg = config.de.gnome3;
 in with lib; {
-  options.environment.gnome3 = {
-    enable = mkEnableOption "Enable Gnome3 settings";
-  };
+  options.de.gnome3 = { enable = mkEnableOption "Enable Gnome3 settings"; };
 
   config = mkIf cfg.enable {
     # To see changes using GNOME Tweaks (or any other method), use the dconf watch / command.
@@ -107,11 +105,16 @@ in with lib; {
       };
     };
 
-    home.packages = [
-      pkgs.gnome-tweaks
-      pkgs.gnomeExtensions.dash-to-dock
-      pkgs.gnomeExtensions.unite
-      pkgs.papirus-icon-theme
+    home.packages = with pkgs; [
+      dconf
+      dconf-editor
+      gnome-tweaks
+      gnomeExtensions.dash-to-dock
+      gnomeExtensions.unite
+      xclip
+      xorg.xev
+      xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
+      xorg.xmodmap
     ];
   };
 }
