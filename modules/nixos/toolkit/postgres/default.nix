@@ -1,5 +1,4 @@
 { lib, config, pkgs, services, users, ... }:
-
 let cfg = config.toolkit.postgres;
 in with lib; {
   options.toolkit.postgres = {

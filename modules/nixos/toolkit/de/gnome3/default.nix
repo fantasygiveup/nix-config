@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.toolkit.de.gnome3;
 in with lib; {
   options.toolkit.de.gnome3 = {

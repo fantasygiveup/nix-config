@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.toolkit.extra;
 in with lib; {
   options.toolkit.extra = { enable = mkEnableOption "Enable extra tools"; };

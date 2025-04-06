@@ -1,6 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, users, ... }:
-
-{
+{ inputs, outputs, lib, config, pkgs, users, ... }: {
   imports = builtins.attrValues outputs.homeManagerModules ++ [ ];
 
   nixpkgs = {

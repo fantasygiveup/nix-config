@@ -1,12 +1,8 @@
-{ inputs, outputs, lib, config, pkgs, ... }:
-
-{
+{ inputs, outputs, lib, config, pkgs, ... }: {
   imports = (builtins.attrValues outputs.nixosModules) ++ [
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-pc-ssd
     inputs.hardware.nixosModules.gigabyte-b650
-
-    ./hardware-configuration.nix
   ];
 
   nixpkgs = {
@@ -36,9 +32,6 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   programs.zsh.enable = true;
 
   user.main.enable = true;
@@ -64,7 +57,4 @@
 
   # To make the linker (ldd) works with the not nix native binaries.
   programs.nix-ld.enable = true;
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "24.11";
 }

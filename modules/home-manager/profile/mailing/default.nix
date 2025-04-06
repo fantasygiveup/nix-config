@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.profile.mailing;
 in with lib; {
   options.profile.mailing = {

@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.shell.env.vars;
 in with lib; {
   options.shell.env.vars = {

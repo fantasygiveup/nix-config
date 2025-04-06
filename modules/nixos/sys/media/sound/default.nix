@@ -1,5 +1,4 @@
 { lib, config, users, ... }:
-
 let cfg = config.sys.media.sound;
 in with lib; {
   options.sys.media.sound = {

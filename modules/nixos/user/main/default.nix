@@ -1,5 +1,4 @@
 { lib, config, pkgs, users, ... }:
-
 let cfg = config.user.main;
 in with lib; {
   options.user.main = { enable = mkEnableOption "Enable main user"; };

@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.services.cliphist-clipboard;
 in with lib; {
   options.services.cliphist-clipboard = {

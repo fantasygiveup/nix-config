@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.toolbox.wezterm-plus-tmux;
 in with lib; {
   options.toolbox.wezterm-plus-tmux = {

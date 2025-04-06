@@ -1,5 +1,4 @@
 { lib, config, pkgs, services, users, ... }:
-
 let cfg = config.toolkit.gnupg;
 in with lib; {
   options.toolkit.gnupg = {

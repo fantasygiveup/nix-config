@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.techops.dev;
 in with lib; {
   options.techops.dev = {

@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.toolkit.core;
 in with lib; {
   options.toolkit.core = {

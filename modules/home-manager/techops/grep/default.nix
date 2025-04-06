@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.techops.grep;
 in with lib; {
   options.techops.grep = { enable = mkEnableOption "Enable text search"; };
@@ -28,7 +27,6 @@ in with lib; {
     ripgrep-ignore-filter = "--glob='!{${
         builtins.concatStringsSep "," ignore-search-patterns-extra
       }}'";
-
   in rec {
     home.sessionVariables = {
       RIPGREP_IGNORE_SEARCH_FILTER = ripgrep-ignore-filter;

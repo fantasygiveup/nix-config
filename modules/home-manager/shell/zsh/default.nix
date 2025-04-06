@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.shell.zsh;
 in with lib; {
   options.shell.zsh = {

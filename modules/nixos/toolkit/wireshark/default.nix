@@ -1,5 +1,4 @@
 { lib, config, users, ... }:
-
 let cfg = config.toolkit.wireshark;
 in with lib; {
   options.toolkit.wireshark = {

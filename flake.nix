@@ -64,16 +64,16 @@
             inherit inputs outputs users;
             hostname = "st321";
           };
-          modules = [ ./nixos/configuration.nix ];
+          modules = [ ./nixos/hosts/st321/configuration.nix ];
         };
 
         # Run 'make nixos st123'.
         st123 = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs users;
-            hostname = "st123";
+            hostname = "st123"; # Lenovo laptop.
           };
-          modules = [ ./nixos/configuration.nix ];
+          modules = [ ./nixos/hosts/st123/configuration.nix ];
         };
       };
 

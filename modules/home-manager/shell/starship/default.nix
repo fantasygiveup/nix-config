@@ -1,5 +1,4 @@
 { lib, config, ... }:
-
 let cfg = config.shell.starship;
 in with lib; {
   options.shell.starship = {

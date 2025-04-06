@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.profile.media;
 in with lib; {
   options.profile.media = { enable = mkEnableOption "Enable media profile"; };

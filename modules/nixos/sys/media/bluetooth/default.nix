@@ -1,5 +1,4 @@
 { lib, config, pkgs, hostname, ... }:
-
 let cfg = config.sys.media.bluetooth;
 in with lib; {
   options.sys.media.bluetooth = {

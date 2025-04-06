@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.profile.social;
 in with lib; {
   options.profile.social = {

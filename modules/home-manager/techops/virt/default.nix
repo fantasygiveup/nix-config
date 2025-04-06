@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.techops.virt;
 in with lib; {
   options.techops.virt = {

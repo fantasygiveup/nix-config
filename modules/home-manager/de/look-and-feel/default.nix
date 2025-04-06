@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }:
-
 let cfg = config.de.look-and-feel;
 in with lib; {
   options.de.look-and-feel = {

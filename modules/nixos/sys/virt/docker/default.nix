@@ -1,5 +1,4 @@
 { lib, config, users, ... }:
-
 let cfg = config.sys.virt.docker;
 in with lib; {
   options.sys.virt.docker = {

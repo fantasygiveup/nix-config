@@ -1,5 +1,4 @@
 { lib, config, users, ... }:
-
 let cfg = config.user.home.main;
 in with lib; {
   options.user.home.main = { enable = mkEnableOption "Enable home main user"; };

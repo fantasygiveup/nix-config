@@ -1,4 +1,4 @@
-{ lib, stdenv, pkgs }:
+{ lib, stdenv, pkgs, }:
 stdenv.mkDerivation {
   pname = "erun";
   version = "1.0.0";

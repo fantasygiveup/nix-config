@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.profile.browsing;
 in with lib; {
   options.profile.browsing = {

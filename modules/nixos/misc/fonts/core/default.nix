@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.misc.fonts.core;
 in with lib; {
   options.misc.fonts.core = {

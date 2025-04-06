@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }:
-
 let cfg = config.de.gnome3;
 in with lib; {
   options.de.gnome3 = { enable = mkEnableOption "Enable Gnome3 settings"; };
@@ -57,7 +56,7 @@ in with lib; {
           };
         "org/gnome/settings-daemon/plugins/color" = {
           night-light-enabled = true;
-          night-light-temperature = (gvariant.mkUint32 2800);
+          night-light-temperature = gvariant.mkUint32 2800;
         };
 
         "org/gnome/shell" = {
@@ -79,7 +78,7 @@ in with lib; {
           sleep-inactive-ac-type = "suspend";
         };
         "org/gnome/desktop/session" = {
-          idle-delay = (gvariant.mkUint32 300); # 5min
+          idle-delay = gvariant.mkUint32 300; # 5min
         };
         "org/gnome/shell/extensions/dash-to-dock" = {
           apply-custom-theme = false;

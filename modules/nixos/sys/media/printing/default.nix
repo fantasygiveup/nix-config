@@ -1,5 +1,4 @@
 { lib, config, ... }:
-
 let cfg = config.sys.media.printing;
 in with lib; {
   options.sys.media.printing = {

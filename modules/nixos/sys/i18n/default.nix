@@ -1,5 +1,4 @@
 { lib, config, ... }:
-
 let cfg = config.sys.i18n;
 in with lib; {
   options.sys.i18n = { enable = mkEnableOption "Enable language settings"; };

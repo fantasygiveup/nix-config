@@ -1,4 +1,4 @@
-{ lib, stdenv, pkgs }:
+{ lib, stdenv, pkgs, }:
 stdenv.mkDerivation {
   pname = "bemenu-commander";
   version = "1.0.0";

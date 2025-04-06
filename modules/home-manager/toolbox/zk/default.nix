@@ -1,5 +1,4 @@
 { lib, config, ... }:
-
 let cfg = config.toolbox.zk;
 in with lib; {
   options.toolbox.zk = { enable = mkEnableOption "Enable zettelkasten cli"; };

@@ -1,5 +1,4 @@
 { lib, config, hostname, users, ... }:
-
 let cfg = config.sys.net.core;
 in with lib; {
   options.sys.net.core = {

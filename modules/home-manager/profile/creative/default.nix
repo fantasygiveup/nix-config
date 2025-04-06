@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.profile.creative;
 in with lib; {
   options.profile.creative = {

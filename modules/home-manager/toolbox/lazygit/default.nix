@@ -13,7 +13,6 @@ in with lib; {
           inactiveBorderColor = [ "black" ];
           selectedLineBgColor = [ "default" ];
         };
-
       };
     };
   };

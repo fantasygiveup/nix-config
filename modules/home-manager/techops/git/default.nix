@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-
 let cfg = config.techops.git;
 in with lib; {
   options.techops.git = { enable = mkEnableOption "Enable git configuration"; };
@@ -67,7 +66,6 @@ in with lib; {
             "url \"ssh://git@bitbucket.dentsplysirona.com\"" = {
               insteadOf = "https://bitbucket.dentsplysirona.com";
             };
-
           };
           condition = "gitdir:~/bitbucket.dentsplysirona.com/";
         }
