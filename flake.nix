@@ -64,7 +64,7 @@
             inherit inputs outputs users;
             hostname = "st321";
           };
-          modules = [ ./modules/nixpkgs-goodies ./nixos/configuration.nix ];
+          modules = [ ./nixos/configuration.nix ];
         };
 
         # Run 'make nixos st123'.
@@ -73,7 +73,7 @@
             inherit inputs outputs users;
             hostname = "st123";
           };
-          modules = [ ./modules/nixpkgs-goodies ./nixos/configuration.nix ];
+          modules = [ ./nixos/configuration.nix ];
         };
       };
 
@@ -84,14 +84,14 @@
         "idanko@st321" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users; };
-          modules = [ ./modules/nixpkgs-goodies ./home-manager/home.nix ];
+          modules = [ ./home-manager/home.nix ];
         };
 
         # Run 'make home idanko@st123'.
         "idanko@st123" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users; };
-          modules = [ ./modules/nixpkgs-goodies ./home-manager/home.nix ];
+          modules = [ ./home-manager/home.nix ];
         };
       };
     };

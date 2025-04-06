@@ -1,4 +1,6 @@
 {
+  "nixpkgs-goodies" = import ../nixpkgs-goodies;
+
   "services/cliphist-clipboard" = import ./services/cliphist-clipboard;
   "services/gpg" = import ./services/gpg;
   "services/sd-switch" = import ./services/sd-switch;
