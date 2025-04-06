@@ -52,7 +52,7 @@
   toolbox.fzf.project-zsh.enable = true;
   toolbox.fzf.notes-zsh.enable = true;
 
-  environments.gnome3.enable = true;
+  environment.gnome3.enable = true;
 
   techops.dev.enable = true;
   techops.git.enable = true;

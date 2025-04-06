@@ -1,13 +1,12 @@
 { config, lib, pkgs, ... }:
 
-let cfg = config.environments.gnome3;
-in {
-  options.environments.gnome3 = {
-    enable = lib.mkEnableOption "Enable Gnome3 configuration";
+let cfg = config.environment.gnome3;
+in with lib; {
+  options.environment.gnome3 = {
+    enable = mkEnableOption "Enable Gnome3 settings";
   };
 
-  config = lib.mkIf cfg.enable {
-
+  config = mkIf cfg.enable {
     # To see changes using GNOME Tweaks (or any other method), use the dconf watch / command.
     dconf = {
       enable = true;
@@ -24,8 +23,8 @@ in {
         };
         "org/gnome/desktop/input-sources" = {
           sources = [
-            (lib.gvariant.mkTuple [ "xkb" "us" ])
-            (lib.gvariant.mkTuple [ "xkb" "ua" ])
+            (gvariant.mkTuple [ "xkb" "us" ])
+            (gvariant.mkTuple [ "xkb" "ua" ])
           ];
           xkb-options = [
             "terminate:ctrl_alt_bksp"
@@ -60,7 +59,7 @@ in {
           };
         "org/gnome/settings-daemon/plugins/color" = {
           night-light-enabled = true;
-          night-light-temperature = (lib.gvariant.mkUint32 2800);
+          night-light-temperature = (gvariant.mkUint32 2800);
         };
 
         "org/gnome/shell" = {
@@ -82,7 +81,7 @@ in {
           sleep-inactive-ac-type = "suspend";
         };
         "org/gnome/desktop/session" = {
-          idle-delay = (lib.gvariant.mkUint32 300); # 5min
+          idle-delay = (gvariant.mkUint32 300); # 5min
         };
         "org/gnome/shell/extensions/dash-to-dock" = {
           apply-custom-theme = false;

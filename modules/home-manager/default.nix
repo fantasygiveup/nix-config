@@ -7,7 +7,7 @@
   "toolbox/zk" = import ./toolbox/zk;
   "toolbox/fzf/notes-zsh" = import ./toolbox/fzf/notes-zsh;
 
-  "environments/gnome3" = import ./environments/gnome3;
+  "environment/gnome3" = import ./environment/gnome3;
 
   "techops/dev" = import ./techops/dev;
   "techops/git" = import ./techops/git;
