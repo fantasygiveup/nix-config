@@ -35,12 +35,14 @@ in with lib; {
       lua-language-server
       luajit # lua interpreter
       luarocks # lua package manager
+      meld # diff files and folders
       nixd # nix lsp
       nixfmt-classic # nix formatter
       nodePackages.eslint # javascript linter
       nodePackages.prettier
       nodePackages.typescript-language-server
       nodejs # javascript/typescript interpreter
+      pandoc # convert/generate documents in different formats
       pgformatter # sql formatter # TODO: integrate with neovim
       prettierd
       pyright # python formatter
@@ -58,7 +60,6 @@ in with lib; {
       unstable.elixir-ls
       unstable.erlang
       vscode-langservers-extracted # cssls
-      pandoc # convert/generate documents in different formats
       yamllint
       yapf # python formatter # TODO: inegrate with neovim
       yarn
