@@ -1,9 +1,5 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
-  imports = (builtins.attrValues outputs.nixosModules) ++ [
-    inputs.hardware.nixosModules.common-cpu-amd
-    inputs.hardware.nixosModules.common-pc-ssd
-    inputs.hardware.nixosModules.gigabyte-b650
-  ];
+  imports = (builtins.attrValues outputs.nixosModules) ++ [ ];
 
   nixpkgs = {
     overlays = [
