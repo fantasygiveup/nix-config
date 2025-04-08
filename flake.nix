@@ -80,14 +80,14 @@
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager switch --flake .#your-username@your-hostname'
       homeConfigurations = {
-        # Run 'make home idanko@st321'.
+        # Run 'make home idanko@st321+gnome3'.
         "idanko@st321+gnome3" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users; };
           modules = [ ./home-manager/home-gnome3.nix ];
         };
 
-        # Run 'make home idanko@st123'.
+        # Run 'make home idanko@st123+gnome3'.
         "idanko@st123+gnome3" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users; };
