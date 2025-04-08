@@ -25,6 +25,7 @@ in with lib; {
       "Xft.hinting" = true;
       "Xft.antialias" = true;
       "Xft.rgba" = "rgb";
+      "Xft.dpi" = 120;
     };
   };
 }
