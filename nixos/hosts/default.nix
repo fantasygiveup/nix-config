@@ -33,7 +33,6 @@
   user.main.enable = true;
   misc.fonts.core.enable = true;
   toolkit.core.enable = true;
-  toolkit.de.gnome3.enable = true;
   toolkit.extra.enable = true;
   toolkit.postgres = {
     enable = true;

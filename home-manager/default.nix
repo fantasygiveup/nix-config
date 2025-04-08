@@ -24,7 +24,6 @@
   toolbox.eza.enable = true;
 
   de.look-and-feel.enable = true;
-  de.gnome3.enable = true;
 
   techops.dev.enable = true;
   techops.git.enable = true;

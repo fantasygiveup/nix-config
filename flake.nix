@@ -58,22 +58,22 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild switch --flake .#your-hostname'
       nixosConfigurations = {
-        # Run 'make nixos st321'.
-        st321 = nixpkgs.lib.nixosSystem {
+        # Run 'make nixos st321+gnome3'.
+        "st321+gnome3" = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs users;
             hostname = "st321";
           };
-          modules = [ ./nixos/hosts/st321/configuration.nix ];
+          modules = [ ./nixos/hosts/st321/configuration-gnome3.nix ];
         };
 
-        # Run 'make nixos st123'.
-        st123 = nixpkgs.lib.nixosSystem {
+        # Run 'make nixos st123+gnome3'.
+        "st123+gnome3" = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs users;
             hostname = "st123"; # Lenovo laptop.
           };
-          modules = [ ./nixos/hosts/st123/configuration.nix ];
+          modules = [ ./nixos/hosts/st123/configuration-gnome3.nix ];
         };
       };
 
@@ -81,17 +81,17 @@
       # Available through 'home-manager switch --flake .#your-username@your-hostname'
       homeConfigurations = {
         # Run 'make home idanko@st321'.
-        "idanko@st321" = home-manager.lib.homeManagerConfiguration {
+        "idanko@st321+gnome3" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users; };
-          modules = [ ./home-manager/home.nix ];
+          modules = [ ./home-manager/home-gnome3.nix ];
         };
 
         # Run 'make home idanko@st123'.
-        "idanko@st123" = home-manager.lib.homeManagerConfiguration {
+        "idanko@st123+gnome3" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users; };
-          modules = [ ./home-manager/home.nix ];
+          modules = [ ./home-manager/home-gnome3.nix ];
         };
       };
     };
