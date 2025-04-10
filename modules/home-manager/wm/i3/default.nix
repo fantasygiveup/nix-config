@@ -8,7 +8,60 @@ in with lib; {
   config = mkIf cfg.enable {
     xdg.configFile."i3/config" = {
       source = ./i3/config;
-      # onChange = "i3-msg reload";
+      onChange = ''
+        ${pkgs.i3}/bin/i3-msg i3-msg reload restart;
+      '';
+    };
+
+    # wm.gnome3.enable = true;
+
+    # Styling
+    fonts = {
+      fontconfig = {
+        enable = true;
+
+        defaultFonts = {
+          emoji = [ "Noto Color Emoji" ];
+          monospace = [ "JetBrainsMono Nerd Font Mono" ];
+          sansSerif = [ "Ubuntu" ];
+          serif = [ "Ubuntu" ];
+        };
+      };
+    };
+
+    gtk = {
+      enable = true;
+      font = {
+        name = "Ubuntu Medium";
+        package = pkgs.ubuntu_font_family;
+        size = 11;
+      };
+      cursorTheme = {
+        name = "Bibata-Original-Amber";
+        package = pkgs.bibata-cursors;
+      };
+    };
+
+    home.pointerCursor = {
+      x11.enable = true;
+      name = "Bibata-Original-Amber";
+      package = pkgs.bibata-cursors;
+      size = 32;
+      gtk.enable = true;
+    };
+
+    # Adjust screen temperature according geospacial data.
+    services.gammastep = {
+      enable = true;
+
+      # Localtion: Warsaw, Poland.
+      latitude = 52.2297;
+      longitude = 21.0122;
+
+      temperature = {
+        day = 6500;
+        night = 2800;
+      };
     };
 
     home.packages = with pkgs; [
@@ -19,6 +72,9 @@ in with lib; {
       xorg.xev
       xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
       xorg.xmodmap
+      rofi
+      bemenu
+      lxappearance
     ];
   };
 }

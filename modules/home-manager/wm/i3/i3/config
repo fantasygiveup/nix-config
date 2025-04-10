@@ -12,6 +12,8 @@
 set $mod Mod4
 set $term wezterm
 set $default_browser google-chrome-stable
+
+set $menu rofi -modi drun,run -show drun
 set $clipboard_history bemenu-commander cliphist
 set $clipboard_ref bemenu-commander ref
 set $clipboard_ref_data bemenu-commander ref-data
@@ -54,20 +56,20 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec $term
+bindsym $mod+Return exec "$term"
 
 # start a default browser
-bindsym $mod+Shift+Return exec $default_browser
+bindsym $mod+Shift+Return exec "$default_browser"
 
-bindsym Mod1+Ctrl+h exec $clipboard_history
-bindsym Mod1+Ctrl+u exec $clipboard_ref
-bindsym Mod1+Ctrl+i exec $clipboard_ref_data
+bindsym Mod1+Ctrl+h exec "$clipboard_history"
+bindsym Mod1+Ctrl+u exec "$clipboard_ref"
+bindsym Mod1+Ctrl+i exec "$clipboard_ref_data"
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id bmenu_run
+bindsym $mod+d exec --no-startup-id "$menu"
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a

@@ -12,7 +12,13 @@ in with lib; {
 
       desktopManager = { xterm.enable = false; };
 
-      displayManager = { defaultSession = "none+i3"; };
+      displayManager = {
+        defaultSession = "none+i3";
+        lightdm.greeters.gtk.cursorTheme = {
+          name = "Bibata-Original-Amber";
+          package = pkgs.bibata-cursors;
+        };
+      };
 
       windowManager.i3 = {
         enable = true;
