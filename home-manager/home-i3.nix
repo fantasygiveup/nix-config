@@ -1,7 +1,7 @@
 { ... }: {
   imports = [ ./default.nix ];
 
-  wm.gnome3.enable = true;
+  wm.i3.enable = true;
 
   home.stateVersion = "24.11";
 }

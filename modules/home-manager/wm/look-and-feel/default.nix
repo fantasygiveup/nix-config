@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
-let cfg = config.de.look-and-feel;
+let cfg = config.wm.look-and-feel;
 in with lib; {
-  options.de.look-and-feel = {
+  options.wm.look-and-feel = {
     enable = mkEnableOption "Enable common Look And Feel settings";
   };
 

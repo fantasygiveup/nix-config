@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
-let cfg = config.de.gnome3;
+let cfg = config.wm.gnome3;
 in with lib; {
-  options.de.gnome3 = { enable = mkEnableOption "Enable Gnome3 settings"; };
+  options.wm.gnome3 = { enable = mkEnableOption "Enable Gnome3 settings"; };
 
   config = mkIf cfg.enable {
     # To see changes using GNOME Tweaks (or any other method), use the dconf watch / command.

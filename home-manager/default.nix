@@ -23,7 +23,7 @@
   toolbox.fzf.notes-zsh.enable = true;
   toolbox.eza.enable = true;
 
-  de.look-and-feel.enable = true;
+  wm.look-and-feel.enable = true;
 
   techops.dev.enable = true;
   techops.git.enable = true;

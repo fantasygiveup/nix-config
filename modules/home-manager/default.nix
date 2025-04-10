@@ -14,8 +14,9 @@
   "toolbox/eza" = import ./toolbox/eza;
   "toolbox/fzf/notes-zsh" = import ./toolbox/fzf/notes-zsh;
 
-  "de/look-and-feel" = import ./de/look-and-feel;
-  "de/gnome3" = import ./de/gnome3;
+  "wm/look-and-feel" = import ./wm/look-and-feel;
+  "wm/gnome3" = import ./wm/gnome3;
+  "wm/i3" = import ./wm/i3;
 
   "techops/dev" = import ./techops/dev;
   "techops/git" = import ./techops/git;

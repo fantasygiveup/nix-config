@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
-let cfg = config.toolkit.de.gnome3;
+let cfg = config.wm.gnome3;
 in with lib; {
-  options.toolkit.de.gnome3 = {
+  options.wm.gnome3 = {
     enable = mkEnableOption "Enable gnome3 desktop environment";
   };
 

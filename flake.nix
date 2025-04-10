@@ -67,6 +67,15 @@
           modules = [ ./nixos/hosts/st321/configuration-gnome3.nix ];
         };
 
+        # Run 'make nixos st321+i3'.
+        "st321+i3" = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs users;
+            hostname = "st321";
+          };
+          modules = [ ./nixos/hosts/st321/configuration-i3.nix ];
+        };
+
         # Run 'make nixos st123+gnome3'.
         "st123+gnome3" = nixpkgs.lib.nixosSystem {
           specialArgs = {
@@ -85,6 +94,13 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users; };
           modules = [ ./home-manager/home-gnome3.nix ];
+        };
+
+        # Run 'make home idanko@st321+i3'.
+        "idanko@st321+i3" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs users; };
+          modules = [ ./home-manager/home-i3.nix ];
         };
 
         # Run 'make home idanko@st123+gnome3'.
