@@ -30,5 +30,9 @@ in with lib; {
         ];
       };
     };
+
+    # Do not ask ssh,gpg passwords all the time.
+    services.gnome.gnome-keyring.enable = true;
+    security.pam.services.lightdm.enableGnomeKeyring = true;
   };
 }
