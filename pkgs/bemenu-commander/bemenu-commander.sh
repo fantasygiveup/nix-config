@@ -12,7 +12,7 @@ config_directory="${BEMENU_COMMANDER_CONFIG_DIRECTORY:-"${HOME}/.config/bemenu-c
 ref_config_file="${BEMENU_COMMANDER_REF_CONFIG_FILE:-"${config_directory}/ref"}"
 line_height="${BEMENU_COMMANDER_LINE_HEIGHT:-"32"}"
 exec_command="${BEMENU_COMMANDER_EXEC_COMMAND:-"exec"}"
-clipboard_paste_command="${BEMENU_COMMANDER_CLIPBOARD_PASTE_COMMAND:-"xclip -r -selection c"}"
+clipboard_copy_command="${BEMENU_COMMANDER_CLIPBOARD_COPY_COMMAND:-"xclip -r -selection c"}"
 ref_data_file="${BEMENU_COMMANDER_REF_DATA_FILE:-"$HOME/github.com/fantasygiveup/restricted/ref.gpg"}"
 
 read -r -a bemenu_color_opts <<<"--tb=${color_bg} \
@@ -41,13 +41,13 @@ ref() {
 	local line=$(awk '{print $1}' <<<"$data")
 	gpg -d "$1" 2>/dev/null |
 		awk -v line="$line" 'NR==line {print $NF}' |
-		eval "$clipboard_paste_command"
+		eval "$clipboard_copy_command"
 }
 
 ref_data() {
 	local data="$(cat "$ref_config_file")"
 	notify-send -a 'Ref Data: Clipboard' "$data"
-	eval "$clipboard_paste_command" <<<"$data"
+	eval "$clipboard_copy_command" <<<"$data"
 }
 
 case "$1" in
@@ -60,7 +60,7 @@ cliphist)
 	cliphist list |
 		bemenu -i "${bemenu_color_opts[@]}" --fn "${font}" -p "cliphist" -H "${line_height}" -n -l 999 |
 		cliphist decode 2>/dev/null |
-		eval "$clipboard_paste_command"
+		eval "$clipboard_copy_command"
 	;;
 ref)
 	ref "${ref_data_file}"
