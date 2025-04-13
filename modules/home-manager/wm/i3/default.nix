@@ -9,7 +9,7 @@ in with lib; {
     xdg.configFile."i3/config" = {
       source = ./i3/config;
       onChange = ''
-        ${pkgs.i3}/bin/i3-msg i3-msg reload restart;
+        ${pkgs.i3}/bin/i3-msg reload restart;
       '';
     };
 
@@ -75,6 +75,7 @@ in with lib; {
       rofi
       bemenu
       lxappearance
+      cliphist
     ];
   };
 }

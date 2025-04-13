@@ -7,12 +7,12 @@ in with lib; {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      bemenu-commander
       libnotify # provides notify-send
       libreoffice-fresh # ms office, but better
       memtester # memory test
       neofetch
       nix-index # for nix-locate
+      rofi-commander
     ];
 
     programs.home-manager.enable = true;
