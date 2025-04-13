@@ -210,4 +210,5 @@ bar {
 
 exec "setxkbmap -model pc104 -layout us,ua -variant ,, \
     -option caps:ctrl_modifier \
-    -option terminate:ctrl_alt_bksp"
+    -option terminate:ctrl_alt_bksp \
+    -option grp:win_space_toggle"
