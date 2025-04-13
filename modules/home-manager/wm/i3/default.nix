@@ -76,6 +76,8 @@ in with lib; {
       bemenu
       lxappearance
       cliphist
+      xkb-switch-i3
+      (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Ubuntu" ]; })
     ];
 
     # Rofi.
@@ -90,5 +92,29 @@ in with lib; {
       source = ./rofi/catppuccin-latte.rasi;
     };
 
+    services.picom.enable = true;
+    xdg.configFile."picom/picom.conf" = { source = ./picom/picom.conf; };
+    xdg.configFile."i3blocks/config" = { source = ./i3blocks/config; };
+
+    services.dunst = {
+      enable = true;
+      settings = {
+        global = {
+          width = 512;
+          height = 128;
+          offset = 28;
+          origin = "top-center";
+          transparency = 10;
+          frame_color = "#7287fd";
+          font = "JetBrainsMono Nerd Font Mono 10";
+        };
+
+        urgency_normal = {
+          background = "#ccd0da";
+          foreground = "#4c4f69";
+          timeout = 10;
+        };
+      };
+    };
   };
 }

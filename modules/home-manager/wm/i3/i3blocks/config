@@ -1,0 +1,45 @@
+full_text=〉
+align=center
+separator=false
+separator_block_width=7
+color=#bcc0cc
+
+[keymap]
+label=  
+command=bash -c 'xkb-switch;xkb-switch -W'
+interval=persist
+color=#4c4f69
+
+[separator]
+
+[memory]
+label= 
+command=awk '/MemTotal/{total=$2/1024/1024} /MemFree/{free=$2/1024/1024} END{printf "%.1fG  %.1fG  %.f%%\n", free, total, (free/total)*100}' /proc/meminfo
+interval=30
+color=#6c6f85
+
+[separator]
+
+[cpu]
+label=󰍛 
+command=echo "$(echo "100 - $(mpstat 1 1 | awk 'NR==4 {print $NF}')" | bc | perl -lne 'printf("%05.2f\n", $_)')%"
+interval=10
+color=#4c4f69
+
+[separator]
+
+[time]
+label= 
+command=date +%H:%M
+interval=60
+color=#6c6f85
+
+[separator]
+
+[user]
+label= 
+command=lslogins | grep $USER | awk '{print $2}'
+interval=once
+color=#4c4f69
+min_width=85
+align=center
