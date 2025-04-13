@@ -77,5 +77,18 @@ in with lib; {
       lxappearance
       cliphist
     ];
+
+    # Rofi.
+    xdg.configFile."rofi/config.rasi" = { source = ./rofi/config.rasi; };
+    xdg.configFile."rofi/catppuccin-default.rasi" = {
+      source = ./rofi/catppuccin-default.rasi;
+    };
+    xdg.configFile."rofi/catppuccin-mocha.rasi" = {
+      source = ./rofi/catppuccin-mocha.rasi;
+    };
+    xdg.configFile."rofi/catppuccin-latte.rasi" = {
+      source = ./rofi/catppuccin-latte.rasi;
+    };
+
   };
 }

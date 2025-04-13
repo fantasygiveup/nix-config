@@ -1,0 +1,8 @@
+
+@import "catppuccin-latte"
+@import "catppuccin-default"
+
+configuration {
+  font: "JetBrainsMono Nerd Font Mono Bold 13";
+  kb-cancel: "Control+c,Escape";
+}
