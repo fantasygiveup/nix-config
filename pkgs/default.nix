@@ -4,4 +4,6 @@ pkgs: rec {
   bemenu-commander = pkgs.callPackage ./bemenu-commander { };
   rofi-commander = pkgs.callPackage ./rofi-commander { };
   erun = pkgs.callPackage ./erun { };
+  cpu-usage = pkgs.callPackage ./cpu-usage { };
+  mem-usage = pkgs.callPackage ./mem-usage { };
 }

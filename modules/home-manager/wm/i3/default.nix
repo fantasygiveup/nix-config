@@ -8,9 +8,9 @@ in with lib; {
   config = mkIf cfg.enable {
     xdg.configFile."i3/config" = {
       source = ./i3/config;
-      onChange = ''
-        ${pkgs.i3}/bin/i3-msg reload restart;
-      '';
+      # onChange = ''
+      #   ${pkgs.i3}/bin/i3-msg reload restart;
+      # '';
     };
 
     # wm.gnome3.enable = true;
@@ -78,6 +78,12 @@ in with lib; {
       cliphist
       xkb-switch-i3
       (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Ubuntu" ]; })
+      sysstat
+      rofi-commander
+      autotiling
+      nitrogen
+      mem-usage
+      cpu-usage
     ];
 
     # Rofi.
@@ -104,14 +110,14 @@ in with lib; {
           height = 128;
           offset = 28;
           origin = "top-center";
-          transparency = 10;
-          frame_color = "#7287fd";
+          transparency = 5;
+          frame_color = "#eff1f5";
           font = "JetBrainsMono Nerd Font Mono 10";
         };
 
         urgency_normal = {
-          background = "#ccd0da";
-          foreground = "#4c4f69";
+          background = "#4c4f69";
+          foreground = "#eff1f5";
           timeout = 10;
         };
       };

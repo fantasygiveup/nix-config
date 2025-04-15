@@ -66,7 +66,7 @@ bindsym Mod1+Ctrl+u exec --no-startup-id "$clipboard_ref"
 bindsym Mod1+Ctrl+i exec --no-startup-id "$clipboard_ref_data"
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+BackSpace kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id "$menu"
@@ -77,10 +77,10 @@ bindsym $mod+d exec --no-startup-id "$menu"
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -89,10 +89,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+colon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -101,10 +101,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+# bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -140,28 +140,28 @@ set $ws9 "9"
 set $ws10 "10"
 
 # switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+y workspace number $ws1
+bindsym $mod+u workspace number $ws2
+bindsym $mod+i workspace number $ws3
+bindsym $mod+o workspace number $ws4
+bindsym $mod+p workspace number $ws5
+bindsym $mod+n workspace number $ws6
+bindsym $mod+m workspace number $ws7
+bindsym $mod+Comma workspace number $ws8
+bindsym $mod+Period workspace number $ws9
+bindsym $mod+Slash workspace number $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+y move container to workspace number $ws1
+bindsym $mod+Shift+u move container to workspace number $ws2
+bindsym $mod+Shift+i move container to workspace number $ws3
+bindsym $mod+Shift+o move container to workspace number $ws4
+bindsym $mod+Shift+p move container to workspace number $ws5
+bindsym $mod+Shift+n move container to workspace number $ws6
+bindsym $mod+Shift+m move container to workspace number $ws7
+bindsym $mod+Shift+Comma move container to workspace number $ws8
+bindsym $mod+Shift+Period move container to workspace number $ws9
+bindsym $mod+Shift+Slash move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -208,28 +208,30 @@ bar {
     tray_output none
 
     colors {
-        background #ccd0da
-        statusline #ccd0da
+        background #eff1f5
+        statusline #eff1f5
         separator  #bcc0cc
         #  class            | border  |  background  |   text  |
         #-------------------|---------|--------------|---------|
         focused_workspace  #eff1f5 #eff1f5 #4c4f69
         active_workspace   #eff1f5 #eff1f5 #4c4f69
-        inactive_workspace #ccd0da #ccd0da #4c4f69
-        urgent_workspace   #d20f39 #d20f39 #ccd0da
+        inactive_workspace #eff1f5 #eff1f5 #4c4f69
+        urgent_workspace   #d20f39 #d20f39 #eff1f5
     }
 }
 
     #  class            | border  |  background  |   text  | indicator | child bolder |
     #-------------------|---------|--------------|---------|-----------|------------- |
-client.focused          #ccd0da #ccd0da #6c6f85 #2e9ef4   #4c4f69
-client.focused_inactive #ccd0da #ccd0da #6c6f85 #484e50   #5f676a
-client.unfocused        #ccd0da #ccd0da #bcc0cc #292d2e   #222222
+client.focused          #eff1f5 #eff1f5 #6c6f85 #2e9ef4   #4c4f69
+client.focused_inactive #eff1f5 #eff1f5 #6c6f85 #484e50   #5f676a
+client.unfocused        #eff1f5 #eff1f5 #bcc0cc #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-client.background       #ccd0da
+client.background       #eff1f5
 
 exec "setxkbmap -model pc104 -layout us,ua -variant ,, \
     -option caps:ctrl_modifier \
     -option terminate:ctrl_alt_bksp \
     -option grp:win_space_toggle"
+
+exec_always --no-startup-id autotiling -w 1 4 5 6 7 8 9 0
