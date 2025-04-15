@@ -12,7 +12,6 @@ in with lib; {
       memtester # memory test
       neofetch
       nix-index # for nix-locate
-      rofi-commander
     ];
 
     programs.home-manager.enable = true;
