@@ -84,6 +84,7 @@ in with lib; {
       nitrogen
       mem-usage
       cpu-usage
+      xss-lock
     ];
 
     # Rofi.

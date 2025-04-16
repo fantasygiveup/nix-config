@@ -17,18 +17,21 @@ set $menu rofi-commander commands
 set $clipboard_history rofi-commander cliphist
 set $clipboard_ref rofi-commander ref
 set $clipboard_ref_data rofi-commander ref-data
+set $show_notifications dunstctl history-pop
+set $hide_notifications dunstctl close-all
+set $toggle_notifications dunstctl set-paused toggle
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Ubuntu Nerd Font Bold 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
+font pango:Ubuntu Nerd Font Bold 10
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
+# exec --no-startup-id dex --autostart --environment i3
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -39,7 +42,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -56,14 +59,17 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec "$term"
+bindsym $mod+Return exec --no-startup-id "$term"
 
 # start a default browser
-bindsym $mod+Shift+Return exec "$default_browser"
+bindsym $mod+Shift+Return exec --no-startup-id "$default_browser"
 
 bindsym Mod1+Ctrl+h exec --no-startup-id "$clipboard_history"
 bindsym Mod1+Ctrl+u exec --no-startup-id "$clipboard_ref"
 bindsym Mod1+Ctrl+i exec --no-startup-id "$clipboard_ref_data"
+# bindsym Mod1+Shift+n exec --no-startup-id "$show_notifications"
+# bindsym Mod1+Shift+m exec --no-startup-id "$hide_notifications"
+# bindsym Mod1+Shift+Comma exec --no-startup-id "$toggle_notifications"
 
 # kill focused window
 bindsym $mod+BackSpace kill
@@ -229,9 +235,11 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #eff1f5
 
-exec "setxkbmap -model pc104 -layout us,ua -variant ,, \
+exec --no-startup-id "setxkbmap -model pc104 -layout us,ua -variant ,, \
     -option caps:ctrl_modifier \
     -option terminate:ctrl_alt_bksp \
     -option grp:win_space_toggle"
 
 exec_always --no-startup-id autotiling -w 1 4 5 6 7 8 9 0
+
+exec --no-startup-id nitrogen --set-scaled ~/github.com/fantasygiveup/wallpapers/0001.jpg &>/dev/null
