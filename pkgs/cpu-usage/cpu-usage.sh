@@ -23,7 +23,7 @@ while :; do
 	cpu_last=("${cpu_now[@]}")
 	cpu_last_sum=$cpu_sum
 
-	echo "$cpu_usage% of" $((cpu_sum / 1000000))MHz
+	printf "%02.f%%\n" "$cpu_usage"
 
 	sleep 1
 done
