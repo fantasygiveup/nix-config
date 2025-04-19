@@ -12,12 +12,12 @@ interval=10
 markup=pango
 
 [datetime]
-command=date '+%H:%M %a %d %b' | xargs -I % echo "<span foreground=\"#4c4f69\"><span background=\"#4c4f69\" color=\"#eff1f5\">  % </span></span>"
+command=printf "<span foreground=\"#4c4f69\"><span background=\"#4c4f69\" color=\"#eff1f5\">  %s </span></span>\n" "$(date '+%H:%M %a %d %b')"
 interval=60
 markup=pango
 
 [memory]
-command=mem-usage | xargs -I % echo "<span foreground=\"#4c4f69\"><span background=\"#4c4f69\" color=\"#eff1f5\"> % </span></span>"
+command=printf "<span foreground=\"#4c4f69\"><span background=\"#4c4f69\" color=\"#eff1f5\"> %s </span></span>\n" "$(mem-usage)"
 interval=5
 markup=pango
 
@@ -27,6 +27,8 @@ interval=persist
 markup=pango
 
 [user]
-command=lslogins | grep $USER | awk '{print $2}' | xargs -I % echo "<span foreground=\"#4c4f69\"><span background=\"#4c4f69\" color=\"#eff1f5\"> % </span></span>"
+command=printf "<span foreground=\"#4c4f69\"><span background=\"#4c4f69\" color=\"#eff1f5\"> %s@%s </span></span>\n" "$(lslogins | grep $USER | awk '{print $2}')" "$(hostname)"
 interval=once
 markup=pango
+
+# vim: set ft=conf:
