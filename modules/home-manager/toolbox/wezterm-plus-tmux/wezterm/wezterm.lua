@@ -110,6 +110,13 @@ wezterm.on("reset-leading", function(window, pane)
   window:set_config_overrides(overrides)
 end)
 
+-- Remove extra top padding.
+wezterm.on("update-right-status", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+  overrides.window_padding = { top = '0cell' }
+	window:set_config_overrides(overrides)
+end)
+
 -- Let tmux handle everything.
 config.disable_default_key_bindings = true
 config.keys = {
