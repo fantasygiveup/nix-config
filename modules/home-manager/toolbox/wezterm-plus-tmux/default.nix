@@ -7,7 +7,7 @@ in with lib; {
 
   # TODO: integrate with dark theme.
   config = mkIf cfg.enable {
-    xdg.configFile."wezterm/wezterm.lua".source = ./wezterm.lua;
+    xdg.configFile."wezterm/wezterm.lua".source = ./wezterm/wezterm.lua;
 
     programs.wezterm = {
       enable = true;
@@ -16,7 +16,7 @@ in with lib; {
     };
 
     # TODO: revisit plugins.
-    xdg.configFile."tmux/tmux.conf".source = ./tmux.conf;
+    xdg.configFile."tmux/tmux.conf".source = ./tmux/tmux.conf;
     programs.tmux.enable = true;
   };
 }
