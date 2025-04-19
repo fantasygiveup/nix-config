@@ -65,25 +65,26 @@ in with lib; {
     };
 
     home.packages = with pkgs; [
+      (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Ubuntu" ]; })
+      autotiling
+      bemenu
+      cliphist
+      cpu-usage
       dconf
       dconf-editor
+      dunstctl-count-history
       gnome-tweaks
+      lxappearance
+      mem-usage
+      nitrogen
+      rofi
+      rofi-commander
+      sysstat
       xclip
+      xkb-switch-i3
       xorg.xev
       xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
       xorg.xmodmap
-      rofi
-      bemenu
-      lxappearance
-      cliphist
-      xkb-switch-i3
-      (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Ubuntu" ]; })
-      sysstat
-      rofi-commander
-      autotiling
-      nitrogen
-      mem-usage
-      cpu-usage
       xss-lock
     ];
 
