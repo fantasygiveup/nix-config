@@ -18,8 +18,8 @@ set $clipboard_history rofi-commander cliphist
 set $clipboard_ref rofi-commander ref
 set $clipboard_ref_data rofi-commander ref-data
 set $show_notifications dunstctl history-pop
-set $hide_notifications dunstctl close-all
-set $toggle_notifications dunstctl set-paused toggle
+set $clear_notifications notify-send 'Clearing notifications'; sleep 1; dunstctl close-all; dunstctl history-clear
+set $toggle_notifications notify-send 'Toggling notifications'; sleep 1; dunstctl set-paused toggle; notify-send 'Toggling notifications'
 set $lock_screen i3lock --nofork
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -69,9 +69,9 @@ bindsym $mod+Ctrl+h exec --no-startup-id "$clipboard_history"
 bindsym $mod+Ctrl+u exec --no-startup-id "$clipboard_ref"
 bindsym $mod+Ctrl+i exec --no-startup-id "$clipboard_ref_data"
 bindsym $mod+Ctrl+l exec --no-startup-id "$lock_screen"
-# bindsym Mod1+Shift+n exec --no-startup-id "$show_notifications"
-# bindsym Mod1+Shift+m exec --no-startup-id "$hide_notifications"
-# bindsym Mod1+Shift+Comma exec --no-startup-id "$toggle_notifications"
+bindsym $mod+Ctrl+n exec --no-startup-id "$show_notifications"
+bindsym $mod+Ctrl+m exec --no-startup-id "$clear_notifications"
+bindsym $mod+Ctrl+comma exec --no-startup-id "$toggle_notifications"
 
 # kill focused window
 bindsym $mod+BackSpace kill
@@ -158,9 +158,9 @@ bindsym $mod+o workspace number $ws4
 bindsym $mod+p workspace number $ws5
 bindsym $mod+n workspace number $ws6
 bindsym $mod+m workspace number $ws7
-bindsym $mod+Comma workspace number $ws8
-bindsym $mod+Period workspace number $ws9
-bindsym $mod+Slash workspace number $ws10
+bindsym $mod+comma workspace number $ws8
+bindsym $mod+period workspace number $ws9
+bindsym $mod+slash workspace number $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+y move container to workspace number $ws1
@@ -170,9 +170,9 @@ bindsym $mod+Shift+o move container to workspace number $ws4
 bindsym $mod+Shift+p move container to workspace number $ws5
 bindsym $mod+Shift+n move container to workspace number $ws6
 bindsym $mod+Shift+m move container to workspace number $ws7
-bindsym $mod+Shift+Comma move container to workspace number $ws8
-bindsym $mod+Shift+Period move container to workspace number $ws9
-bindsym $mod+Shift+Slash move container to workspace number $ws10
+bindsym $mod+Shift+comma move container to workspace number $ws8
+bindsym $mod+Shift+period move container to workspace number $ws9
+bindsym $mod+Shift+slash move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
