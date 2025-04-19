@@ -7,7 +7,7 @@ interval=persist
 markup=pango
 
 [notify]
-command=printf "<span foreground=\"#4c4f69\"><span background=\"#4c4f69\" color=\"#eff1f5\">󰍢 %</span></span>\n" "$(dunstctl-count-history)"
+command=printf "<span foreground=\"#4c4f69\"><span background=\"#4c4f69\" color=\"#eff1f5\">󰍢 %s</span></span>\n" "$(dunstctl-count-history)"
 interval=10
 markup=pango
 
