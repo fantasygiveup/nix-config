@@ -12,7 +12,6 @@ tmux_set() {
 	tmux set-option -gq "$1" "$2"
 }
 
-# Options
 rarrow=$(tmux_get '@tmux_status_line_right_arrow_icon' '')
 larrow=$(tmux_get '@tmux_status_line_left_arrow_icon' '')
 sep=" "
@@ -22,7 +21,6 @@ TC='#4c4f69'
 G0=$(tmux_get @tmux_status_line_g0 "#eff1f5")
 G1=$(tmux_get @tmux_status_line_g2 "#eff1f5")
 
-# Right side of status bar
 tmux_set status-right-bg "$G0"
 tmux_set status-right-length 150
 
