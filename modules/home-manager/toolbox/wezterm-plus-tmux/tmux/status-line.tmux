@@ -16,20 +16,22 @@ rarrow=$(tmux_get '@tmux_status_line_right_arrow_icon' '')
 larrow=$(tmux_get '@tmux_status_line_left_arrow_icon' '')
 sep=" "
 
-TC='#4c4f69'
+TC='#eff1f5'
 
-G0=$(tmux_get @tmux_status_line_g0 "#eff1f5")
-G1=$(tmux_get @tmux_status_line_g2 "#cccccc")
+G0=$(tmux_get @tmux_status_line_g0 "#4c4f69")
+G1=$(tmux_get @tmux_status_line_g1 "#cccccc")
+G2=$(tmux_get @tmux_status_line_g2 "#9f6414")
+G3=$(tmux_get @tmux_status_line_g2 "#f0d2a7")
 
 tmux_set status-right-bg "$G0"
 tmux_set status-right-length 150
 
-RS="$RS#[fg=$G0,bg=$G0]$sep#[fg=$G1,bg=$G0]$larrow#[fg=$TC,bg=$G1]#S#[fg=$G1,bg=$G0]$rarrow"
-RS="$RS#[fg=$G0,bg=$G0]$sep#[fg=$G1,bg=$G0]$larrow#[fg=$TC,bg=$G1] #(xkb-switch)#[fg=$G1,bg=$G0]$rarrow"
-RS="$RS#[fg=$G0,bg=$G0]$sep#[fg=$G1,bg=$G0]$larrow#[fg=$TC,bg=$G1]󰍢 #(dunstctl-count-history)#[fg=$G1,bg=$G0]$rarrow"
-RS="$RS#[fg=$G0,bg=$G0]$sep#[fg=$G1,bg=$G0]$larrow#[fg=$TC,bg=$G1] #(date '+%H:%M %a %d %b')#[fg=$G1,bg=$G0]$rarrow"
-RS="$RS#[fg=$G0,bg=$G0]$sep#[fg=$G1,bg=$G0]$larrow#[fg=$TC,bg=$G1] #(mem-usage)#[fg=$G1,bg=$G0]$rarrow"
-RS="$RS#[fg=$G0,bg=$G0]$sep#[fg=$G1,bg=$G0]$larrow#[fg=$TC,bg=$G1] #(cpu-usage)#[fg=$G1,bg=$G0]$rarrow"
-RS="$RS#[fg=$G0,bg=$G0]$sep#[fg=$G1,bg=$G0]$larrow#[fg=$TC,bg=$G1] $USER@#(hostname)#[fg=$G1,bg=$G0]$rarrow"
+RS="$RS#[fg=$TC,bg=$TC]$sep#[fg=$G1,bg=$TC]$larrow#[fg=$G0,bg=$G1] #(xkb-switch)#[fg=$G1,bg=$TC]$rarrow"
+RS="$RS#[fg=$TC,bg=$TC]$sep#[fg=$G1,bg=$TC]$larrow#[fg=$G0,bg=$G1]󰍢 #(dunstctl-count-history)#[fg=$G1,bg=$TC]$rarrow"
+RS="$RS#[fg=$TC,bg=$TC]$sep#[fg=$G1,bg=$TC]$larrow#[fg=$G0,bg=$G1] #(date '+%H:%M %a %d %b')#[fg=$G1,bg=$TC]$rarrow"
+RS="$RS#[fg=$TC,bg=$TC]$sep#[fg=$G1,bg=$TC]$larrow#[fg=$G0,bg=$G1] #(mem-usage)#[fg=$G1,bg=$TC]$rarrow"
+RS="$RS#[fg=$TC,bg=$TC]$sep#[fg=$G1,bg=$TC]$larrow#[fg=$G0,bg=$G1] #(cpu-usage)#[fg=$G1,bg=$TC]$rarrow"
+RS="$RS#[fg=$TC,bg=$TC]$sep#[fg=$G1,bg=$TC]$larrow#[fg=$G0,bg=$G1] $USER@#(hostname)#[fg=$G1,bg=$TC]$rarrow"
+RS="$RS#[fg=$TC,bg=$TC]$sep#[fg=$G3,bg=$TC]$larrow#[fg=$G2,bg=$G3]#S#[fg=$G3,bg=$TC]$rarrow"
 
 tmux_set status-right "$RS"
