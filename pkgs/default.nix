@@ -7,4 +7,5 @@ pkgs: rec {
   cpu-usage = pkgs.callPackage ./cpu-usage { };
   mem-usage = pkgs.callPackage ./mem-usage { };
   dunstctl-count-history = pkgs.callPackage ./dunstctl-count-history { };
+  x11-title = pkgs.callPackage ./x11-title { };
 }

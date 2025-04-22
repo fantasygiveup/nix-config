@@ -77,12 +77,13 @@ in with lib; {
       lxappearance
       mem-usage
       nitrogen
+      qpdfview
       rofi
       rofi-commander
       sysstat
+      x11-title
       xclip
       xfce.thunar
-      qpdfview
       xkb-switch-i3
       xorg.xev
       xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
