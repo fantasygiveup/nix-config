@@ -127,5 +127,8 @@ in with lib; {
         };
       };
     };
+
+    # Logo.
+    home.file.".face".source = ./icons/kitty;
   };
 }
