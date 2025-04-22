@@ -81,6 +81,8 @@ in with lib; {
       rofi-commander
       sysstat
       xclip
+      xfce.thunar
+      qpdfview
       xkb-switch-i3
       xorg.xev
       xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine

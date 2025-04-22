@@ -28,6 +28,7 @@
   "user/home/main" = import ./user/home/main;
 
   "shell/zsh" = import ./shell/zsh;
+  "shell/mimetypes" = import ./shell/mimetypes;
   "shell/env/vars" = import ./shell/env/vars;
   "shell/starship" = import ./shell/starship;
 

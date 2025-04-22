@@ -36,6 +36,7 @@
 
   shell.env.vars.enable = true;
   shell.zsh.enable = true;
+  shell.mimetypes.enable = true;
   shell.starship.enable = true;
 
   profile.browsing.enable = true;
