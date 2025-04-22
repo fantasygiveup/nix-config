@@ -39,6 +39,7 @@ in with lib; {
       cursorTheme = {
         name = "Bibata-Original-Amber";
         package = pkgs.bibata-cursors;
+        size = 32;
       };
     };
 

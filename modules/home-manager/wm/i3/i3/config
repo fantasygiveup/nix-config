@@ -74,8 +74,10 @@ bindsym $mod+Ctrl+n exec --no-startup-id "$show_notifications"
 bindsym $mod+Ctrl+m exec --no-startup-id "$clear_notifications"
 bindsym $mod+Ctrl+comma exec --no-startup-id "$toggle_notifications"
 
-# kill focused window
+# Kill focused window.
 bindsym $mod+BackSpace kill
+# Go to the latest urgent window.
+bindsym $mod+equal [urgent=latest] focus
 
 # start dmenu (a program launcher)
 bindsym $mod+Ctrl+p exec --no-startup-id "$menu"
@@ -85,14 +87,8 @@ bindsym $mod+Ctrl+p exec --no-startup-id "$menu"
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
-# change focus
-bindsym $mod+Shift+h focus left
-bindsym $mod+Shift+j focus down
-bindsym $mod+Shift+k focus up
-bindsym $mod+Shift+l focus right
 # Make it compatible to gnome3 'switch to the next grouped window'.
 bindsym $mod+grave focus next
-bindsym $mod+equal [urgent=latest] focus
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left

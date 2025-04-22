@@ -12,6 +12,10 @@ in with lib; {
         name = "Numix-Square";
         package = pkgs.numix-icon-theme-square;
       };
+      theme = {
+        name = "Numix";
+        package = pkgs.numix-gtk-theme;
+      };
     };
 
     qt = {

@@ -9,14 +9,34 @@ in with lib; {
     ]; # links /libexec from derivations to /run/current-system/sw
     services.xserver = {
       enable = true;
+      dpi = 120;
 
       desktopManager = { xterm.enable = false; };
 
       displayManager = {
         defaultSession = "none+i3";
-        lightdm.greeters.gtk.cursorTheme = {
-          name = "Bibata-Original-Amber";
-          package = pkgs.bibata-cursors;
+        lightdm = {
+          greeters.gtk = {
+            iconTheme = {
+              name = "Numix-Square";
+              package = pkgs.numix-icon-theme-square;
+            };
+            cursorTheme = {
+              name = "Bibata-Original-Amber";
+              package = pkgs.bibata-cursors;
+              size = 32;
+            };
+            theme = {
+              name = "Numix";
+              package = pkgs.numix-gtk-theme;
+            };
+            extraConfig = ''
+              font-name = Ubuntu 10
+            '';
+            indicators =
+              [ "~host" "~spacer" "~clock" "~spacer" "~session" "~power" ];
+          };
+          background = ./wallpapers/light/0001.jpg;
         };
       };
 

@@ -32,6 +32,7 @@
   "shell/env/vars" = import ./shell/env/vars;
   "shell/starship" = import ./shell/starship;
 
+  # TODO(idanko): move modules above to profiles.
   "profile/browsing" = import ./profile/browsing;
   "profile/mailing" = import ./profile/mailing;
   "profile/social" = import ./profile/social;
