@@ -68,6 +68,11 @@ in with lib; {
         "<c-g>" = "fzf-project";
         "," = null;
         ",gg" = "$lazygit";
+        "gd" = "cd ~/Documents";
+        "gl" = "cd ~/Downloads";
+        "gv" = "cd ~/Videos";
+        "gm" = "cd ~/Music";
+        "gp" = "cd ~/Pictures";
       };
     };
 
