@@ -25,7 +25,8 @@ tmux_set status-right-bg "$G0"
 tmux_set status-right-length 150
 
 RS="#[fg=$G1]"
-RS="$RS#[fg=$TC,bg=$G1]$larrow#[fg=$G1,bg=$TC] #(xkb-switch)#[fg=$TC,bg=$G1]$rarrow"
+RS="$RS$sep#[fg=$TC,bg=$G1]$larrow#[fg=$G1,bg=$TC]#S#[fg=$TC,bg=$G1]$rarrow"
+RS="$RS$sep#[fg=$TC,bg=$G1]$larrow#[fg=$G1,bg=$TC] #(xkb-switch)#[fg=$TC,bg=$G1]$rarrow"
 RS="$RS$sep#[fg=$TC,bg=$G1]$larrow#[fg=$G1,bg=$TC]󰍢 #(dunstctl-count-history)#[fg=$TC,bg=$G1]$rarrow"
 RS="$RS$sep#[fg=$TC,bg=$G1]$larrow#[fg=$G1,bg=$TC] #(date '+%H:%M %a %d %b')#[fg=$TC,bg=$G1]$rarrow"
 RS="$RS$sep#[fg=$TC,bg=$G1]$larrow#[fg=$G1,bg=$TC] #(mem-usage)#[fg=$TC,bg=$G1]$rarrow"
