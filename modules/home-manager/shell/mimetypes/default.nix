@@ -15,7 +15,7 @@ in with lib; {
       defaultApplications = {
         "video/webm" = [ "mpv.desktop" ];
         "video/x-matroska" = [ "mpv.desktop" ];
-        "application/pdf" = [ "qpdfview.desktop" ];
+        "application/pdf" = [ "org.gnome.Evince.desktop" ];
         "image/png" = [ "imv.desktop" ];
         "image/jpeg" = [ "imv.desktop" ];
       };
