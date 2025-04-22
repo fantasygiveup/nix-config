@@ -182,8 +182,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-for_window [class="org.wezfurlong.wezterm"] fullscreen enable
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -213,29 +211,11 @@ bindsym $mod+r mode "resize"
 
 # Gaps.
 default_border pixel 0
-gaps inner 2
-gaps outer 2
+gaps inner 1
+gaps outer 1
 
-bar {
-    position top
-    status_command i3blocks
-    tray_output none
-
-    colors {
-        background #eff1f5
-        statusline #eff1f5
-        separator  #bcc0cc
-        #  class            | border  |  background  |   text  |
-        #-------------------|---------|--------------|---------|
-        focused_workspace  #eff1f5 #eff1f5 #4c4f69
-        active_workspace   #eff1f5 #eff1f5 #4c4f69
-        inactive_workspace #eff1f5 #eff1f5 #4c4f69
-        urgent_workspace   #d20f39 #d20f39 #eff1f5
-    }
-}
-
-    #  class            | border  |  background  |   text  | indicator | child bolder |
-    #-------------------|---------|--------------|---------|-----------|------------- |
+#  class            | border  |  background  |   text  | indicator | child bolder |
+#-------------------|---------|--------------|---------|-----------|------------- |
 client.focused          #eff1f5 #eff1f5 #6c6f85 #2e9ef4   #4c4f69
 client.focused_inactive #eff1f5 #eff1f5 #6c6f85 #484e50   #5f676a
 client.unfocused        #eff1f5 #eff1f5 #bcc0cc #292d2e   #222222

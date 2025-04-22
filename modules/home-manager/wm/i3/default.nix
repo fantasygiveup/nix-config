@@ -105,7 +105,6 @@ in with lib; {
 
     services.picom.enable = true;
     xdg.configFile."picom/picom.conf" = { source = ./picom/picom.conf; };
-    xdg.configFile."i3blocks/config" = { source = ./i3blocks/config; };
 
     services.dunst = {
       enable = true;
