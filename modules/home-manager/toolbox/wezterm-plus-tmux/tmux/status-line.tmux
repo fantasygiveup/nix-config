@@ -19,18 +19,17 @@ sep=" "
 TC='#4c4f69'
 
 G0=$(tmux_get @tmux_status_line_g0 "#eff1f5")
-G1=$(tmux_get @tmux_status_line_g2 "#eff1f5")
+G1=$(tmux_get @tmux_status_line_g2 "#cccccc")
 
 tmux_set status-right-bg "$G0"
 tmux_set status-right-length 150
 
-RS="#[fg=$G1]"
-RS="$RS$sep#[fg=$TC,bg=$G1]$larrow#[fg=$G1,bg=$TC]#S#[fg=$TC,bg=$G1]$rarrow"
-RS="$RS$sep#[fg=$TC,bg=$G1]$larrow#[fg=$G1,bg=$TC] #(xkb-switch)#[fg=$TC,bg=$G1]$rarrow"
-RS="$RS$sep#[fg=$TC,bg=$G1]$larrow#[fg=$G1,bg=$TC]󰍢 #(dunstctl-count-history)#[fg=$TC,bg=$G1]$rarrow"
-RS="$RS$sep#[fg=$TC,bg=$G1]$larrow#[fg=$G1,bg=$TC] #(date '+%H:%M %a %d %b')#[fg=$TC,bg=$G1]$rarrow"
-RS="$RS$sep#[fg=$TC,bg=$G1]$larrow#[fg=$G1,bg=$TC] #(mem-usage)#[fg=$TC,bg=$G1]$rarrow"
-RS="$RS$sep#[fg=$TC,bg=$G1]$larrow#[fg=$G1,bg=$TC] #(cpu-usage)#[fg=$TC,bg=$G1]$rarrow"
-RS="$RS$sep#[fg=$TC,bg=$G1]$larrow#[fg=$G1,bg=$TC] $USER@#(hostname)#[fg=$TC,bg=$G1]$rarrow"
+RS="$RS#[fg=$G0,bg=$G0]$sep#[fg=$G1,bg=$G0]$larrow#[fg=$TC,bg=$G1]#S#[fg=$G1,bg=$G0]$rarrow"
+RS="$RS#[fg=$G0,bg=$G0]$sep#[fg=$G1,bg=$G0]$larrow#[fg=$TC,bg=$G1] #(xkb-switch)#[fg=$G1,bg=$G0]$rarrow"
+RS="$RS#[fg=$G0,bg=$G0]$sep#[fg=$G1,bg=$G0]$larrow#[fg=$TC,bg=$G1]󰍢 #(dunstctl-count-history)#[fg=$G1,bg=$G0]$rarrow"
+RS="$RS#[fg=$G0,bg=$G0]$sep#[fg=$G1,bg=$G0]$larrow#[fg=$TC,bg=$G1] #(date '+%H:%M %a %d %b')#[fg=$G1,bg=$G0]$rarrow"
+RS="$RS#[fg=$G0,bg=$G0]$sep#[fg=$G1,bg=$G0]$larrow#[fg=$TC,bg=$G1] #(mem-usage)#[fg=$G1,bg=$G0]$rarrow"
+RS="$RS#[fg=$G0,bg=$G0]$sep#[fg=$G1,bg=$G0]$larrow#[fg=$TC,bg=$G1] #(cpu-usage)#[fg=$G1,bg=$G0]$rarrow"
+RS="$RS#[fg=$G0,bg=$G0]$sep#[fg=$G1,bg=$G0]$larrow#[fg=$TC,bg=$G1] $USER@#(hostname)#[fg=$G1,bg=$G0]$rarrow"
 
 tmux_set status-right "$RS"
