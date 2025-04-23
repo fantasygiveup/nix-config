@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
-let cfg = config.wm.look-and-feel;
+let cfg = config.wm.appearance;
 in with lib; {
-  options.wm.look-and-feel = {
-    enable = mkEnableOption "Enable common Look And Feel settings";
+  options.wm.appearance = {
+    enable = mkEnableOption "Enable appearance settings";
   };
 
   config = mkIf cfg.enable {
@@ -31,5 +31,11 @@ in with lib; {
       "Xft.rgba" = "rgb";
       "Xft.dpi" = 120;
     };
+
+    # Process mime types. Each application should add itself to the `xdg.mimeApps.defaultApplications`.
+    # Most of the *.desktop files are placed into ~/.nix-profile/share/applications.
+    home.sessionVariables = { OPENER = "xdg-open"; };
+    xdg.mimeApps = { enable = true; };
+    home.packages = with pkgs; [ xdg-utils ];
   };
 }

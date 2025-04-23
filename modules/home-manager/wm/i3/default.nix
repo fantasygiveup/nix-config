@@ -74,7 +74,6 @@ in with lib; {
       dconf
       dconf-editor
       dunstctl-count-history
-      evince
       gnome-tweaks
       lxappearance
       mem-usage

@@ -14,7 +14,7 @@
   "toolbox/eza" = import ./toolbox/eza;
   "toolbox/fzf/notes-zsh" = import ./toolbox/fzf/notes-zsh;
 
-  "wm/look-and-feel" = import ./wm/look-and-feel;
+  "wm/appearance" = import ./wm/appearance;
   "wm/gnome3" = import ./wm/gnome3;
   "wm/i3" = import ./wm/i3;
 
@@ -28,7 +28,6 @@
   "user/home/main" = import ./user/home/main;
 
   "shell/zsh" = import ./shell/zsh;
-  "shell/mimetypes" = import ./shell/mimetypes;
   "shell/env/vars" = import ./shell/env/vars;
   "shell/starship" = import ./shell/starship;
 

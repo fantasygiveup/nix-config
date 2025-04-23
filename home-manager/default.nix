@@ -23,7 +23,7 @@
   toolbox.fzf.notes-zsh.enable = true;
   toolbox.eza.enable = true;
 
-  wm.look-and-feel.enable = true;
+  wm.appearance.enable = true;
 
   techops.dev.enable = true;
   techops.git.enable = true;
@@ -36,7 +36,6 @@
 
   shell.env.vars.enable = true;
   shell.zsh.enable = true;
-  shell.mimetypes.enable = true;
   shell.starship.enable = true;
 
   profile.browsing.enable = true;

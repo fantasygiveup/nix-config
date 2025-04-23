@@ -7,18 +7,27 @@ in with lib; {
     nixpkgs.allowedUnfree = [ "drawio" ];
 
     home.packages = with pkgs; [
+      anki
+      drawio
+      espeak # speach-module for speechd
+      evince
+      foliate # awz3 viewer
+      imv # image viewer
+      mpv
+      speechd # speech-dispatcher for foliate
       unstable.qbittorrent
       unstable.yt-dlp
       vlc
-      drawio
-      espeak # speach-module for speechd
-      foliate # awz3 viewer
-      imv # image viewer
-      anki
-      speechd # speech-dispatcher for foliate
       zk # zettelkasten cli
-      mpv
       zotero # citation tool
     ];
+
+    xdg.mimeApps.defaultApplications = {
+      "video/webm" = [ "mpv.desktop" ];
+      "video/x-matroska" = [ "mpv.desktop" ];
+      "image/png" = [ "imv.desktop" ];
+      "image/jpeg" = [ "imv.desktop" ];
+      "application/pdf" = [ "org.gnome.Evince.desktop" ];
+    };
   };
 }

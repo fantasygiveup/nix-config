@@ -16,5 +16,12 @@ in with lib; {
       unstable.teams-for-linux
       viber
     ];
+
+    xdg.mimeApps.defaultApplications = {
+      "x-scheme-handler/msteams" = [ "teams-for-linux.desktop" ];
+      "x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
+      "x-scheme-handler/tonsite" = [ "org.telegram.desktop.desktop" ];
+      "x-scheme-handler/viber" = [ "viber.desktop" ];
+    };
   };
 }
