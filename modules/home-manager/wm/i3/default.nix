@@ -85,7 +85,6 @@ in with lib; {
       x11-title
       xclip
       xfce.thunar
-      xkb-switch-i3
       xorg.xev
       xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
       xorg.xmodmap
