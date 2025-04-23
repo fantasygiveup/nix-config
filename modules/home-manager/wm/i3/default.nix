@@ -112,16 +112,17 @@ in with lib; {
         global = {
           width = 512;
           height = 128;
-          offset = 28;
-          origin = "top-center";
+          origin = "bottom-right";
+          offset = "15x25";
           transparency = 5;
-          frame_color = "#eff1f5";
-          font = "JetBrainsMono Nerd Font Mono 10";
+          frame_color = "#f0d2a7";
+          font = "JetBrainsMono Nerd Font Mono 11";
+          corner_radius = 10;
         };
 
         urgency_normal = {
-          background = "#4c4f69";
-          foreground = "#eff1f5";
+          background = "#f0d2a7";
+          foreground = "#9f6414";
           timeout = 10;
         };
       };
