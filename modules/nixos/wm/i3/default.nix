@@ -22,13 +22,13 @@ in with lib; {
               package = pkgs.numix-icon-theme-square;
             };
             cursorTheme = {
-              name = "Bibata-Original-Amber";
+              name = "Bibata-Original-Ice";
               package = pkgs.bibata-cursors;
-              size = 32;
+              size = 24;
             };
             theme = {
-              name = "Numix";
-              package = pkgs.numix-gtk-theme;
+              name = "Adwaita-dark";
+              package = pkgs.gnome-themes-extra;
             };
             extraConfig = ''
               font-name = Ubuntu 10

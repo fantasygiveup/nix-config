@@ -37,17 +37,17 @@ in with lib; {
         size = 11;
       };
       cursorTheme = {
-        name = "Bibata-Original-Amber";
+        name = "Bibata-Original-Ice";
         package = pkgs.bibata-cursors;
-        size = 32;
+        size = 24;
       };
     };
 
     home.pointerCursor = {
       x11.enable = true;
-      name = "Bibata-Original-Amber";
+      name = "Bibata-Original-Ice";
       package = pkgs.bibata-cursors;
-      size = 32;
+      size = 24;
       gtk.enable = true;
     };
 

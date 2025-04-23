@@ -13,8 +13,8 @@ in with lib; {
         package = pkgs.numix-icon-theme-square;
       };
       theme = {
-        name = "Numix";
-        package = pkgs.numix-gtk-theme;
+        name = "Adwaita";
+        package = pkgs.gnome-themes-extra;
       };
     };
 
