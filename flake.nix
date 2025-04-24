@@ -84,6 +84,15 @@
           };
           modules = [ ./nixos/hosts/st123/configuration-gnome3.nix ];
         };
+
+        # Run 'make nixos st123+i3'.
+        "st123+i3" = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs users;
+            hostname = "st123";
+          };
+          modules = [ ./nixos/hosts/st123/configuration-i3.nix ];
+        };
       };
 
       # Standalone home-manager configuration entrypoint
@@ -108,6 +117,13 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users; };
           modules = [ ./home-manager/home-gnome3.nix ];
+        };
+
+        # Run 'make home idanko@st123+i3'.
+        "idanko@st123+i3" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs users; };
+          modules = [ ./home-manager/home-i3.nix ];
         };
       };
     };
