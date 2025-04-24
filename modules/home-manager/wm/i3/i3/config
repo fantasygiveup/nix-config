@@ -107,8 +107,7 @@ bindsym $mod+Shift+Right move right
 # split in vertical orientation
 # bindsym $mod+v split v
 
-# NOTE: this keybinding conflicts with the terminal's alt-f 'move word forward' keybinding.
-# bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -172,6 +171,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 for_window [class="Lxappearance"] floating enable
+for_window [class="org.wezfurlong.wezterm"] fullscreen enable
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -208,8 +208,27 @@ default_floating_border pixel 0
 gaps inner 1
 gaps outer 1
 
-#  class            | border  |  background  |   text  | indicator | child bolder |
-#-------------------|---------|--------------|---------|-----------|------------- |
+bar {
+    position top
+    status_command i3blocks
+    tray_output none
+    font pango:JetBrainsMono Nerd Font Mono Bold 0
+
+    colors {
+        background #eff1f5
+        statusline #eff1f5
+        separator  #bcc0cc
+        #  class            | border  |  background  |   text  |
+        #-------------------|---------|--------------|---------|
+        focused_workspace  #eff1f5 #eff1f5 #4c4f69
+        active_workspace   #eff1f5 #eff1f5 #4c4f69
+        inactive_workspace #eff1f5 #eff1f5 #4c4f69
+        urgent_workspace   #d20f39 #d20f39 #eff1f5
+    }
+}
+
+    #  class            | border  |  background  |   text  | indicator | child bolder |
+    #-------------------|---------|--------------|---------|-----------|------------- |
 client.focused          #eff1f5 #eff1f5 #6c6f85 #2e9ef4   #4c4f69
 client.focused_inactive #eff1f5 #eff1f5 #6c6f85 #484e50   #5f676a
 client.unfocused        #eff1f5 #eff1f5 #bcc0cc #292d2e   #222222

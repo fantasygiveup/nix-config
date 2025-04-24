@@ -1,0 +1,43 @@
+full_text=
+separator=false
+
+[wintitle]
+command=x11-title 55
+color=#4c4f69
+interval=persist
+
+[separator]
+
+[keymap]
+command=cat <(xkb-switch) <(xkb-switch -W) | xargs -I % echo "<span foreground=\"#4c4f69\"><span background=\"#4c4f69\" color=\"#eff1f5\"> %</span></span>"
+interval=persist
+markup=pango
+
+[notify]
+command=printf "<span foreground=\"#4c4f69\"><span background=\"#4c4f69\" color=\"#eff1f5\">󰍢 %s</span></span>\n" "$(dunstctl-count-history)"
+interval=10
+markup=pango
+
+[datetime]
+command=printf "<span foreground=\"#4c4f69\"><span background=\"#4c4f69\" color=\"#eff1f5\"> %s</span></span>\n" "$(date '+%H:%M %a %d %b')"
+interval=60
+markup=pango
+
+[memory]
+command=printf "<span foreground=\"#4c4f69\"><span background=\"#4c4f69\" color=\"#eff1f5\"> %s</span></span>\n" "$(mem-usage)"
+interval=5
+markup=pango
+
+[cpu]
+command=cpu-usage | xargs -I % echo "<span foreground=\"#4c4f69\"><span background=\"#4c4f69\" color=\"#eff1f5\"> %</span></span>"
+interval=persist
+markup=pango
+
+[user]
+command=printf "<span foreground=\"#4c4f69\"><span background=\"#4c4f69\" color=\"#eff1f5\"> %s@%s</span></span>\n" "$(lslogins | grep $USER | awk '{print $2}')" "$(hostname)"
+interval=once
+markup=pango
+
+[separator]
+
+# vim: set ft=conf:
