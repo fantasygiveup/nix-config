@@ -70,6 +70,8 @@ in with lib; {
       autotiling
       bemenu
       cliphist
+      i3lock
+      i3blocks
       cpu-usage
       dconf
       dconf-editor
