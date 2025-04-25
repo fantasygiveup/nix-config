@@ -9,6 +9,7 @@ in with lib; {
     programs.zsh = {
       enable = true;
       autosuggestion.enable = true;
+      history.ignoreAllDups = true; # remove old duplicated entries
       syntaxHighlighting = { enable = true; };
       defaultKeymap = "emacs";
       shellAliases = {
