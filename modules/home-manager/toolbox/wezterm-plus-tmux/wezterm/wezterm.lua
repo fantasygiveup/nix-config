@@ -117,6 +117,10 @@ wezterm.on("update-right-status", function(window, pane)
 	window:set_config_overrides(overrides)
 end)
 
+wezterm.on("format-window-title", function ()
+	return "wezterm"
+end)
+
 -- Let tmux handle everything.
 config.disable_default_key_bindings = true
 config.keys = {

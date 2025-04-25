@@ -29,7 +29,7 @@ set $lock_screen i3lock --nofork
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 # TODO(idanko): use generic font variable.
-font pango:JetBrainsMono Nerd Font Mono Bold 11
+font pango:JetBrainsMono Nerd Font Mono Bold 0
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -171,7 +171,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 for_window [class="Lxappearance"] floating enable
-for_window [class="org.wezfurlong.wezterm"] fullscreen enable
+for_window [title="wezterm"] gaps outer current set 1; gaps inner current set 1
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -205,14 +205,14 @@ default_border pixel 0
 default_floating_border pixel 0
 
 # Gaps.
-gaps inner 1
-gaps outer 1
+gaps inner 0
+gaps outer 0
 
 bar {
     position top
     status_command i3blocks
     tray_output none
-    font pango:JetBrainsMono Nerd Font Mono Bold 0
+    font pango:JetBrainsMono Nerd Font Mono Bold 11
 
     colors {
         background #eff1f5

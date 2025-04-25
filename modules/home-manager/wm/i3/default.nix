@@ -130,5 +130,21 @@ in with lib; {
 
     # Logo.
     home.file.".face".source = ./icons/kitty;
+
+    # React to i3 events.
+    systemd.user.services.i3-goodies = {
+      Unit = { Description = "Listen and react to i3 events"; };
+      Service = {
+        ExecStart = ''
+          ${(pkgs.python3.withPackages (ppkgs: [ ppkgs.i3ipc ]))}/bin/python3 ${
+            ./i3-goodies.py
+          }
+        '';
+        Restart = "always";
+        TimeoutSec = 3;
+        RestartSec = 3;
+      };
+      Install = { WantedBy = [ "default.target" ]; };
+    };
   };
 }
