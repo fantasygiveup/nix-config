@@ -14,8 +14,8 @@ interval=60
 markup=pango
 
 [notify]
-command=printf "<span foreground=\"#cccccc\"><span background=\"#cccccc\" color=\"#4c4f69\">󰍢 %s</span></span>\n" "$(dunstctl-count-history)"
-interval=10
+command=i3-notification-status i3blocks
+interval=1
 markup=pango
 
 [separator]

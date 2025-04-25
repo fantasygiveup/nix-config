@@ -8,4 +8,5 @@ pkgs: rec {
   mem-usage = pkgs.callPackage ./mem-usage { };
   dunstctl-count-history = pkgs.callPackage ./dunstctl-count-history { };
   x11-title = pkgs.callPackage ./x11-title { };
+  i3-notification-status = pkgs.callPackage ./i3-notification-status { };
 }

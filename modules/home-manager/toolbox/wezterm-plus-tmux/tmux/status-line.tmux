@@ -20,14 +20,14 @@ TC='#eff1f5'
 
 G0=$(tmux_get @tmux_status_line_g0 "#4c4f69")
 G1=$(tmux_get @tmux_status_line_g1 "#cccccc")
-G2=$(tmux_get @tmux_status_line_g2 "#9f6414")
-G3=$(tmux_get @tmux_status_line_g2 "#f0d2a7")
+G2=$(tmux_get @tmux_status_line_g2 "#0a4ed3")
+G3=$(tmux_get @tmux_status_line_g3 "#9dbff9")
 
 tmux_set status-right-bg "$G0"
 tmux_set status-right-length 150
 
 RS="$RS#[fg=$TC,bg=$TC]$sep#[fg=$G1,bg=$TC]$larrow#[fg=$G0,bg=$G1] #(date '+%H:%M %a %d %b')#[fg=$G1,bg=$TC]$rarrow"
-RS="$RS#[fg=$TC,bg=$TC]$sep#[fg=$G1,bg=$TC]$larrow#[fg=$G0,bg=$G1]󰍢 #(dunstctl-count-history)#[fg=$G1,bg=$TC]$rarrow"
+RS="$RS#[fg=$TC,bg=$TC]$sep#(i3-notification-status tmux)"
 RS="$RS#[fg=$TC,bg=$TC]$sep#[fg=$G3,bg=$TC]$larrow#[fg=$G2,bg=$G3]#S#[fg=$G3,bg=$TC]$rarrow"
 
 tmux_set status-right "$RS"

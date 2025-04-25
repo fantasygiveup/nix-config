@@ -73,6 +73,7 @@ in with lib; {
       i3lock
       i3blocks
       blueberry
+      i3-notification-status
       cpu-usage
       dconf
       dconf-editor
