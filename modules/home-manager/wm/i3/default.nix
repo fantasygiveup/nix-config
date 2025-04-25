@@ -72,6 +72,7 @@ in with lib; {
       cliphist
       i3lock
       i3blocks
+      blueberry
       cpu-usage
       dconf
       dconf-editor
