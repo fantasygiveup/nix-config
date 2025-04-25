@@ -61,7 +61,7 @@ in with lib; {
       unstable.erlang
       vscode-langservers-extracted # cssls
       yamllint
-      yapf # python formatter # TODO: inegrate with neovim
+      yapf
       yarn
       yq # jq but for yaml
     ];
