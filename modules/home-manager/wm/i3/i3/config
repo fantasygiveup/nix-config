@@ -128,16 +128,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "1: "
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8: "
+set $ws9 "9: "
+set $ws10 "10: "
 
 # switch to workspace
 bindsym $mod+y workspace number $ws1
@@ -211,6 +211,7 @@ gaps outer 0
 
 bar {
     position top
+    strip_workspace_numbers yes
     status_command i3blocks
     tray_output none
     font pango:JetBrainsMono Nerd Font Mono Bold 11
@@ -221,10 +222,10 @@ bar {
         separator  #bcc0cc
         #  class            | border  |  background  |   text  |
         #-------------------|---------|--------------|---------|
-        focused_workspace  #eff1f5 #eff1f5 #4c4f69
-        active_workspace   #eff1f5 #eff1f5 #4c4f69
-        inactive_workspace #eff1f5 #eff1f5 #4c4f69
-        urgent_workspace   #d20f39 #d20f39 #eff1f5
+        focused_workspace  #eff1f5 #eff1f5 #d20f39
+        active_workspace   #eff1f5 #eff1f5 #d20f39
+        inactive_workspace #eff1f5 #eff1f5 #d20f39
+        urgent_workspace   #eff1f5 #eff1f5 #d20f39
     }
 }
 
