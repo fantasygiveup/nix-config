@@ -4,9 +4,6 @@ pkgs: rec {
   bemenu-commander = pkgs.callPackage ./bemenu-commander { };
   rofi-commander = pkgs.callPackage ./rofi-commander { };
   erun = pkgs.callPackage ./erun { };
-  cpu-usage = pkgs.callPackage ./cpu-usage { };
-  mem-usage = pkgs.callPackage ./mem-usage { };
-  dunstctl-count-history = pkgs.callPackage ./dunstctl-count-history { };
   x11-title = pkgs.callPackage ./x11-title { };
   i3-notification-status = pkgs.callPackage ./i3-notification-status { };
 }

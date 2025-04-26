@@ -69,18 +69,15 @@ in with lib; {
       (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Ubuntu" ]; })
       autotiling
       bemenu
-      cliphist
-      i3lock
-      i3blocks
       blueberry
-      i3-notification-status
-      cpu-usage
+      cliphist
       dconf
       dconf-editor
-      dunstctl-count-history
       gnome-tweaks
+      i3-notification-status
+      i3blocks
+      i3lock
       lxappearance
-      mem-usage
       nitrogen
       rofi
       rofi-commander
