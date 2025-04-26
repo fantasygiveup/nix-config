@@ -17,7 +17,7 @@ in with lib; {
         ifs = "\\n";
         scrolloff = 10;
         icons = true;
-        previewer = "pistol";
+        previewer = "${pkgs.pistol}/bin/pistol";
         info = "size:time";
         hidden = true;
         ratios = [ 1 1 ];
@@ -56,6 +56,7 @@ in with lib; {
       };
 
       keybindings = {
+        # XXX(idanko): <a-w> conflict with i3
         "<a-w>" = "copy-clipboard";
         "<c-w>" = "copy-clipboard --all";
         "." = "set hidden!";
@@ -67,10 +68,9 @@ in with lib; {
         "D" = "delete";
         "<c-c>" = "reload";
         "<c-g>" = "fzf-project";
-        "," = null;
-        ",gg" = "$lazygit";
+        "gl" = "\$${pkgs.lazygit}/bin/lazygit";
         "gd" = "cd ~/Documents";
-        "gl" = "cd ~/Downloads";
+        "gw" = "cd ~/Downloads";
         "gv" = "cd ~/Videos";
         "gm" = "cd ~/Music";
         "gp" = "cd ~/Pictures";
@@ -78,9 +78,5 @@ in with lib; {
     };
 
     xdg.configFile."lf/icons".source = ./icons;
-
-    # Pistol - file previewer.
-    # Lazygit - tui git.
-    home.packages = [ pkgs.pistol pkgs.lazygit ];
   };
 }

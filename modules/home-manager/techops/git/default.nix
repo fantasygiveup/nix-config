@@ -80,9 +80,5 @@ in with lib; {
         }
       ];
     };
-
-    programs.zsh.shellAliases = { lg = "${pkgs.lazygit}/bin/lazygit"; };
-
-    home.packages = [ pkgs.lazygit ];
   };
 }

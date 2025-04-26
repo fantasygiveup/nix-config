@@ -15,11 +15,9 @@ in with lib; {
       extraConfig = "";
     };
 
-    # TODO: revisit plugins.
+    # TODO: revisit the plugin manager.
     xdg.configFile."tmux/tmux.conf".source = ./tmux/tmux.conf;
     xdg.configFile."tmux/status-line.tmux".source = ./tmux/status-line.tmux;
     programs.tmux.enable = true;
-
-    home.packages = with pkgs; [ dunstctl-count-history ];
   };
 }
