@@ -29,6 +29,7 @@ in with lib; {
       "Xft.hinting" = true;
       "Xft.antialias" = true;
       "Xft.rgba" = "rgb";
+      # TODO(idanko): try 128 for st123 machine
       "Xft.dpi" = 120;
     };
 
