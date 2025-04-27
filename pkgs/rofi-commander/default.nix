@@ -15,10 +15,12 @@ stdenv.mkDerivation {
       wrapProgram "$i" \
         --prefix PATH : "${
           lib.makeBinPath [
-            pkgs.rofi
             pkgs.cliphist
+            pkgs.dunst
             pkgs.gnupg
+            pkgs.jq
             pkgs.libnotify
+            pkgs.rofi
             pkgs.xclip
           ]
         }"

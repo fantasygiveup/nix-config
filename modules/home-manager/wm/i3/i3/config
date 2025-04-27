@@ -17,7 +17,7 @@ set $menu rofi-commander commands
 set $clipboard_history rofi-commander cliphist
 set $clipboard_ref rofi-commander ref
 set $clipboard_ref_data rofi-commander ref-data
-set $show_notifications dunstctl history-pop
+set $show_notifications rofi-commander notifications-history
 set $clear_notifications notify-send 'Clearing notifications'; sleep 1; dunstctl close-all; dunstctl history-clear
 set $toggle_notifications notify-send 'Toggling notifications'; sleep 1; dunstctl set-paused toggle; notify-send 'Toggling notifications'
 set $lock_screen i3lock --nofork

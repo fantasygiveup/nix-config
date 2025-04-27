@@ -33,18 +33,14 @@ ref_data() {
 	eval "$clipboard_copy_command" <<<"$data"
 }
 
+notifications_history() {
+	dunstctl history | jq -r '.data[][] | "\(.summary.data) — \(.body.data)" | gsub("\n"; " · ")' | rofi -dmenu -p "Notifications"
+}
+
 case "$1" in
-commands)
-	rofi -modi drun,run -show drun
-	;;
-cliphist)
-	cliphist list | rofi -dmenu | cliphist decode 2>/dev/null |
-		eval "$clipboard_copy_command"
-	;;
-ref)
-	ref "${ref_data_file}"
-	;;
-ref-data)
-	ref_data
-	;;
+commands) rofi -modi drun,run -show drun ;;
+cliphist) cliphist list | rofi -dmenu | cliphist decode 2>/dev/null | eval "$clipboard_copy_command" ;;
+notifications-history) notifications_history ;;
+ref) ref "${ref_data_file}" ;;
+ref-data) ref_data ;;
 esac
