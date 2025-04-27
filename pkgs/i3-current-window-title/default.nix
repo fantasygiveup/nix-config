@@ -1,6 +1,6 @@
 { lib, stdenv, pkgs, }:
 stdenv.mkDerivation {
-  pname = "x11-title";
+  pname = "i3-current-window-title";
   version = "1.0.0";
   # Avoid the "> variable $src or $srcs should point to the source" error.
   dontUnpack = true;
@@ -9,13 +9,15 @@ stdenv.mkDerivation {
     runHook preInstall
 
     mkdir -p "$out/bin"
-    mkdir -p "$out/opt/x11-title"
-    substituteAll "${./x11-title.sh}" "$out/bin/x11-title"
+    mkdir -p "$out/opt/i3-current-window-title"
+    substituteAll "${
+      ./i3-current-window-title.sh
+    }" "$out/bin/i3-current-window-title"
     chmod a+x "$out/bin"/*
     for i in $out/bin/*; do
       wrapProgram "$i" \
         --prefix PATH : "${
-          lib.makeBinPath [ pkgs.coreutils pkgs.bash pkgs.xorg.xprop ]
+          lib.makeBinPath [ pkgs.coreutils pkgs.bash pkgs.i3 ]
         }"
     done
 
@@ -24,7 +26,7 @@ stdenv.mkDerivation {
 
   meta = {
     description =
-      "Print the focused window's title at regular intervals for X11";
+      "Print the focused window's title with metadata at regular intervals for i3wm";
     license = lib.licenses.mit;
     platforms = lib.platforms.all;
     homepage = "https://github.com/fantasygiveup/nix-config";

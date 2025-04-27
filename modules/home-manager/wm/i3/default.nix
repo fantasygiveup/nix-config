@@ -74,6 +74,7 @@ in with lib; {
       dconf
       dconf-editor
       gnome-tweaks
+      i3-current-window-title
       i3-notification-status
       i3blocks
       i3lock
@@ -82,7 +83,6 @@ in with lib; {
       rofi
       rofi-commander
       sysstat
-      x11-title
       xclip
       xfce.thunar
       xorg.xev

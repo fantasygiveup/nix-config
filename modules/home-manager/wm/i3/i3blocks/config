@@ -2,7 +2,7 @@ full_text=
 separator=false
 
 [wintitle]
-command=x11-title 55
+command=i3-current-window-title
 color=#4c4f69
 interval=persist
 

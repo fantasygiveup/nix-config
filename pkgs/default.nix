@@ -4,6 +4,6 @@ pkgs: rec {
   bemenu-commander = pkgs.callPackage ./bemenu-commander { };
   rofi-commander = pkgs.callPackage ./rofi-commander { };
   erun = pkgs.callPackage ./erun { };
-  x11-title = pkgs.callPackage ./x11-title { };
+  i3-current-window-title = pkgs.callPackage ./i3-current-window-title { };
   i3-notification-status = pkgs.callPackage ./i3-notification-status { };
 }
