@@ -120,6 +120,7 @@ bindsym $mod+Shift+w layout tabbed
 bindsym $mod+Shift+e layout toggle split
 
 # toggle tiling / floating
+# TODO: add border for floating windows.
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows

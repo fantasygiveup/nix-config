@@ -132,15 +132,16 @@ in with lib; {
     };
 
     # Logo.
+    # XXX: does not work for i3. Check why.
     home.file.".face".source = ./icons/kitty;
 
     # React to i3 events.
-    systemd.user.services.i3-goodies = {
+    systemd.user.services.i3-hooks = {
       Unit = { Description = "Listen and react to i3 events"; };
       Service = {
         ExecStart = ''
           ${(pkgs.python3.withPackages (ppkgs: [ ppkgs.i3ipc ]))}/bin/python3 ${
-            ./i3-goodies.py
+            ./i3-hooks.py
           }
         '';
         Restart = "always";
