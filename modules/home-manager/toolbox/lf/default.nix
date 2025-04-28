@@ -56,7 +56,6 @@ in with lib; {
       };
 
       keybindings = {
-        # XXX(idanko): <a-w> conflict with i3
         "<a-w>" = "copy-clipboard";
         "<c-w>" = "copy-clipboard --all";
         "." = "set hidden!";
