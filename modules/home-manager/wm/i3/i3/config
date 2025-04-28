@@ -73,8 +73,6 @@ bindsym $mod+Shift+n exec --no-startup-id "$show_notifications"
 bindsym $mod+Shift+m exec --no-startup-id "$clear_notifications"
 bindsym $mod+Shift+comma exec --no-startup-id "$toggle_notifications"
 
-bindsym $mod+Shift+t exec --no-startup-id "notify-send $(i3-msg -t get_tree | jq -r '.nodes[].nodes[].nodes[].nodes[0] | select(.focused == true) | .name')"
-
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
