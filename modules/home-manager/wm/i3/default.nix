@@ -79,13 +79,15 @@ in with lib; {
       i3blocks
       i3lock
       lxappearance
+      maim # x11 screen shot cli tool
       nitrogen
       rofi
       rofi-commander
       sysstat
       xclip
+      xdotool # is used in conjunction with maim
       xfce.thunar
-      xorg.xev
+      xorg.xev # x11 input analyzer
       xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
       xorg.xmodmap
       xss-lock
