@@ -36,7 +36,7 @@ in with lib; {
             indicators =
               [ "~host" "~spacer" "~clock" "~spacer" "~session" "~power" ];
           };
-          background = ./wallpapers/light/0001.jpg;
+          background = ./wallpapers/light/0080.jpg;
         };
       };
 
