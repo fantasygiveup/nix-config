@@ -178,7 +178,6 @@ bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 for_window [class="Lxappearance"] floating enable
 for_window [class="Blueberry.py"] floating enable
-for_window [title="wezterm"] gaps outer current set 1; gaps inner current set 1
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
