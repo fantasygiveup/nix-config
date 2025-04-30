@@ -13,7 +13,8 @@
   sapphire: #209fb5;
   blue: #1e66f5;
   lavender: #7287fd;
-  text: #4c4f69;
+  // NOTE: "text" color is fabricated, original one is 4c4f69
+  text: #9f6414;
   subtext1: #5c5f77;
   subtext0: #6c6f85;
   overlay2: #7c7f93;
@@ -22,7 +23,9 @@
   surface2: #acb0be;
   surface1: #bcc0cc;
   surface0: #ccd0da;
-  base: #eff1f5;
-  mantle: #e6e9ef;
+  // NOTE: "base" color is fabricated, original one is eff1f5
+  base: #f0d2a7;
+  // NOTE: "base" color is fabricated, original one is e6e9ef
+  mantle: #f7ead3;
   crust: #dce0e8;
   }
