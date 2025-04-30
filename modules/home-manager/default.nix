@@ -1,5 +1,5 @@
 {
-  "nixpkgs-goodies" = import ../nixpkgs-goodies;
+  "common" = import ../common;
 
   "services/cliphist-clipboard" = import ./services/cliphist-clipboard;
   "services/gpg" = import ./services/gpg;
@@ -31,7 +31,7 @@
   "shell/env/vars" = import ./shell/env/vars;
   "shell/starship" = import ./shell/starship;
 
-  # TODO: move modules above to profiles.
+  # TODO: move the modules above to profiles.
   "profile/browsing" = import ./profile/browsing;
   "profile/mailing" = import ./profile/mailing;
   "profile/social" = import ./profile/social;

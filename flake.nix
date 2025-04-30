@@ -41,11 +41,6 @@
       # Accessible through 'nix build', 'nix shell', etc
       packages =
         forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-      # Formatter for your nix files, available through 'nix fmt'
-      # Other options beside 'alejandra' include 'nixpkgs-fmt'
-      formatter =
-        forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-
       # Your custom packages and modifications, exported as overlays
       overlays = import ./overlays { inherit inputs; };
       # Reusable nixos modules you might want to export
@@ -91,7 +86,10 @@
             inherit inputs outputs users;
             hostname = "st123";
           };
-          modules = [ ./nixos/hosts/st123/configuration-i3.nix ];
+          modules = [
+            ./nixos/hosts/st123/configuration-i3.nix
+            ./modules/common/colors/catppucin_latte.nix
+          ];
         };
       };
 
@@ -109,7 +107,10 @@
         "idanko@st321+i3" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users; };
-          modules = [ ./home-manager/home-i3.nix ];
+          modules = [
+            ./home-manager/home-i3.nix
+            ./modules/common/colors/catppucin_latte.nix
+          ];
         };
 
         # Run 'make home idanko@st123+gnome3'.

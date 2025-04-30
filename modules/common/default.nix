@@ -5,7 +5,7 @@ in {
     type = lib.types.listOf lib.types.str;
     default = [ ];
     description = ''
-      Allows for  unfree packages by their name.
+      Allows for unfree packages by their name.
     '';
   };
 

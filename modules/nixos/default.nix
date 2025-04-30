@@ -1,5 +1,5 @@
 {
-  "nixpkgs-goodies" = import ../nixpkgs-goodies;
+  "common" = import ../common;
 
   "misc/fonts/core" = import ./misc/fonts/core;
 

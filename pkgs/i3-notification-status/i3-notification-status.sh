@@ -6,13 +6,8 @@ rarrow=""
 larrow=""
 
 # Match tmux 'status-line'
-TC='#eff1f5'
-G0="#4c4f69"
-G1="#cccccc"
-G4="#9f6414"
-G5="#f0d2a7"
-G6="#bc0d33"
-G7="#f8a8b9"
+mode="$1"
+shift
 
 tmux_pattern="#[fg=%s,bg=%s]$larrow#[fg=%s,bg=%s] 󰍢 #[fg=%s,bg=%s]$rarrow"
 
@@ -21,11 +16,11 @@ tmux_widget() {
 	notifications_count="$(dunstctl count history)"
 
 	if [[ -n "$urgent" ]]; then
-		printf "$tmux_pattern" "$G7" "$TC" "$G6" "$G7" "$G7" "$TC"
+		printf "$tmux_pattern" "$2" "$1" "$3" "$2" "$2" "$1"
 	elif [[ "$notifications_count" -gt 0 ]]; then
-		printf "$tmux_pattern" "$G5" "$TC" "$G4" "$G5" "$G5" "$TC"
+		printf "$tmux_pattern" "$4" "$1" "$5" "$4" "$4" "$1"
 	else
-		printf "$tmux_pattern" "$G1" "$TC" "$G0" "$G1" "$G1" "$TC"
+		printf "$tmux_pattern" "$6" "$1" "$7" "$6" "$6" "$1"
 	fi
 }
 
@@ -36,16 +31,16 @@ i3blocks_widget() {
 	notifications_count="$(dunstctl count history)"
 
 	if [[ -n "$urgent" ]]; then
-		printf "$i3blocks_pattern" "$G7" "$G7" "$G6"
+		printf "$i3blocks_pattern" "$1" "$1" "$2"
 	elif [[ "$notifications_count" -gt 0 ]]; then
-		printf "$i3blocks_pattern" "$G5" "$G5" "$G4"
+		printf "$i3blocks_pattern" "$3" "$3" "$4"
 	else
-		printf "$i3blocks_pattern" "$G1" "$G1" "$G0"
+		printf "$i3blocks_pattern" "$5" "$5" "$6"
 	fi
 }
 
-case "$1" in
-tmux) tmux_widget ;;
-i3blocks) i3blocks_widget ;;
+case "$mode" in
+tmux) tmux_widget $@ ;;
+i3blocks) i3blocks_widget $@ ;;
 *) echo "no target is provided" >&2 ;;
 esac

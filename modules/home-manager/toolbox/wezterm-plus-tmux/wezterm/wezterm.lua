@@ -21,51 +21,51 @@ config.inactive_pane_hsb = { saturation = 0.9, brightness = 0.93 }
 
 -- Catppuccin latte theme.
 config.colors = {
-  foreground = "#4c4f69",
-  background = "#eff1f5",
-  cursor_bg = "#4c4f69",
-  cursor_fg = "#eff1f5",
-  split = "#dce0e8",
-  selection_bg = "#4c4f69",
-  selection_fg = "#eff1f5",
+  foreground = "@fg0@",
+  background = "@bg0@",
+  cursor_bg = "@fg0@",
+  cursor_fg = "@bg0@",
+  split = "@a7@",
+  selection_bg = "@fg0@",
+  selection_fg = "@bg0@",
 
   ansi = {
-    "#bcc0cc",
-    "#d20f39",
-    "#40a02b",
-    "#df8e1d",
-    "#1e66f5",
-    "#ea76cb",
-    "#04a5e5",
-    "#dce0e8",
+    "@a0@",
+    "@a1@",
+    "@a2@",
+    "@a3@",
+    "@a4@",
+    "@a5@",
+    "@a6@",
+    "@a7@",
   },
   brights = {
-    "#bcc0cc",
-    "#de0332",
-    "#37ab20",
-    "#ec8e10",
-    "#1462ff",
-    "#f26ecd",
-    "#0090e9",
-    "#434872",
+    "@a8@",
+    "@a9@",
+    "@a10@",
+    "@a11@",
+    "@a12@",
+    "@a13@",
+    "@a14@",
+    "@a15@",
   },
   tab_bar = {
-    background = "#eff1f5",
+    background = "@bg0@",
     -- Hide + button sign.
     new_tab = {
-      fg_color = "#eff1f5",
-      bg_color = "#eff1f5",
+      fg_color = "@bg0@",
+      bg_color = "@bg0@",
     },
     new_tab_hover = {
-      fg_color = "#eff1f5",
-      bg_color = "#eff1f5",
+      fg_color = "@bg0@",
+      bg_color = "@bg0@",
     },
   },
 }
 
 config.window_frame = {
-  active_titlebar_bg = "#bcc0cc",
-  inactive_titlebar_bg = "#bcc0cc",
+  active_titlebar_bg = "@a0@",
+  inactive_titlebar_bg = "@a0@",
 }
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)

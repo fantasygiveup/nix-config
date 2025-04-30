@@ -1,19 +1,19 @@
 { config, lib, pkgs, ... }:
-let cfg = config.wm.i3;
+let
+  cfg = config.wm.i3;
+  color = config.color;
+
 in with lib; {
   options.wm.i3 = {
     enable = mkEnableOption "Enable i3 Window Manager Settings";
   };
 
   config = mkIf cfg.enable {
-    xdg.configFile."i3/config" = {
-      source = ./i3/config;
-      # onChange = ''
-      #   ${pkgs.i3}/bin/i3-msg reload restart;
-      # '';
-    };
-
-    # wm.gnome3.enable = true;
+    xdg.configFile."i3/config".source =
+      pkgs.substituteAll (mergeAttrs { src = ./i3/config; } color);
+    # onChange = ''
+    #   ${pkgs.i3}/bin/i3-msg reload restart;
+    # '';
 
     # Styling
     fonts = {
@@ -98,16 +98,17 @@ in with lib; {
     xdg.configFile."rofi/catppuccin-default.rasi" = {
       source = ./rofi/catppuccin-default.rasi;
     };
-    xdg.configFile."rofi/catppuccin-mocha.rasi" = {
-      source = ./rofi/catppuccin-mocha.rasi;
-    };
-    xdg.configFile."rofi/catppuccin-latte.rasi" = {
-      source = ./rofi/catppuccin-latte.rasi;
+    xdg.configFile."rofi/catppuccin-color.rasi" = {
+      source = mkMerge [
+        (mkIf (color.variant == "light") ./rofi/catppuccin-latte.rasi)
+        (mkIf (color.variant == "dark") ./rofi/catppuccin-mocha.rasi)
+      ];
     };
 
     services.picom.enable = true;
-    xdg.configFile."picom/picom.conf" = { source = ./picom/picom.conf; };
-    xdg.configFile."i3blocks/config" = { source = ./i3blocks/config; };
+    xdg.configFile."picom/picom.conf".source = ./picom/picom.conf;
+    xdg.configFile."i3blocks/config".source =
+      pkgs.substituteAll (mergeAttrs { src = ./i3blocks/config; } color);
 
     services.dunst = {
       enable = true;
@@ -118,14 +119,14 @@ in with lib; {
           origin = "bottom-right";
           offset = "15x25";
           transparency = 5;
-          frame_color = "#f0d2a7";
+          frame_color = "${color.g5}";
           font = "JetBrainsMono Nerd Font Mono 11";
           corner_radius = 10;
         };
 
         urgency_normal = {
-          background = "#f0d2a7";
-          foreground = "#9f6414";
+          background = "${color.g5}";
+          foreground = "${color.g4}";
           timeout = 10;
         };
       };
