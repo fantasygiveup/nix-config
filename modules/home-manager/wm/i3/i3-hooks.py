@@ -14,7 +14,7 @@ def on_window_focus(i3, event):
     title = focused_window.window_title
 
     if title == win_title:
-        i3.command("bar mode hide")
+        i3.command("bar mode invisible")
     else:
         # If any of `win_title` is found on the current workspace, hide the dock.
         focused_workspace = i3.get_tree().find_focused().workspace()
@@ -26,7 +26,7 @@ def on_window_focus(i3, event):
         maybe_title_win = len(filter_titles) > 0
 
         if maybe_title_win:
-            i3.command("bar mode hide")
+            i3.command("bar mode invisible")
         else:
             i3.command("bar mode dock")
 
