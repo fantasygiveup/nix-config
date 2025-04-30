@@ -88,7 +88,7 @@
           };
           modules = [
             ./nixos/hosts/st123/configuration-i3.nix
-            ./modules/common/colors/catppucin_latte.nix
+            ./modules/common/colors/catppuccin_latte.nix
           ];
         };
       };
@@ -109,7 +109,7 @@
           extraSpecialArgs = { inherit inputs outputs users; };
           modules = [
             ./home-manager/home-i3.nix
-            ./modules/common/colors/catppucin_latte.nix
+            ./modules/common/colors/catppuccin_latte.nix
           ];
         };
 

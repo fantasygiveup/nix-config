@@ -94,16 +94,16 @@ in with lib; {
     ];
 
     # Rofi.
-    xdg.configFile."rofi/config.rasi" = { source = ./rofi/config.rasi; };
-    xdg.configFile."rofi/catppuccin-default.rasi" = {
-      source = ./rofi/catppuccin-default.rasi;
-    };
     xdg.configFile."rofi/catppuccin-color.rasi" = {
       source = mkMerge [
         (mkIf (color.variant == "light") ./rofi/catppuccin-latte.rasi)
         (mkIf (color.variant == "dark") ./rofi/catppuccin-mocha.rasi)
       ];
     };
+    xdg.configFile."rofi/catppuccin-default.rasi" = {
+      source = ./rofi/catppuccin-default.rasi;
+    };
+    xdg.configFile."rofi/config.rasi" = { source = ./rofi/config.rasi; };
 
     services.picom.enable = true;
     xdg.configFile."picom/picom.conf".source = ./picom/picom.conf;
