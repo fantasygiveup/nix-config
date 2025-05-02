@@ -113,6 +113,16 @@
           ];
         };
 
+        # Run 'make home idanko@st321+i3'.
+        "idanko@st321+i3+dark" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs users; };
+          modules = [
+            ./home-manager/home-i3.nix
+            ./modules/common/colors/catppuccin_mocha.nix
+          ];
+        };
+
         # Run 'make home idanko@st123+gnome3'.
         "idanko@st123+gnome3" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;

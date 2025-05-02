@@ -32,7 +32,7 @@
       g7 = "#f8a8b9";
     };
     description = ''
-      Catppuccin Latte is a light theme variant.
+      Catppuccin Latte is the light theme variant.
     '';
   };
 }
