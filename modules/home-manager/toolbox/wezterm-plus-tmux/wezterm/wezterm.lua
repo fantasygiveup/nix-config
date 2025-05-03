@@ -19,7 +19,6 @@ config.window_decorations = "NONE"
 config.cell_width = 0.9 -- font tracking
 config.inactive_pane_hsb = { saturation = 0.9, brightness = 0.93 }
 
--- Catppuccin latte theme.
 config.colors = {
   foreground = "@fg0@",
   background = "@bg0@",

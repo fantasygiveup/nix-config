@@ -1,4 +1,6 @@
-{ inputs, outputs, lib, config, pkgs, users, ... }: {
+{ inputs, outputs, lib, config, pkgs, users, ... }:
+
+with lib; {
   imports = builtins.attrValues outputs.homeManagerModules ++ [ ];
 
   nixpkgs = {
@@ -15,7 +17,7 @@
 
   toolbox.core.enable = true;
   toolbox.neovim.enable = true;
-  toolbox.wezterm-plus-tmux.enable = true;
+  toolbox.wezterm.enable = true;
   toolbox.lf.enable = true;
   toolbox.lazygit.enable = true;
   toolbox.zk.enable = true;

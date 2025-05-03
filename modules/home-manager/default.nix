@@ -8,6 +8,7 @@
   "toolbox/core" = import ./toolbox/core;
   "toolbox/neovim" = import ./toolbox/neovim;
   "toolbox/wezterm-plus-tmux" = import ./toolbox/wezterm-plus-tmux;
+  "toolbox/wezterm" = import ./toolbox/wezterm;
   "toolbox/lf" = import ./toolbox/lf;
   "toolbox/lazygit" = import ./toolbox/lazygit;
   "toolbox/zk" = import ./toolbox/zk;
