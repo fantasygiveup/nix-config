@@ -73,6 +73,7 @@ in with lib; {
         "gv" = "cd ~/Videos";
         "gm" = "cd ~/Music";
         "gp" = "cd ~/Pictures";
+        "gc" = "cd ~/.config";
       };
     };
 
