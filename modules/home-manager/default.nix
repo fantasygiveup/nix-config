@@ -18,6 +18,7 @@
   "wm/appearance" = import ./wm/appearance;
   "wm/gnome3" = import ./wm/gnome3;
   "wm/i3" = import ./wm/i3;
+  "wm/hypr" = import ./wm/hypr;
 
   "techops/dev" = import ./techops/dev;
   "techops/git" = import ./techops/git;

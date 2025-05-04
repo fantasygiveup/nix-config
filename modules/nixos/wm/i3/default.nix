@@ -4,9 +4,6 @@ in with lib; {
   options.wm.i3 = { enable = mkEnableOption "Enable i3 windows manager"; };
 
   config = mkIf cfg.enable {
-    environment.pathsToLink = [
-      "/libexec"
-    ]; # links /libexec from derivations to /run/current-system/sw
     services.xserver = {
       enable = true;
       dpi = 120;
