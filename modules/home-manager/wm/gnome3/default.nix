@@ -4,20 +4,13 @@ in with lib; {
   options.wm.gnome3 = { enable = mkEnableOption "Enable Gnome3 settings"; };
 
   config = mkIf cfg.enable {
+    xresources.properties = { "Xft.dpi" = 120; };
+
     # To see changes using GNOME Tweaks (or any other method), use the dconf watch / command.
     dconf = {
       enable = true;
       settings = {
-        "org/gnome/desktop/interface" = {
-          text-scaling-factor = 1.25;
-          font-name = "Ubuntu Medium 11";
-          document-font-name = "Ubuntu Regular 11";
-          monospace-font-name = "JetBrainsMono Nerd Font Mono 11";
-          font-antialiasing = "rgba";
-          font-hinting = "slight";
-          clock-show-weekday = true;
-          enable-hot-corners = false; # disable the top-left hot corner.
-        };
+        "org/gnome/desktop/interface" = { text-scaling-factor = 1.25; };
         "org/gnome/desktop/input-sources" = {
           sources = [
             (gvariant.mkTuple [ "xkb" "us" ])

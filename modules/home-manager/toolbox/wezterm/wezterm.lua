@@ -28,7 +28,7 @@ wezterm.on("update-right-status", function(window, pane)
 	window:set_right_status(window:active_workspace() .. " ") -- add extra padding for the screen margin
 end)
 
-config.font_size = 11
+config.font_size = 14
 wezterm.on("increase-font-size", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
 	overrides.font_size = (overrides.font_size or config.font_size) + 1.0
@@ -43,7 +43,7 @@ end)
 
 wezterm.on("reset-font-size", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
-	overrides.font_size = 11
+	overrides.font_size = 14
 	window:set_config_overrides(overrides)
 end)
 

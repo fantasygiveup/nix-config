@@ -25,8 +25,6 @@ with lib; {
   toolbox.fzf.notes-zsh.enable = true;
   toolbox.eza.enable = true;
 
-  wm.appearance.enable = true;
-
   techops.dev.enable = true;
   techops.git.enable = true;
   techops.grep.enable = true;
@@ -40,6 +38,7 @@ with lib; {
   shell.zsh.enable = true;
   shell.starship.enable = true;
 
+  profile.appearance.enable = true;
   profile.browsing.enable = true;
   profile.mailing.enable = true;
   profile.social.enable = true;

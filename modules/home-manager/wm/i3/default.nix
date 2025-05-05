@@ -15,41 +15,7 @@ in with lib; {
     #   ${pkgs.i3}/bin/i3-msg reload restart;
     # '';
 
-    # Styling
-    fonts = {
-      fontconfig = {
-        enable = true;
-
-        defaultFonts = {
-          emoji = [ "Noto Color Emoji" ];
-          monospace = [ "JetBrainsMono Nerd Font Mono" ];
-          sansSerif = [ "Ubuntu" ];
-          serif = [ "Ubuntu" ];
-        };
-      };
-    };
-
-    gtk = {
-      enable = true;
-      font = {
-        name = "Ubuntu Medium";
-        package = pkgs.ubuntu_font_family;
-        size = 11;
-      };
-      cursorTheme = {
-        name = "Bibata-Original-Ice";
-        package = pkgs.bibata-cursors;
-        size = 24;
-      };
-    };
-
-    home.pointerCursor = {
-      x11.enable = true;
-      name = "Bibata-Original-Ice";
-      package = pkgs.bibata-cursors;
-      size = 24;
-      gtk.enable = true;
-    };
+    xresources.properties = { "Xft.dpi" = 120; };
 
     # Adjust screen temperature according geospacial data.
     services.gammastep = {

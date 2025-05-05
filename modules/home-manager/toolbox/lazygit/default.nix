@@ -15,7 +15,5 @@ in with lib; {
         };
       };
     };
-
-    programs.zsh.shellAliases = { gl = "${pkgs.lazygit}/bin/lazygit"; };
   };
 }

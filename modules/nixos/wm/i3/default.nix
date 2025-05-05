@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, rootPath, ... }:
 let cfg = config.wm.i3;
 in with lib; {
   options.wm.i3 = { enable = mkEnableOption "Enable i3 windows manager"; };
@@ -24,7 +24,7 @@ in with lib; {
               size = 24;
             };
             theme = {
-              name = "Adwaita-dark";
+              name = "Adwaita";
               package = pkgs.gnome-themes-extra;
             };
             extraConfig = ''
@@ -33,7 +33,7 @@ in with lib; {
             indicators =
               [ "~host" "~spacer" "~clock" "~spacer" "~session" "~power" ];
           };
-          background = ./wallpapers/light/0080.jpg;
+          background = (rootPath + /wallpapers/light/0080.jpg);
         };
       };
 

@@ -15,7 +15,6 @@
   "toolbox/eza" = import ./toolbox/eza;
   "toolbox/fzf/notes-zsh" = import ./toolbox/fzf/notes-zsh;
 
-  "wm/appearance" = import ./wm/appearance;
   "wm/gnome3" = import ./wm/gnome3;
   "wm/i3" = import ./wm/i3;
   "wm/hypr" = import ./wm/hypr;
@@ -29,9 +28,9 @@
 
   "user/home/main" = import ./user/home/main;
 
-  "shell/zsh" = import ./shell/zsh;
-  "shell/env/vars" = import ./shell/env/vars;
-  "shell/starship" = import ./shell/starship;
+  "shell/zsh" = import ./shell/zsh.nix;
+  "shell/vars" = import ./shell/vars.nix;
+  "shell/starship" = import ./shell/starship.nix;
 
   # TODO: move the modules above to profiles.
   "profile/browsing" = import ./profile/browsing;
@@ -39,6 +38,7 @@
   "profile/social" = import ./profile/social;
   "profile/media" = import ./profile/media;
   "profile/creative" = import ./profile/creative;
+  "profile/appearance" = import ./profile/appearance;
 
   "misc/minecraft" = import ./misc/minecraft;
 }

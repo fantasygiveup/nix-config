@@ -31,7 +31,7 @@ home:
 	@$(MAKE) --no-print-directory homemanager-arg BASE=$@ ARG=$(word 2,$(MAKECMDGOALS))
 
 homemanager-arg:
-	@home-manager switch --show-trace --flake ".#$(ARG)"
+	@home-manager switch -b backup --show-trace --flake ".#$(ARG)"
 
 # Prevent Make from treating `<argument>` as an unknown target
 %:

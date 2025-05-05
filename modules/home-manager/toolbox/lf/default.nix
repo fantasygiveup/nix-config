@@ -67,7 +67,6 @@ in with lib; {
         "D" = "delete";
         "<c-c>" = "reload";
         "<c-g>" = "fzf-project";
-        "gl" = "\$${pkgs.lazygit}/bin/lazygit";
         "gd" = "cd ~/Documents";
         "gw" = "cd ~/Downloads";
         "gv" = "cd ~/Videos";

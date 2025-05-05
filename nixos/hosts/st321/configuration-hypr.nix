@@ -20,6 +20,12 @@
   };
 
   programs.hyprland.enable = true;
+
+  # Pam must be configured to perform authentication.
+  security = {
+    pam.services.hyprlock = { };
+    polkit.enable = true;
+  };
   # programs.hyprland.package =
   #   inputs.hyprland.packages."${pkgs.system}".hyprland;
 
