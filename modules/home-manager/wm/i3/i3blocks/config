@@ -3,23 +3,23 @@ separator=false
 
 [wintitle]
 command=i3-current-window-title
-color=#@fg0@
+color=#@fg1@
 interval=persist
 
 [separator]
 
 [keymap]
-command=cat <(xkb-switch) <(xkb-switch -W) | xargs -I % echo "<span foreground=\"#@g1@\"><span background=\"#@g1@\" color=\"#@fg0@\"> %</span></span>"
+command=cat <(xkb-switch) <(xkb-switch -W) | xargs -I % echo "<span foreground=\"#@bg2@\"><span background=\"#@bg2@\" color=\"#@fg1@\">󰧺 %</span></span>"
 interval=persist
 markup=pango
 
 [datetime]
-command=printf "<span foreground=\"#@g1@\"><span background=\"#@g1@\" color=\"#@fg0@\"> %s</span></span>\n" "$(date '+%H:%M %a %d %b')"
+command=printf "<span foreground=\"#@bg2@\"><span background=\"#@bg2@\" color=\"#@fg1@\">🕒 %s</span></span>\n" "$(date '+%H:%M %a %d %b')"
 interval=60
 markup=pango
 
 [notify]
-command=i3-notification-status i3blocks '#@g7@' '#@g6@' '#@g5@' '#@g4@' '#@g1@' '#@fg0@'
+command=i3-notification-status i3blocks '#@g7@' '#@g6@' '#@g5@' '#@g4@' '#@bg2@' '#@fg1@'
 interval=1
 markup=pango
 

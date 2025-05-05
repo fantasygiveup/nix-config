@@ -6,7 +6,12 @@
     default = {
       variant = "dark";
       bg0 = "1e1e2e";
+      bg1 = "454545";
+      bg2 = "616161";
+      bg3 = "565656";
+      bg4 = "ececec";
       fg0 = "cdd6f4";
+      fg1 = "e0e0e0";
       a0 = "45475a";
       a1 = "f38ba8";
       a2 = "a6e3a1";
@@ -30,6 +35,7 @@
       g5 = "cf8d0c";
       g6 = "f6bacb";
       g7 = "ec2d62";
+      g8 = "9c6b0c";
     };
     description = ''
       Catppuccin Mocha is the dark theme variant.

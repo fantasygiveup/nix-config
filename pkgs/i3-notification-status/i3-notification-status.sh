@@ -9,7 +9,7 @@ larrow=""
 mode="$1"
 shift
 
-tmux_pattern="#[fg=%s,bg=%s]$larrow#[fg=%s,bg=%s] 󰍢 #[fg=%s,bg=%s]$rarrow"
+tmux_pattern="#[fg=%s,bg=%s]$larrow#[fg=%s,bg=%s] 💬 #[fg=%s,bg=%s]$rarrow"
 
 tmux_widget() {
 	urgent="$(i3-msg -t get_tree | jq '.. | select(.urgent? == true) | {id: .window, name: .name, class: .window_properties.class}')"
@@ -24,7 +24,7 @@ tmux_widget() {
 	fi
 }
 
-i3blocks_pattern="<span foreground=\"%s\">$larrow<span background=\"%s\" color=\"%s\"> 󰍢 </span>$rarrow</span>\n"
+i3blocks_pattern="<span foreground=\"%s\">$larrow<span background=\"%s\" color=\"%s\"> 💬 </span>$rarrow</span>\n"
 
 i3blocks_widget() {
 	urgent="$(i3-msg -t get_tree | jq '.. | select(.urgent? == true) | {id: .window, name: .name, class: .window_properties.class}')"

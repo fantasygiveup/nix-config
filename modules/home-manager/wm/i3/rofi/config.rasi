@@ -1,5 +1,5 @@
 
-@import "catppuccin-color"
+@import "catppuccin-scheme"
 @import "catppuccin-default"
 
 configuration {

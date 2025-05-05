@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }:
-let cfg = config.profile.appearance;
+let
+  cfg = config.profile.appearance;
+  color = config.color;
 in with lib; {
   options.profile.appearance = {
     enable = mkEnableOption "Enable appearance settings";
@@ -45,7 +47,10 @@ in with lib; {
         size = 24;
       };
       theme = {
-        name = "Adwaita";
+        name = mkMerge [
+          (mkIf (color.variant == "light") "Adwaita")
+          (mkIf (color.variant == "dark") "Adwaita-dark")
+        ];
         package = pkgs.gnome-themes-extra;
       };
     };
@@ -69,7 +74,7 @@ in with lib; {
       "Xft.hinting" = true;
       "Xft.antialias" = true;
       "Xft.rgba" = "rgb";
-      # TODO(idanko): try 128 for st123 machine
+      # TODO: try 128 for st123 machine
       "Xft.dpi" = 120;
     };
 

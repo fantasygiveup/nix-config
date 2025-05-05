@@ -6,7 +6,12 @@
     default = {
       variant = "light";
       bg0 = "eff1f5";
+      bg1 = "454545";
+      bg2 = "616161";
+      bg3 = "565656";
+      bg4 = "ececec";
       fg0 = "4c4f69";
+      fg1 = "e0e0e0";
       a0 = "bcc0cc";
       a1 = "d20f39";
       a2 = "40a02b";
@@ -30,6 +35,7 @@
       g5 = "f0d2a7";
       g6 = "bc0d33";
       g7 = "f8a8b9";
+      g8 = "f7ead3";
     };
     description = ''
       Catppuccin Latte is the light theme variant.

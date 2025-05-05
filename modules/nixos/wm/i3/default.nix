@@ -25,7 +25,7 @@ in with lib; {
               size = 24;
             };
             theme = {
-              name = "Adwaita";
+              name = "Adwaita-dark";
               package = pkgs.gnome-themes-extra;
             };
             extraConfig = ''
@@ -34,7 +34,7 @@ in with lib; {
             indicators =
               [ "~host" "~spacer" "~clock" "~spacer" "~session" "~power" ];
           };
-          background = (rootPath + /wallpapers/light/0080.jpg);
+          background = ./wallpapers/light/0080.jpg;
         };
       };
 

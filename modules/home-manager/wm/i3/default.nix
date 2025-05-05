@@ -11,9 +11,6 @@ in with lib; {
   config = mkIf cfg.enable {
     xdg.configFile."i3/config".source =
       pkgs.substituteAll (mergeAttrs { src = ./i3/config; } color);
-    # onChange = ''
-    #   ${pkgs.i3}/bin/i3-msg reload restart;
-    # '';
 
     xresources.properties = { "Xft.dpi" = 120; };
 
@@ -61,10 +58,13 @@ in with lib; {
     ];
 
     # Rofi.
-    xdg.configFile."rofi/catppuccin-color.rasi" = {
+    # TODO: consider to move this module part to a standalone package with overrides.
+    xdg.configFile."rofi/catppuccin-scheme.rasi" = {
       source = mkMerge [
-        (mkIf (color.variant == "light") ./rofi/catppuccin-latte.rasi)
-        (mkIf (color.variant == "dark") ./rofi/catppuccin-mocha.rasi)
+        (mkIf (color.variant == "light") (pkgs.substituteAll
+          (mergeAttrs { src = ./rofi/catppuccin-system-grey.rasi; } color)))
+        (mkIf (color.variant == "dark") (pkgs.substituteAll
+          (mergeAttrs { src = ./rofi/catppuccin-system-grey.rasi; } color)))
       ];
     };
     xdg.configFile."rofi/catppuccin-default.rasi" = {
@@ -81,27 +81,28 @@ in with lib; {
       enable = true;
       settings = {
         global = {
+          alignment = "center";
           width = 512;
           height = 128;
-          origin = "top-center";
-          offset = "0x30";
+          origin = "bottom-right";
+          offset = "6x36";
           transparency = 5;
-          frame_color = "#${color.g4}";
+          frame_color = "#${color.bg1}";
           font = "JetBrainsMono Nerd Font Mono 11";
-          corner_radius = 10;
+          corner_radius = 8;
           frame_width = 1;
         };
 
         urgency_normal = {
-          background = "#${color.g5}";
-          foreground = "#${color.g4}";
+          background = "#${color.bg2}";
+          foreground = "#${color.fg1}";
           timeout = 7;
         };
       };
     };
 
     # Logo.
-    # XXX: does not work for i3. Check why.
+    # XXX: does not work for i3. Requires investigation.
     home.file.".face".source = ./icons/kitty;
 
     # React to i3 events.

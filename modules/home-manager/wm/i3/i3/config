@@ -126,10 +126,10 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:🟢"
-set $ws2 "2:🟢"
-set $ws3 "3:🟢"
-set $ws4 "4:🟢"
+set $ws1 "1:🟠"
+set $ws2 "2:🟠"
+set $ws3 "3:🟠"
+set $ws4 "4:🟠"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -152,6 +152,7 @@ bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 for_window [class="Lxappearance"] floating enable
 for_window [class="Blueberry.py"] floating enable
+for_window [floating] border pixel 1
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -181,7 +182,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Disable the title bar.
-default_border pixel 1
+default_border pixel 0
 default_floating_border pixel 1
 
 # Gaps.
@@ -198,25 +199,25 @@ bar {
     font pango:JetBrainsMono Nerd Font Mono Bold 11
 
     colors {
-        background #@bg0@
-        statusline #@bg0@
+        background #@bg1@
+        statusline #@bg1@
         separator  #@a1@
         #  class            | border  |  background  |   text  |
         #-------------------|---------|--------------|---------|
-        focused_workspace  #@bg0@ #@bg0@ #@a1@
-        active_workspace   #@bg0@ #@bg0@ #@a1@
-        inactive_workspace #@bg0@ #@bg0@ #@a1@
-        urgent_workspace   #@bg0@ #@bg0@ #@a1@
+        focused_workspace  #@bg1@ #@bg1@ #@a1@
+        active_workspace   #@bg1@ #@bg1@ #@a1@
+        inactive_workspace #@bg1@ #@bg1@ #@a1@
+        urgent_workspace   #@bg1@ #@bg1@ #@a1@
     }
 }
 
     #  class            | border  |  background  |   text  | indicator | child bolder |
     #-------------------|---------|--------------|---------|-----------|------------- |
-client.focused          #@bg0@ #@bg0@ #@fg0@ #@fg0@  #@a3@
-client.focused_inactive #@bg0@ #@bg0@ #@fg0@ #@bg0@  #@a3@
-client.unfocused        #@bg0@ #@bg0@ #@a0@  #@bg0@  #@a3@
-client.urgent           #@a1@  #@a1@  #@bg0@ #@a1@   #@a3@
-client.placeholder      #@fg0@ #@fg0@ #@bg0@ #@fg0@  #@a3@
+client.focused          #@bg0@ #@bg0@ #@fg0@ #@fg0@  #@bg1@
+client.focused_inactive #@bg0@ #@bg0@ #@fg0@ #@bg0@  #@bg1@
+client.unfocused        #@bg0@ #@bg0@ #@a0@  #@bg0@  #@bg1@
+client.urgent           #@a1@  #@a1@  #@bg0@ #@a1@   #@bg1@
+client.placeholder      #@fg0@ #@fg0@ #@bg0@ #@fg0@  #@bg1@
 client.background       #@bg0@
 
 exec --no-startup-id "setxkbmap -model pc104 -layout us,ua -variant ,, \

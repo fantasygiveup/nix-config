@@ -14,7 +14,7 @@
   blue: #1e66f5;
   lavender: #7287fd;
   // NOTE: "text" color is fabricated, original one is 4c4f69
-  text: #@g4@;
+  text: #@fg1@;
   subtext1: #5c5f77;
   subtext0: #6c6f85;
   overlay2: #7c7f93;
@@ -24,8 +24,8 @@
   surface1: #bcc0cc;
   surface0: #ccd0da;
   // NOTE: "base" color is fabricated, original one is eff1f5
-  base: #@g5@;
+  base: #@bg2@;
   // NOTE: "base" color is fabricated, original one is e6e9ef
-  mantle: #@g8@;
+  mantle: #@bg3@;
   crust: #dce0e8;
   }

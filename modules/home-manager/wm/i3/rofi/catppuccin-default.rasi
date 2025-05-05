@@ -85,6 +85,7 @@ window {
     padding:          5;
     background-color: @background;
     border:           1;
+    border-radius:    16px;
 }
 mainbox {
     padding: 0;
