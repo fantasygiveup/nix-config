@@ -17,6 +17,10 @@ in with lib; {
       viber
     ];
 
+    # Zoom in Teams.
+    xdg.configFile."teams-for-linux/settings.json".source =
+      ./teams-for-linux/settings.json;
+
     xdg.mimeApps.defaultApplications = {
       "x-scheme-handler/msteams" = [ "teams-for-linux.desktop" ];
       "x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];

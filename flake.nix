@@ -94,7 +94,7 @@
         # Run 'make nixos st123+i3'.
         "st123+i3" = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs users;
+            inherit inputs outputs users rootPath;
             hostname = "st123";
           };
           modules = [

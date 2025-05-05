@@ -1,0 +1,10 @@
+{
+	"app": {
+		"partitions": [
+			{
+				"name": "persist:teams-4-linux",
+				"zoomLevel": 1.5
+			}
+		]
+	}
+}

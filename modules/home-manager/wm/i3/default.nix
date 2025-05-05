@@ -53,6 +53,7 @@ in with lib; {
       xclip
       xdotool # is used in conjunction with maim
       xfce.thunar
+      xkb-switch-i3
       xorg.xev # x11 input analyzer
       xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
       xorg.xmodmap
@@ -82,18 +83,19 @@ in with lib; {
         global = {
           width = 512;
           height = 128;
-          origin = "bottom-right";
-          offset = "15x25";
+          origin = "top-center";
+          offset = "0x30";
           transparency = 5;
-          frame_color = "${color.g5}";
+          frame_color = "#${color.g4}";
           font = "JetBrainsMono Nerd Font Mono 11";
           corner_radius = 10;
+          frame_width = 1;
         };
 
         urgency_normal = {
-          background = "${color.g5}";
-          foreground = "${color.g4}";
-          timeout = 10;
+          background = "#${color.g5}";
+          foreground = "#${color.g4}";
+          timeout = 7;
         };
       };
     };

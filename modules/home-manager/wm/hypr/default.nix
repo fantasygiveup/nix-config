@@ -79,8 +79,35 @@ in with lib; {
       };
     };
 
-    services.mako = { enable = true; };
+    services.dunst = {
+      enable = true;
+      settings = {
+        global = {
+          width = 512;
+          height = 128;
+          origin = "top-right";
+          offset = "25x15";
+          transparency = 5;
+          frame_color = "#${color.g4}";
+          font = "JetBrainsMono Nerd Font Mono 13";
+          corner_radius = 10;
+        };
 
-    home.packages = with pkgs; [ wl-clipboard unstable.ags ];
+        urgency_normal = {
+          background = "#${color.g5}";
+          foreground = "#${color.g4}";
+          timeout = 10;
+        };
+      };
+    };
+    services.cliphist.enable = true;
+
+    home.packages = with pkgs; [
+      wl-clipboard
+      unstable.ags
+      wofi
+      dolphin
+      roboto
+    ];
   };
 }

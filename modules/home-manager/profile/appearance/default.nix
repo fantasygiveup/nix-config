@@ -10,9 +10,9 @@ in with lib; {
       enable = true;
       settings = {
         "org/gnome/desktop/interface" = {
-          font-name = "Ubuntu Medium 14";
-          document-font-name = "Ubuntu Regular 14";
-          monospace-font-name = "JetBrainsMono Nerd Font Mono 14";
+          font-name = "Ubuntu Medium 11";
+          document-font-name = "Ubuntu Medium 11";
+          monospace-font-name = "JetBrainsMono Nerd Font Mono Bold 11";
           font-antialiasing = "rgba";
           font-hinting = "slight";
         };
@@ -37,7 +37,7 @@ in with lib; {
       font = {
         name = "Ubuntu Medium";
         package = pkgs.ubuntu_font_family;
-        size = 14;
+        size = 11;
       };
       cursorTheme = {
         name = "Bibata-Original-Ice";

@@ -4,6 +4,8 @@ in with lib; {
   options.wm.i3 = { enable = mkEnableOption "Enable i3 windows manager"; };
 
   config = mkIf cfg.enable {
+    services.displayManager.defaultSession = "none+i3";
+
     services.xserver = {
       enable = true;
       dpi = 120;
@@ -11,7 +13,6 @@ in with lib; {
       desktopManager = { xterm.enable = false; };
 
       displayManager = {
-        defaultSession = "none+i3";
         lightdm = {
           greeters.gtk = {
             iconTheme = {

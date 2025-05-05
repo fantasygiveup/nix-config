@@ -13,13 +13,13 @@ end
 -- This is where you actually apply your config choices.
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	local text = "  "
+	local text = " ⚪ "
 	if tab.is_active then
-		text = "  "
+		text = " 🟠 "
 	end
 	return {
-		{ Foreground = { Color = "@a1@" } },
-		{ Background = { Color = "@bg0@" } },
+		{ Foreground = { Color = "#@a1@" } },
+		{ Background = { Color = "#@bg0@" } },
 		{ Text = text },
 	}
 end)
@@ -28,7 +28,24 @@ wezterm.on("update-right-status", function(window, pane)
 	window:set_right_status(window:active_workspace() .. " ") -- add extra padding for the screen margin
 end)
 
-config.font_size = 14
+local font_size = 12
+config.font_size = font_size
+config.initial_cols = 511
+config.initial_rows = 511
+config.audible_bell = "Disabled" -- disable audio bell
+config.font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Bold" })
+config.warn_about_missing_glyphs = false
+config.use_fancy_tab_bar = false
+config.freetype_load_target = "HorizontalLcd"
+config.freetype_render_target = "HorizontalLcd"
+config.window_decorations = "NONE"
+config.cell_width = 0.9 -- letter spacing
+config.inactive_pane_hsb = {
+	saturation = 0.90,
+	brightness = 0.93,
+}
+config.hide_tab_bar_if_only_one_tab = false
+
 wezterm.on("increase-font-size", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
 	overrides.font_size = (overrides.font_size or config.font_size) + 1.0
@@ -43,7 +60,7 @@ end)
 
 wezterm.on("reset-font-size", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
-	overrides.font_size = 14
+	overrides.font_size = font_size
 	window:set_config_overrides(overrides)
 end)
 
@@ -66,61 +83,46 @@ wezterm.on("reset-leading", function(window, pane)
 	window:set_config_overrides(overrides)
 end)
 
-config.initial_cols = 511
-config.initial_rows = 511
-config.audible_bell = "Disabled" -- disable audio bell
-config.font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Bold" })
-config.warn_about_missing_glyphs = false
-config.use_fancy_tab_bar = false
-config.freetype_load_target = "HorizontalLcd"
-config.freetype_render_target = "HorizontalLcd"
-config.window_decorations = "NONE"
-config.cell_width = 0.9 -- letter spacing
-config.inactive_pane_hsb = {
-	saturation = 0.90,
-	brightness = 0.93,
-}
-config.hide_tab_bar_if_only_one_tab = false
 
 config.colors = {
-	foreground = "@fg0@",
-	background = "@bg0@",
-	cursor_bg = "@fg0@",
-	cursor_fg = "@bg0@",
-	split = "@a7@",
-	selection_bg = "@fg0@",
-	selection_fg = "@bg0@",
+	foreground = "#@fg0@",
+	background = "#@bg0@",
+	cursor_bg = "#@fg0@",
+	cursor_fg = "#@bg0@",
+	split = "#@a7@",
+	selection_bg = "#@fg0@",
+	selection_fg = "#@bg0@",
 
 	ansi = {
-		"@a0@",
-		"@a1@",
-		"@a2@",
-		"@a3@",
-		"@a4@",
-		"@a5@",
-		"@a6@",
-		"@a7@",
+		"#@a0@",
+		"#@a1@",
+		"#@a2@",
+		"#@a3@",
+		"#@a4@",
+		"#@a5@",
+		"#@a6@",
+		"#@a7@",
 	},
 	brights = {
-		"@a8@",
-		"@a9@",
-		"@a10@",
-		"@a11@",
-		"@a12@",
-		"@a13@",
-		"@a14@",
-		"@a15@",
+		"#@a8@",
+		"#@a9@",
+		"#@a10@",
+		"#@a11@",
+		"#@a12@",
+		"#@a13@",
+		"#@a14@",
+		"#@a15@",
 	},
 	tab_bar = {
-		background = "@bg0@",
+		background = "#@bg0@",
 		-- Hide + button sign.
 		new_tab = {
-			fg_color = "@bg0@",
-			bg_color = "@bg0@",
+			fg_color = "#@bg0@",
+			bg_color = "#@bg0@",
 		},
 		new_tab_hover = {
-			fg_color = "@bg0@",
-			bg_color = "@bg0@",
+			fg_color = "#@bg0@",
+			bg_color = "#@bg0@",
 		},
 	},
 }

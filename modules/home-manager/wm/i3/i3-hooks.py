@@ -40,12 +40,12 @@ def on_workspace_init(self, event):
 def on_workspace_focus(self, event):
     if event.current:
         i3.command("rename workspace \"{}\" to \"{}:{}\"".format(
-            event.current.name, event.current.num, " "))
+            event.current.name, event.current.num, "🟢"))
         i3.command("rename workspace \"{}\" to \"{}:{}\"".format(
-            event.old.name, event.old.num, " "))
+            event.old.name, event.old.num, "⚪"))
 
 
-i3.on(Event.WINDOW_FOCUS, on_window_focus)
-i3.on(Event.WORKSPACE_INIT, on_workspace_init)
+# i3.on(Event.WINDOW_FOCUS, on_window_focus)
+# i3.on(Event.WORKSPACE_INIT, on_workspace_init)
 i3.on(Event.WORKSPACE_FOCUS, on_workspace_focus)
 i3.main()
