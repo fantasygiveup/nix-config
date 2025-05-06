@@ -25,7 +25,7 @@ set $print_selection maim --select | xclip -selection clipboard -t image/png
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 # TODO: use generic font variable.
-font pango:JetBrainsMono Nerd Font Mono Bold 11
+font pango:JetBrainsMono Nerd Font Mono Bold 10
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -196,7 +196,7 @@ bar {
     strip_workspace_numbers yes
     status_command i3blocks
     tray_output none
-    font pango:JetBrainsMono Nerd Font Mono Bold 11
+    font pango:JetBrainsMono Nerd Font Mono Bold 12
 
     colors {
         background #@bg1@
@@ -215,7 +215,7 @@ bar {
     #-------------------|---------|--------------|---------|-----------|------------- |
 client.focused          #@bg0@ #@bg0@ #@fg0@ #@fg0@  #@bg1@
 client.focused_inactive #@bg0@ #@bg0@ #@fg0@ #@bg0@  #@bg1@
-client.unfocused        #@bg0@ #@bg0@ #@a0@  #@bg0@  #@bg1@
+client.unfocused        #@bg0@aa #@bg0@aa #@a0@aa  #@bg0@aa  #@bg1@aa
 client.urgent           #@a1@  #@a1@  #@bg0@ #@a1@   #@bg1@
 client.placeholder      #@fg0@ #@fg0@ #@bg0@ #@fg0@  #@bg1@
 client.background       #@bg0@

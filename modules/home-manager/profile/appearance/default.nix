@@ -14,7 +14,7 @@ in with lib; {
         "org/gnome/desktop/interface" = {
           font-name = "Ubuntu Medium 11";
           document-font-name = "Ubuntu Medium 11";
-          monospace-font-name = "JetBrainsMono Nerd Font Mono Bold 11";
+          monospace-font-name = "JetBrainsMono Nerd Font Mono Bold 12";
           font-antialiasing = "rgba";
           font-hinting = "slight";
         };

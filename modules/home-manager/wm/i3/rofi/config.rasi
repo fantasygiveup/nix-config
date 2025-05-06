@@ -2,7 +2,8 @@
 @import "catppuccin-scheme"
 @import "catppuccin-default"
 
+// TODO: make global font interpolation.
 configuration {
-  font: "JetBrainsMono Nerd Font Mono Bold 13";
+  font: "JetBrainsMono Nerd Font Mono Bold 14";
   kb-cancel: "Control+c,Escape";
 }
