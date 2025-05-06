@@ -40,7 +40,7 @@ in with lib; {
       i3-current-window-title
       i3-notification-status
       i3blocks
-      i3lock
+      i3lock # TODO: set a custom theme per a variant
       lxappearance
       maim # x11 screen shot cli tool
       nitrogen

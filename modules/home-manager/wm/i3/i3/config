@@ -11,8 +11,11 @@ set $clipboard_history rofi-commander cliphist
 set $clipboard_ref rofi-commander ref
 set $clipboard_ref_data rofi-commander ref-data
 set $show_notifications rofi-commander notifications-history
-set $clear_notifications notify-send 'Clearing notifications'; sleep 1; dunstctl close-all; dunstctl history-clear
-set $toggle_notifications notify-send 'Toggling notifications'; sleep 1; dunstctl set-paused toggle; notify-send 'Toggling notifications'
+set $clear_notifications dunstctl close-all; dunstify -b 'Clearing notifications' && dunstctl history-clear
+set $mute_notifications dunstctl close-all; [ $(dunstctl is-paused) = true ] && \
+    (dunstctl set-paused toggle; dunstify -b 'Unmute notifications') || \
+    (dunstify -b 'Mute notifications'; dunstctl set-paused toggle)
+set $close_notifications dunstctl close-all
 set $lock_screen i3lock --nofork
 # TODO: create image files under ~/Pictures directory.
 set $print_active_window maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
@@ -64,12 +67,13 @@ bindsym $mod+Shift+Return exec --no-startup-id "$default_browser"
 bindsym $mod+Shift+y exec --no-startup-id "$clipboard_history"
 bindsym $mod+Shift+u exec --no-startup-id "$clipboard_ref"
 bindsym $mod+Shift+i exec --no-startup-id "$clipboard_ref_data"
-bindsym $mod+Shift+k exec --no-startup-id "$lock_screen"
+bindsym $mod+Shift+z exec --no-startup-id "$lock_screen"
 bindsym $mod+Shift+n exec --no-startup-id "$show_notifications"
-bindsym $mod+Shift+m exec --no-startup-id "$clear_notifications"
-bindsym $mod+Shift+comma exec --no-startup-id "$toggle_notifications"
+bindsym $mod+Shift+m exec --no-startup-id "$mute_notifications"
+bindsym $mod+Shift+comma exec --no-startup-id "$clear_notifications"
+bindsym $mod+Shift+period exec --no-startup-id "$close_notifications"
 bindsym Print exec --no-startup-id "$print_active_window"
-bindsym Ctrl+Shift+Print exec --no-startup-id "$print_selection"
+bindsym $mod+Shift+Print exec --no-startup-id "$print_selection"
 
 
 # A more modern dmenu replacement is rofi:
