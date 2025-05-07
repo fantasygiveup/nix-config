@@ -30,6 +30,7 @@ in with lib; {
       gotools # set of go language tools
       inotify-tools # required by elixir mix
       jq # cli json processor
+      krew # kubernetes plugin manager (usage: krew install oidc-login)
       kubectl
       libxml2 # xmllint
       lua-language-server
@@ -67,7 +68,10 @@ in with lib; {
     ];
 
     # Enable iex persisting command history.
-    home.sessionVariables = { ERL_AFLAGS = "-kernel shell_history enabled"; };
+    home.sessionVariables = {
+      ERL_AFLAGS = "-kernel shell_history enabled";
+      PATH = "$HOME/.krew/bin:$PATH";
+    };
 
     programs.zsh.shellAliases = {
       luajit = "${pkgs.rlwrap}/bin/rlwrap ${pkgs.luajit}/bin/luajit";
