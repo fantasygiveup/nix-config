@@ -227,8 +227,7 @@ client.background       #@bg0@
 exec --no-startup-id "setxkbmap -model pc104 -layout us,ua,pl -variant ,,, \
     -option caps:ctrl_modifier \
     -option terminate:ctrl_alt_bksp \
-    -option grp:alt_shift_toggle \
-    -option lv3:lwin_switch"
+    -option grp:win_space_toggle"
 
 exec_always --no-startup-id autotiling -w 1 4 5 6 7 8 9 0
 
