@@ -34,7 +34,7 @@ ref_data() {
 }
 
 notifications_history() {
-	dunstctl history | jq -r '.data[][] | "\(.summary.data) — \(.body.data)" | gsub("\n"; " · ")' | rofi -dmenu -p "Notifications"
+	dunstctl history | jq -r '.data[][] | "\(.summary.data) — \(.body.data)" | gsub("\n"; " · ")' | rofi -dmenu -p "Notifications" | eval "$clipboard_copy_command"
 }
 
 case "$1" in
