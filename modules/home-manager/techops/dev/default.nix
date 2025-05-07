@@ -61,6 +61,7 @@ in with lib; {
       unstable.elixir-ls
       unstable.erlang
       vscode-langservers-extracted # cssls
+      xxd # convert string to hex
       yamllint
       yapf
       yarn
