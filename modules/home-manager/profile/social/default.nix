@@ -15,6 +15,7 @@ in with lib; {
       unstable.signal-desktop
       unstable.teams-for-linux
       viber
+      zapzap
     ];
 
     # Zoom in Teams.
