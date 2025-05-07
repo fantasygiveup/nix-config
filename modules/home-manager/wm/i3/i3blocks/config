@@ -9,7 +9,7 @@ interval=persist
 [separator]
 
 [keymap]
-command=cat <(xkb-switch) <(xkb-switch -W) | xargs -I % echo "<span foreground=\"#@bg2@\"><span background=\"#@bg2@\" color=\"#@fg1@\">󰧺 %</span></span>"
+command=i3blocks-xkb-layout-widget "@bg2@" "@fg1@"
 interval=persist
 markup=pango
 
