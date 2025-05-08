@@ -68,10 +68,10 @@ in with lib; {
         "<c-c>" = "reload";
         "<c-g>" = "fzf-project";
         "gd" = "cd ~/Documents";
-        "gw" = "cd ~/Downloads";
+        "gl" = "cd ~/Downloads";
         "gv" = "cd ~/Videos";
         "gm" = "cd ~/Music";
-        "gp" = "cd ~/Pictures";
+        "gi" = "cd ~/Pictures";
         "gc" = "cd ~/.config";
       };
     };
