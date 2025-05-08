@@ -194,7 +194,7 @@ config.keys = {
 		action = act.SwitchToWorkspace({
 			name = "lf",
 			spawn = {
-				args = { "lf" },
+				args = { os.getenv("SHELL"), "-c", "lf" },
 			},
 		}),
 	},
@@ -204,7 +204,7 @@ config.keys = {
 		action = act.SwitchToWorkspace({
 			name = "lazygit",
 			spawn = {
-				args = { "lazygit" },
+				args = { os.getenv("SHELL"), "-c", "lazygit" },
 			},
 		}),
 	},
