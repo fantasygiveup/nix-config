@@ -28,35 +28,6 @@ in with lib; {
       };
     };
 
-    home.packages = with pkgs; [
-      (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Ubuntu" ]; })
-      autotiling
-      bemenu
-      blueberry
-      cliphist
-      dconf
-      dconf-editor
-      gnome-tweaks
-      i3-current-window-title
-      i3-notification-status
-      i3blocks
-      i3blocks-xkb-layout-widget
-      i3lock # TODO: set a custom theme per a variant
-      lxappearance
-      maim # x11 screen shot cli tool
-      nitrogen
-      rofi
-      rofi-commander
-      sysstat
-      xclip
-      xdotool # is used in conjunction with maim
-      xfce.thunar
-      xorg.xev # x11 input analyzer
-      xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
-      xorg.xmodmap
-      xss-lock
-    ];
-
     # Rofi.
     # TODO: consider to move this module part to a standalone package with overrides.
     xdg.configFile."rofi/catppuccin-scheme.rasi" = {
@@ -120,5 +91,36 @@ in with lib; {
       };
       Install = { WantedBy = [ "default.target" ]; };
     };
+
+    home.packages = with pkgs; [
+      (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Ubuntu" ]; })
+      autotiling
+      bemenu
+      nm-tray
+      blueberry
+      cliphist
+      dconf
+      dconf-editor
+      gnome-tweaks
+      i3-current-window-title
+      i3-notification-status
+      i3blocks
+      i3blocks-xkb-layout-widget
+      i3lock # TODO: set a custom theme per a variant
+      lxappearance
+      maim # x11 screen shot cli tool
+      nitrogen
+      rofi
+      rofi-commander
+      sysstat
+      xclip
+      xdotool # is used in conjunction with maim
+      xfce.thunar
+      xorg.xev # x11 input analyzer
+      xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
+      xorg.xmodmap
+      xss-lock
+    ];
+
   };
 }
