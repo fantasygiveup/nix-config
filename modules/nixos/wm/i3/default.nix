@@ -4,42 +4,39 @@ in with lib; {
   options.wm.i3 = { enable = mkEnableOption "Enable i3 windows manager"; };
 
   config = mkIf cfg.enable {
-    services.displayManager.defaultSession = "none+i3";
-
     services.xserver = {
       enable = true;
       dpi = 120;
 
       desktopManager = { xterm.enable = false; };
-
-      displayManager = {
-        lightdm = {
-          greeters.gtk = {
-            iconTheme = {
-              name = "Numix-Square";
-              package = pkgs.numix-icon-theme-square;
-            };
-            cursorTheme = {
-              name = "Bibata-Original-Ice";
-              package = pkgs.bibata-cursors;
-              size = 24;
-            };
-            theme = {
-              name = "Adwaita-dark";
-              package = pkgs.gnome-themes-extra;
-            };
-            extraConfig = ''
-              font-name = Ubuntu 10
-            '';
-            indicators =
-              [ "~host" "~spacer" "~clock" "~spacer" "~session" "~power" ];
-          };
-          background = ./wallpapers/light/0080.jpg;
-        };
-      };
-
       windowManager.i3 = { enable = true; };
     };
+
+    services.displayManager = {
+      defaultSession = "none+i3";
+      sddm = {
+        enable = true;
+        theme = "Elegant";
+        settings = {
+          Theme = {
+            CursorTheme = "Bibata-Modern-Ice";
+            CursorSize = 24;
+            Font = "Ubuntu 11";
+          };
+        };
+      };
+    };
+
+    environment.systemPackages = with pkgs; [
+      bibata-cursors
+      ubuntu_font_family
+
+      (pkgs.elegant-sddm.override {
+        themeConfig.General = {
+          background = (toString (rootPath + /wallpapers/dark/0042.jpg));
+        };
+      })
+    ];
 
     # Do not ask ssh,gpg passwords all the time.
     services.gnome.gnome-keyring.enable = true;
