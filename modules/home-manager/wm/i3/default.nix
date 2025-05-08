@@ -73,8 +73,7 @@ in with lib; {
     };
 
     # Logo.
-    # XXX: does not work for i3. Requires investigation.
-    home.file.".face".source = ./icons/kitty;
+    home.file.".face.icon".source = ./face.icon;
 
     # React to i3 events.
     systemd.user.services.i3-hooks = {
