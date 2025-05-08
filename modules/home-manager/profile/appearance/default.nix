@@ -46,6 +46,10 @@ in with lib; {
         package = pkgs.bibata-cursors;
         size = 24;
       };
+      iconTheme = {
+        name = "Numix-Square";
+        package = pkgs.numix-icon-theme-square;
+      };
       theme = {
         name = mkMerge [
           (mkIf (color.variant == "light") "Adwaita")
