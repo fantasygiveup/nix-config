@@ -224,10 +224,13 @@ client.urgent           #@a1@  #@a1@  #@bg0@ #@a1@   #@bg1@
 client.placeholder      #@fg0@ #@fg0@ #@bg0@ #@fg0@  #@bg1@
 client.background       #@bg0@
 
+# "caps:ctrl_modifier" - caps as ctrl.
+# "grp:alt_space_toggle" - alt+space to toggle layout.
+# "lv3:lwin_switch" - enable functional key mapping when left win is pressed (eg. "o" -> "ó").
 exec --no-startup-id "setxkbmap -model pc104 -layout us,ua,pl -variant ,,, \
     -option caps:ctrl_modifier \
-    -option terminate:ctrl_alt_bksp \
-    -option grp:win_space_toggle"
+    -option grp:alt_space_toggle \
+    -option lv3:lwin_switch"
 
 exec_always --no-startup-id autotiling -w 1 4 5 6 7 8 9 0
 
