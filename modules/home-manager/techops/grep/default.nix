@@ -39,7 +39,7 @@ in with lib; {
         ignore-search-patterns-base;
 
       FZF_PROJECT_SEARCH_PATTERN = "'^.git$|^.hg$|^.bzr$|^.svn$'";
-      CLIPBOARD_COPY_COMMAND = "${pkgs.xclip}/bin/xclip -in -selection c";
+      CLIPBOARD_COPY_COMMAND = "${pkgs.xsel}/bin/xsel --clipboard";
     };
 
     programs.fzf = {

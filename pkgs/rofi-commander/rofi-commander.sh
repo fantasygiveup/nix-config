@@ -5,7 +5,7 @@ set -euo pipefail
 cache_directory="${ROFI_COMMANDER_CONFIG_DIRECTORY:-"${HOME}/.cache/rofi-commander"}"
 ref_config_file="${ROFI_COMMANDER_REF_CONFIG_FILE:-"${cache_directory}/ref"}"
 exec_command="${ROFI_COMMANDER_EXEC_COMMAND:-"exec"}"
-clipboard_copy_command="${ROFI_COMMANDER_CLIPBOARD_COPY_COMMAND:-"xclip -r -selection c"}"
+clipboard_copy_command="${ROFI_COMMANDER_CLIPBOARD_COPY_COMMAND:-"xsel --clipboard"}"
 ref_data_file="${ROFI_COMMANDER_REF_DATA_FILE:-"$HOME/github.com/fantasygiveup/restricted/ref.gpg"}"
 
 ref() {

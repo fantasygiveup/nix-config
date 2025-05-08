@@ -19,7 +19,7 @@ stdenv.mkDerivation {
             pkgs.cliphist
             pkgs.gnupg
             pkgs.libnotify
-            pkgs.xclip
+            pkgs.xsel
           ]
         }"
     done
