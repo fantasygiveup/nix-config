@@ -103,7 +103,7 @@ in with lib; {
       i3-notification-status
       i3blocks
       i3blocks-xkb-layout-widget
-      i3lock # TODO: set a custom theme per a variant
+      i3lock
       lxappearance
       maim # x11 screen shot cli tool
       nitrogen
