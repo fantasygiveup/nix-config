@@ -1,5 +1,6 @@
 { config, lib, pkgs, ... }:
 let
+  # TODO: change cfg to more generic: eg. profile.global.
   cfg = config.profile.appearance;
   color = config.color;
 in with lib; {
@@ -17,6 +18,9 @@ in with lib; {
           monospace-font-name = "JetBrainsMono Nerd Font Mono Bold 12";
           font-antialiasing = "rgba";
           font-hinting = "slight";
+        };
+        "org/gnome/gnome-screenshot" = {
+          "last-save-directory" = "file:///home/idanko/Pictures/Screenshots";
         };
       };
     };

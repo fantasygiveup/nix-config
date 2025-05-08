@@ -32,6 +32,7 @@ font pango:JetBrainsMono Nerd Font Mono Bold 10
 for_window [class="Lxappearance"] floating enable
 for_window [class="Blueberry.py"] floating enable
 for_window [class=".blueman-manager-wrapped"] floating enable
+for_window [class="Gnome-screenshot"] floating enable
 for_window [floating] border pixel 1
 
 # Start XDG autostart .desktop files using dex. See also
@@ -76,8 +77,8 @@ bindsym $mod+Shift+n exec --no-startup-id "$show_notifications"
 bindsym $mod+Shift+m exec --no-startup-id "$mute_notifications"
 bindsym $mod+Shift+comma exec --no-startup-id "$clear_notifications"
 bindsym $mod+Shift+period exec --no-startup-id "$close_notifications"
-bindsym Print exec --no-startup-id "$print_active_window"
-bindsym $mod+Shift+Print exec --no-startup-id "$print_selection"
+bindsym Print exec --no-startup-id $take_screenshort
+bindsym Ctrl+Shift+Print exec --no-startup-id "$take_screenshort_active_window"
 
 
 # A more modern dmenu replacement is rofi:

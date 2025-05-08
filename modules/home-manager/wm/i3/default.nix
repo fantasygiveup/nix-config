@@ -72,6 +72,15 @@ in with lib; {
       };
     };
 
+    dconf = {
+      enable = true;
+      settings = {
+        "org/gnome/gnome-screenshot" = {
+          "last-save-directory" = "file:///home/idanko/Pictures/Screenshots";
+        };
+      };
+    };
+
     # Logo.
     home.file.".face.icon".source = ./face.icon;
 
@@ -96,8 +105,8 @@ in with lib; {
       autotiling
       bemenu
       cliphist
-      dconf
       dconf-editor
+      gnome-screenshot-wrapper
       gnome-tweaks
       i3-current-window-title
       i3-notification-status
@@ -105,7 +114,6 @@ in with lib; {
       i3blocks-xkb-layout-widget
       i3lock
       lxappearance
-      maim # x11 screen shot cli tool
       nitrogen
       rofi
       rofi-commander
@@ -118,6 +126,5 @@ in with lib; {
       xsel
       xss-lock
     ];
-
   };
 }
