@@ -10,7 +10,7 @@ interval=persist
 
 [keymap]
 command=i3blocks-xkb-layout-widget "@bg2@" "@fg1@"
-interval=persist
+interval=1
 markup=pango
 
 [datetime]

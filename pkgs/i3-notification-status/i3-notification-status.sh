@@ -32,8 +32,18 @@ i3blocks_widget() {
 
 	if [[ -n "$urgent" ]]; then
 		printf "$i3blocks_pattern" "$1" "$1" "$2"
+
+		# Switch to the latest urgent window..
+		if [ -n "${BLOCK_BUTTON-}" ]; then
+			setsid i3-msg '[urgent=latest] focus' &>/dev/null || true &
+		fi
 	elif [[ "$notifications_count" -gt 0 ]]; then
 		printf "$i3blocks_pattern" "$3" "$3" "$4"
+
+		# Show notification list on any mouth event.
+		if [ -n "${BLOCK_BUTTON-}" ]; then
+			setsid rofi-commander notifications-history &>/dev/null &
+		fi
 	else
 		printf "$i3blocks_pattern" "$5" "$5" "$6"
 	fi
