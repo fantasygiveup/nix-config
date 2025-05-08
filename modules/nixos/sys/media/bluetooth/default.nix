@@ -11,6 +11,8 @@ in with lib; {
       powerOnBoot = true;
     };
 
+    services.blueman.enable = true;
+
     # Using Bluetooth headset buttons to control media player.
     systemd.user.services.mpris-proxy = {
       description = "Mpris proxy";

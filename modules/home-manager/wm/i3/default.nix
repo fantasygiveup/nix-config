@@ -95,8 +95,6 @@ in with lib; {
       (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Ubuntu" ]; })
       autotiling
       bemenu
-      nm-tray
-      blueberry
       cliphist
       dconf
       dconf-editor
