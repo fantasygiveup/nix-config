@@ -19,7 +19,7 @@ interval=60
 markup=pango
 
 [notify]
-command=i3-notification-status i3blocks '#@g7@' '#@g6@' '#@g5@' '#@g4@' '#@bg2@' '#@fg1@'
+command=i3-notification-status i3blocks '#@a1@' '#@g6@' '#@g9@' '#@g4@' '#@bg2@' '#@fg1@'
 interval=1
 markup=pango
 
