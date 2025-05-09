@@ -1,5 +1,5 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
-  imports = (builtins.attrValues outputs.nixosModules) ++ [ ];
+  imports = outputs.nixosModules;
 
   nixpkgs = {
     overlays = [

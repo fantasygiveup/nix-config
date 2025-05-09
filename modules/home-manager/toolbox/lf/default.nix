@@ -5,9 +5,6 @@ in with lib; {
     enable = mkEnableOption "Enable lf terminal file manager";
   };
 
-  # Used for "fzf-project" integration. See the "commands" attribute.
-  imports = [ ../fzf/project-zsh ];
-
   config = mkIf cfg.enable {
     programs.lf = {
       enable = true;

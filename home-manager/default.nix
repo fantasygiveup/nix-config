@@ -1,7 +1,7 @@
 { inputs, outputs, lib, config, pkgs, users, ... }:
 
 with lib; {
-  imports = builtins.attrValues outputs.homeManagerModules ++ [ ];
+  imports = outputs.homeManagerModules;
 
   nixpkgs = {
     overlays = [
