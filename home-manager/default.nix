@@ -34,10 +34,7 @@ with lib; {
 
   user.home.main.enable = true;
 
-  shell.env.vars.enable = true;
-  shell.zsh.enable = true;
-  shell.starship.enable = true;
-
+  profile.shell.enable = true;
   profile.appearance.enable = true;
   profile.browsing.enable = true;
   profile.mailing.enable = true;

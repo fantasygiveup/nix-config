@@ -1,11 +1,32 @@
 { lib, config, pkgs, ... }:
-let cfg = config.shell.zsh;
+let cfg = config.profile.shell;
 in with lib; {
-  options.shell.zsh = {
-    enable = mkEnableOption "Enable zsh shell with configuration";
-  };
+  options.profile.shell = { enable = mkEnableOption "Enable shell settings"; };
 
   config = mkIf cfg.enable {
+    # The modern shell prompt.
+    # See https://nix-community.github.io/home-manager/options.xhtml#opt-programs.starship.enable
+    programs.starship = {
+      enable = true;
+      settings = {
+        gcloud = {
+          # The active gcloud account is always enabled, causing disturbances. Disable it.
+          disabled = true;
+        };
+      };
+    };
+
+    home.sessionVariables = {
+      VISUAL = "${pkgs.neovim}/bin/nvim";
+      EDITOR = "${pkgs.neovim}/bin/nvim";
+      MANPAGER = "${pkgs.neovim}/bin/nvim +Man!";
+      MANWIDTH = "80";
+
+      # Fix the qlite.so not found issue for https://github.com/kkharji/sqlite.lua.
+      LD_LIBRARY_PATH =
+        "${pkgs.lib.makeLibraryPath (with pkgs; [ sqlite ])}:$LD_LIBRARY_PATH";
+    };
+
     programs.zsh = {
       enable = true;
       autosuggestion.enable = true;

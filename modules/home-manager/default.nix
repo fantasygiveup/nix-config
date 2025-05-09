@@ -28,11 +28,8 @@
 
   "user/home/main" = import ./user/home/main;
 
-  "shell/zsh" = import ./shell/zsh.nix;
-  "shell/vars" = import ./shell/vars.nix;
-  "shell/starship" = import ./shell/starship.nix;
-
   # TODO: move the modules above to profiles.
+  "profile/shell" = import ./profile/shell;
   "profile/browsing" = import ./profile/browsing;
   "profile/mailing" = import ./profile/mailing;
   "profile/social" = import ./profile/social;
