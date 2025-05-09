@@ -10,8 +10,6 @@ in with lib; {
         s = "status";
         a = "add";
         c = "commit";
-        g = "pull";
-        p = "push";
         co = "checkout";
 
         # Open lazygit.
