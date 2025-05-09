@@ -42,6 +42,12 @@ in with lib; {
     services.gnome.gnome-keyring.enable = true;
     security.pam.services.lightdm.enableGnomeKeyring = true;
 
+    # Pam must be configured to perform authentication.
+    security = {
+      pam.services.sddm = { };
+      polkit.enable = true;
+    };
+
     # Fix of:
     #  - "GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit dconf.service not found."
     #  - "error: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name ca.desrt.dconf was not provided by any .service files"
