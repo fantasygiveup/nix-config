@@ -70,6 +70,10 @@ in with lib; {
         "gm" = "cd ~/Music";
         "gi" = "cd ~/Pictures";
         "gc" = "cd ~/.config";
+        "half-up" = "<c-b>";
+        "half-down" = "<c-f>";
+        "scroll-up" = "<c-u>";
+        "scroll-down" = "<c-d>";
       };
     };
 

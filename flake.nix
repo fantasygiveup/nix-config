@@ -54,7 +54,7 @@
         import ./modules/nixos/modules.nix { inherit (nixpkgs) lib; };
 
       homeManagerModules =
-        import ./modules/home-manager/modules.nix { inherit (nixpkgs) lib; };
+        import ./modules/home/modules.nix { inherit (nixpkgs) lib; };
 
       nixosConfigurations = {
         "st321+gnome3" = nixpkgs.lib.nixosSystem {
@@ -114,57 +114,56 @@
         "idanko@st321+gnome3" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users rootPath; };
-          modules = [ ./home-manager/home-gnome3.nix ] ++ sharedModules;
+          modules = [ ./home/home-gnome3.nix ] ++ sharedModules;
         };
 
         # Run 'make home idanko@st321+gnome3+dark'.
         "idanko@st321+gnome3+dark" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users rootPath; };
-          modules = [ ./home-manager/home-gnome3.nix ]
-            ++ sharedModulesDarkTheme;
+          modules = [ ./home/home-gnome3.nix ] ++ sharedModulesDarkTheme;
         };
 
         # Run 'make home idanko@st321+i3'.
         "idanko@st321+i3" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users rootPath; };
-          modules = [ ./home-manager/home-i3.nix ] ++ sharedModules;
+          modules = [ ./home/home-i3.nix ] ++ sharedModules;
         };
 
         # Run 'make home idanko@st321+hypr'.
         "idanko@st321+hypr" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users rootPath; };
-          modules = [ ./home-manager/home-hypr.nix ] ++ sharedModules;
+          modules = [ ./home/home-hypr.nix ] ++ sharedModules;
         };
 
         # Run 'make home idanko@st321+hypr+dark'.
         "idanko@st321+hypr+dark" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users rootPath; };
-          modules = [ ./home-manager/home-hypr.nix ] ++ sharedModulesDarkTheme;
+          modules = [ ./home/home-hypr.nix ] ++ sharedModulesDarkTheme;
         };
 
         # Run 'make home idanko@st321+i3+dark'.
         "idanko@st321+i3+dark" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users rootPath; };
-          modules = [ ./home-manager/home-i3.nix ] ++ sharedModulesDarkTheme;
+          modules = [ ./home/home-i3.nix ] ++ sharedModulesDarkTheme;
         };
 
         # Run 'make home idanko@st123+gnome3'.
         "idanko@st123+gnome3" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users rootPath; };
-          modules = [ ./home-manager/home-gnome3.nix ] ++ sharedModules;
+          modules = [ ./home/home-gnome3.nix ] ++ sharedModules;
         };
 
         # Run 'make home idanko@st123+i3'.
         "idanko@st123+i3" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs users rootPath; };
-          modules = [ ./home-manager/home-i3.nix ] ++ sharedModules;
+          modules = [ ./home/home-i3.nix ] ++ sharedModules;
         };
       };
     };
