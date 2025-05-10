@@ -73,10 +73,11 @@ in with lib; {
         "gi" = "cd ~/Pictures";
         "gc" = "cd ~/.config";
         "gs" = "cd ~/Shared";
-        "half-up" = "<c-b>";
-        "half-down" = "<c-f>";
-        "scroll-up" = "<c-u>";
-        "scroll-down" = "<c-d>";
+        "<c-b>" = "half-up";
+        "<c-f>" = "half-down";
+        "<c-u>" = null;
+        "<c-d>" = null;
+        "R" = "reload"; # to avoid issues on the mounted VSF.
       };
     };
 
