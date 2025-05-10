@@ -12,9 +12,10 @@ in with lib; {
       espeak # speach-module for speechd
       evince
       foliate # awz3 viewer
-      hunspellDicts.uk_UA
+      hunspell # required used by libreoffice
+      hunspellDicts.uk_UA # hunspell dictionary
       imv # image viewer
-      libreoffice-fresh # ms office, but better
+      libreoffice-fresh
       mpv
       mupdf
       speechd # speech-dispatcher for foliate
