@@ -30,7 +30,7 @@
 
   programs.zsh.enable = true;
 
-  user.main.enable = true;
+  users.default.enable = true;
   misc.fonts.core.enable = true;
   toolkit.core.enable = true;
   toolkit.extra.enable = true;
