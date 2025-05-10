@@ -10,7 +10,7 @@ in with lib; {
 
     users = {
       users = builtins.listToAttrs [{
-        name = users.main.username;
+        name = users.default.username;
         value = { extraGroups = [ "docker" ]; };
       }];
     };

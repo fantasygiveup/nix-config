@@ -44,8 +44,10 @@ in with lib; {
           ''${{
                 case $(file --mime-type -Lb $f) in
                     text/*) lf -remote "send $id \$$EDITOR \$fx";;
-                    application/*) lf -remote "send $id \$$EDITOR \$fx";;
-                    inode/*) lf -remote "send $id \$$EDITOR \$fx";;
+                    application/pdf) mupdf $f;;
+                    application/javascript) lf -remote "send $id \$$EDITOR \$fx";;
+                    application/x-ndjson) lf -remote "send $id \$$EDITOR \$fx";;
+                    inode/x-empty) lf -remote "send $id \$$EDITOR \$fx";;
                     *) for f in $fx; do xdg-open $f > /dev/null 2> /dev/null & done;;
                 esac
           }}
@@ -70,6 +72,7 @@ in with lib; {
         "gm" = "cd ~/Music";
         "gi" = "cd ~/Pictures";
         "gc" = "cd ~/.config";
+        "gs" = "cd ~/Shared";
         "half-up" = "<c-b>";
         "half-down" = "<c-f>";
         "scroll-up" = "<c-u>";

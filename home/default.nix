@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, users, ... }:
+{ inputs, outputs, lib, config, pkgs, ... }:
 
 with lib; {
   imports = outputs.homeManagerModules;
@@ -32,7 +32,7 @@ with lib; {
   techops.os.enable = true;
   techops.virt.enable = true;
 
-  user.home.main.enable = true;
+  users.home.default.enable = true;
 
   profile.shell.enable = true;
   profile.appearance.enable = true;

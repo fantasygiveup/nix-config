@@ -50,6 +50,7 @@ in with lib; {
 
         # Enable the emacs-like navigation.
         sqlite3 = "${pkgs.rlwrap}/bin/rlwrap ${pkgs.sqlite}/bin/sqlite3";
+        mime = "file --mime-type";
       };
       envExtra = ''
         zstyle ':completion:*' menu select                  # select menu enabled

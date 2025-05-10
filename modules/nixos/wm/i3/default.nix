@@ -1,4 +1,4 @@
-{ lib, config, pkgs, rootPath, ... }:
+{ lib, config, pkgs, flakePath, ... }:
 let cfg = config.wm.i3;
 in with lib; {
   options.wm.i3 = { enable = mkEnableOption "Enable i3 windows manager"; };
@@ -33,7 +33,7 @@ in with lib; {
 
       (pkgs.elegant-sddm.override {
         themeConfig.General = {
-          background = (toString (rootPath + /wallpapers/dark/0042.jpg));
+          background = (toString (flakePath + /wallpapers/dark/0042.jpg));
         };
       })
     ];

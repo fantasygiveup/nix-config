@@ -1,4 +1,4 @@
-{ lib, config, users, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 let cfg = config.toolkit.mullvad-vpn;
 in with lib; {
   options.toolkit.mullvad-vpn = {

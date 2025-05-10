@@ -10,7 +10,7 @@ in with lib; {
     networking.networkmanager.enable = true;
     users = {
       users = builtins.listToAttrs [{
-        name = users.main.username;
+        name = users.default.username;
         value = { extraGroups = [ "networkmanager" ]; };
       }];
     };

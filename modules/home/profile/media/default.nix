@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, user, ... }:
 let cfg = config.profile.media;
 in with lib; {
   options.profile.media = { enable = mkEnableOption "Enable media profile"; };
@@ -12,8 +12,11 @@ in with lib; {
       espeak # speach-module for speechd
       evince
       foliate # awz3 viewer
+      hunspellDicts.uk_UA
       imv # image viewer
+      libreoffice-fresh # ms office, but better
       mpv
+      mupdf
       speechd # speech-dispatcher for foliate
       unstable.qbittorrent
       unstable.yt-dlp
@@ -28,6 +31,15 @@ in with lib; {
       "image/png" = [ "imv.desktop" ];
       "image/jpeg" = [ "imv.desktop" ];
       "application/pdf" = [ "org.gnome.Evince.desktop" ];
+    };
+
+    services.rclone-mount = {
+      enable = true;
+      mount = {
+        remote = "gdrive";
+        local = user.sharedDirectory;
+      };
+      package = pkgs.unstable.rclone;
     };
   };
 }

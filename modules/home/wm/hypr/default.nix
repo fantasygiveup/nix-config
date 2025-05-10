@@ -1,4 +1,4 @@
-{ config, lib, pkgs, rootPath, ... }:
+{ config, lib, pkgs, flakePath, ... }:
 let
   cfg = config.wm.hypr;
   color = config.color;
@@ -62,9 +62,9 @@ in with lib; {
         splash = false;
         splash_offset = 2.0;
 
-        preload = [ (toString (rootPath + /wallpapers/light/0080.jpg)) ];
+        preload = [ (toString (flakePath + /wallpapers/light/0080.jpg)) ];
 
-        wallpaper = [ (toString (rootPath + /wallpapers/light/0080.jpg)) ];
+        wallpaper = [ (toString (flakePath + /wallpapers/light/0080.jpg)) ];
       };
     };
 

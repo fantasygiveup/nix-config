@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, user, ... }:
 let cfg = config.techops.grep;
 in with lib; {
   options.techops.grep = { enable = mkEnableOption "Enable text search"; };
@@ -42,6 +42,11 @@ in with lib; {
       CLIPBOARD_COPY_COMMAND = "${pkgs.xsel}/bin/xsel --clipboard";
     };
 
+    programs.fd = {
+      enable = true;
+      ignores = [ user.sharedDirectory ];
+    };
+
     programs.fzf = {
       enable = true;
       defaultCommand =
@@ -72,6 +77,6 @@ in with lib; {
       ];
     };
 
-    home.packages = [ pkgs.ripgrep pkgs.fd pkgs.fzf ];
+    home.packages = [ pkgs.ripgrep ];
   });
 }
