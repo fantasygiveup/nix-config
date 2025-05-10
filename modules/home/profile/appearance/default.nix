@@ -19,9 +19,6 @@ in with lib; {
           font-antialiasing = "rgba";
           font-hinting = "slight";
         };
-        "org/gnome/gnome-screenshot" = {
-          "last-save-directory" = "file:///home/idanko/Pictures/Screenshots";
-        };
       };
     };
 
