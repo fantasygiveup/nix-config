@@ -10,7 +10,7 @@ in with lib; {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [ unstable.neovim ];
 
-    xdg.configFile."nvim/lua/color.lua".text =
+    xdg.configFile."nvim/lua/color/color.lua".text =
       # lua
       ''
         vim.o.background = "${color.variant}";
