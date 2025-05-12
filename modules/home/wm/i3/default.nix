@@ -124,7 +124,6 @@ in with lib; {
       xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
       xorg.xmodmap
       xsel
-      xss-lock
     ];
   };
 }
