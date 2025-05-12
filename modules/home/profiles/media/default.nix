@@ -1,7 +1,7 @@
 { lib, config, pkgs, user, ... }:
-let cfg = config.profile.media;
+let cfg = config.profiles.media;
 in with lib; {
-  options.profile.media = { enable = mkEnableOption "Enable media profile"; };
+  options.profiles.media = { enable = mkEnableOption "Enable media profile"; };
 
   config = mkIf cfg.enable {
     nixpkgs.allowedUnfree = [ "drawio" ];

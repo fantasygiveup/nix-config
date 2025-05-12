@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
-let cfg = config.profile.creative;
+let cfg = config.profiles.creative;
 in with lib; {
-  options.profile.creative = {
+  options.profiles.creative = {
     enable = mkEnableOption "Enable creative profile";
   };
 

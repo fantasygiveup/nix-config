@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
-let cfg = config.profile.social;
+let cfg = config.profiles.social;
 in with lib; {
-  options.profile.social = {
+  options.profiles.social = {
     enable = mkEnableOption "Enable social media profile";
   };
 

@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
-let cfg = config.profile.shell;
+let cfg = config.profiles.shell;
 in with lib; {
-  options.profile.shell = { enable = mkEnableOption "Enable shell settings"; };
+  options.profiles.shell = { enable = mkEnableOption "Enable shell profile"; };
 
   config = mkIf cfg.enable {
     # The modern shell prompt.

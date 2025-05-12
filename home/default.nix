@@ -34,13 +34,13 @@ with lib; {
 
   users.home.default.enable = true;
 
-  profile.shell.enable = true;
-  profile.appearance.enable = true;
-  profile.browsing.enable = true;
-  profile.mailing.enable = true;
-  profile.social.enable = true;
-  profile.media.enable = true;
-  profile.creative.enable = true;
+  profiles.global.enable = true;
+  profiles.shell.enable = true;
+  profiles.browsing.enable = true;
+  profiles.email.enable = true;
+  profiles.social.enable = true;
+  profiles.media.enable = true;
+  profiles.creative.enable = true;
 
   misc.minecraft.enable = true;
 

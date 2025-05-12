@@ -1,10 +1,9 @@
 { config, lib, pkgs, ... }:
 let
-  # TODO: change cfg to more generic: eg. profile.global.
-  cfg = config.profile.appearance;
+  cfg = config.profiles.global;
   color = config.color;
 in with lib; {
-  options.profile.appearance = {
+  options.profiles.global = {
     enable = mkEnableOption "Enable appearance settings";
   };
 

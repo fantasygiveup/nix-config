@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
-let cfg = config.profile.browsing;
+let cfg = config.profiles.browsing;
 in with lib; {
-  options.profile.browsing = {
+  options.profiles.browsing = {
     enable = mkEnableOption "Enable the Internet browsing profile";
   };
 
