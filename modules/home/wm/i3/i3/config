@@ -31,6 +31,7 @@ exec_always --no-startup-id xset +dpms dpms 0 300 300
 # TODO: use generic font variable.
 font pango:JetBrainsMono Nerd Font Mono Bold 10
 
+for_window [class="pavucontrol"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Blueberry.py"] floating enable
 for_window [class=".blueman-manager-wrapped"] floating enable

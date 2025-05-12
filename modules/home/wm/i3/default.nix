@@ -115,6 +115,9 @@ in with lib; {
       i3lock
       lxappearance
       nitrogen
+      pavucontrol # sound widget
+      pulseaudioFull
+      pulsemixer
       rofi
       rofi-commander
       sysstat
