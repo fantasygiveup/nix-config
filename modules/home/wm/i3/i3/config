@@ -31,12 +31,17 @@ exec_always --no-startup-id xset +dpms dpms 0 300 300
 # TODO: use generic font variable.
 font pango:JetBrainsMono Nerd Font Mono Bold 10
 
+focus_on_window_activation focus
+workspace_layout tabbed
+
 for_window [class="pavucontrol"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Blueberry.py"] floating enable
 for_window [class=".blueman-manager-wrapped"] floating enable
 for_window [class="Gnome-screenshot"] floating enable
 for_window [floating] border pixel 1
+
+default_border pixel 0
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -174,10 +179,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Disable the title bar.
-default_border pixel 0
-default_floating_border pixel 1
-
 # Gaps.
 gaps inner 0
 gaps outer 0
@@ -206,11 +207,11 @@ bar {
 
     #  class            | border  |  background  |   text  | indicator | child bolder |
     #-------------------|---------|--------------|---------|-----------|------------- |
-client.focused          #@bg0@ #@bg0@ #@fg0@ #@fg0@  #@bg1@
-client.focused_inactive #@bg0@ #@bg0@ #@fg0@ #@bg0@  #@bg1@
-client.unfocused        #@bg0@aa #@bg0@aa #@a0@aa  #@bg0@aa  #@bg1@aa
-client.urgent           #@a1@  #@a1@  #@bg0@ #@a1@   #@bg1@
-client.placeholder      #@fg0@ #@fg0@ #@bg0@ #@fg0@  #@bg1@
+client.focused          #@bg0@   #@bg0@   #@fg0@  #@fg0@   #@bg1@
+client.focused_inactive #@bg0@   #@bg0@   #@fg0@  #@bg0@   #@bg1@
+client.unfocused        #@bg0@aa #@bg0@aa #@a0@aa #@bg0@aa #@bg1@aa
+client.urgent           #@a1@    #@a1@    #@bg0@  #@a1@    #@bg1@
+client.placeholder      #@fg0@   #@fg0@   #@bg0@  #@fg0@   #@bg1@
 client.background       #@bg0@
 
 # "caps:ctrl_modifier" - caps as ctrl.
