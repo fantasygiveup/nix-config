@@ -45,10 +45,8 @@
   sys.time.enable = true;
   sys.net.core.enable = true;
   sys.i18n.enable = true;
-  sys.media.sound.enable = true;
-  sys.media.bluetooth.enable = true;
-  sys.media.printing.enable = true;
   sys.virt.docker.enable = true;
+  profiles.peripherals.enable = true;
 
   # Enable all the documentation.
   documentation = {
