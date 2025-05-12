@@ -36,14 +36,6 @@ in with lib; {
                   printf '%s' "''${target}" | eval "$CLIPBOARD_COPY_COMMAND"
               }}
         '';
-        fzf-project = ''
-          ''${{
-                  set -f
-                  FZF_DEFAULT_OPTS="''${FZF_DEFAULT_OPTS} --height 100% --reverse"
-                  res="$(zsh -c '. ~/.config/misc/fzf-project.zsh && _fzf_project --print || echo -n')"
-                  [ -n $res ] && lf -remote "send $id cd \"$HOME/$res\""
-              }}
-        '';
 
         open = ''
           ''${{
@@ -69,8 +61,6 @@ in with lib; {
         "+" = "push %mkdir<space>-p<space>";
         "=" = "push %touch<space>";
         "D" = "delete";
-        "<c-c>" = "reload";
-        "<c-g>" = "fzf-project";
         "gd" = "cd ~/Documents";
         "gl" = "cd ~/Downloads";
         "gv" = "cd ~/Videos";
