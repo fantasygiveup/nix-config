@@ -34,7 +34,7 @@
 
       users.default = rec {
         username = "idanko";
-        homeDirectory = "/home/idanko";
+        homeDirectory = "/home/${username}";
         sharedDirectory = "/home/${username}/Shared";
       };
 
