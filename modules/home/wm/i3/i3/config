@@ -132,18 +132,21 @@ set $ws1 "1:🟠"
 set $ws2 "2:🟠"
 set $ws3 "3:🟠"
 set $ws4 "4:🟠"
+set $ws0 "0:🟠"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
 bindsym $mod+4 workspace number $ws4
+bindsym $mod+0 workspace number $ws0
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+0 move container to workspace number $ws0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
