@@ -50,6 +50,19 @@
   sys.media.printing.enable = true;
   sys.virt.docker.enable = true;
 
+  # Enable all the documentation.
+  documentation = {
+    man = {
+      enable = true;
+      generateCaches = true;
+    };
+    info.enable = true;
+    doc.enable = true;
+    dev.enable = true;
+    nixos.enable = true;
+  };
+  environment.systemPackages = [ pkgs.man-pages pkgs.man-pages-posix ];
+
   # To make the linker (ldd) works with the not nix native binaries.
   programs.nix-ld.enable = true;
 }
