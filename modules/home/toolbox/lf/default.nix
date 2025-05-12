@@ -1,5 +1,9 @@
-{ lib, config, pkgs, ... }:
-let cfg = config.toolbox.lf;
+{ lib, config, pkgs, user, ... }:
+let
+  cfg = config.toolbox.lf;
+  color = config.color;
+  wallpapers = "${user.homeDirectory}/github.com/fantasygiveup/wallpapers";
+
 in with lib; {
   options.toolbox.lf = {
     enable = mkEnableOption "Enable lf terminal file manager";
@@ -14,7 +18,8 @@ in with lib; {
         ifs = "\\n";
         scrolloff = 10;
         icons = true;
-        previewer = "${pkgs.pistol}/bin/pistol";
+        previewer = "~/.config/lf/image-preview";
+        sixel = true;
         info = "size:time";
         hidden = true;
         ratios = [ 1 1 ];
@@ -23,34 +28,34 @@ in with lib; {
       commands = {
         copy-clipboard = ''
           ''${{
-                set -f
-                target=$(basename "''${fx}")
-                if [ "$#" -eq 1 ]; then
-                    target="''${fx}"
-                fi
-                printf '%s' "''${target}" | eval "$CLIPBOARD_COPY_COMMAND"
-            }}
+                  set -f
+                  target=$(basename "''${fx}")
+                  if [ "$#" -eq 1 ]; then
+                      target="''${fx}"
+                  fi
+                  printf '%s' "''${target}" | eval "$CLIPBOARD_COPY_COMMAND"
+              }}
         '';
         fzf-project = ''
           ''${{
-                set -f
-                FZF_DEFAULT_OPTS="''${FZF_DEFAULT_OPTS} --height 100% --reverse"
-                res="$(zsh -c '. ~/.config/misc/fzf-project.zsh && _fzf_project --print || echo -n')"
-                [ -n $res ] && lf -remote "send $id cd \"$HOME/$res\""
-            }}
+                  set -f
+                  FZF_DEFAULT_OPTS="''${FZF_DEFAULT_OPTS} --height 100% --reverse"
+                  res="$(zsh -c '. ~/.config/misc/fzf-project.zsh && _fzf_project --print || echo -n')"
+                  [ -n $res ] && lf -remote "send $id cd \"$HOME/$res\""
+              }}
         '';
 
         open = ''
           ''${{
-                case $(file --mime-type -Lb $f) in
-                    text/*) lf -remote "send $id \$$EDITOR \$fx";;
-                    application/pdf) mupdf $f;;
-                    application/javascript) lf -remote "send $id \$$EDITOR \$fx";;
-                    application/x-ndjson) lf -remote "send $id \$$EDITOR \$fx";;
-                    inode/x-empty) lf -remote "send $id \$$EDITOR \$fx";;
-                    *) for f in $fx; do xdg-open $f > /dev/null 2> /dev/null & done;;
-                esac
-          }}
+                  case $(file --mime-type -Lb $f) in
+                      text/*) lf -remote "send $id \$$EDITOR \$fx";;
+                      application/pdf) mupdf $f;;
+                      application/javascript) lf -remote "send $id \$$EDITOR \$fx";;
+                      application/x-ndjson) lf -remote "send $id \$$EDITOR \$fx";;
+                      inode/x-empty) lf -remote "send $id \$$EDITOR \$fx";;
+                      *) for f in $fx; do xdg-open $f > /dev/null 2> /dev/null & done;;
+                  esac
+            }}
         '';
       };
 
@@ -73,12 +78,30 @@ in with lib; {
         "gi" = "cd ~/Pictures";
         "gc" = "cd ~/.config";
         "gs" = "cd ~/Shared";
+        "gw" = "cd ${wallpapers}";
         "<c-b>" = "half-up";
         "<c-f>" = "half-down";
         "<c-u>" = null;
         "<c-d>" = null;
         "R" = "reload"; # to avoid issues on the mounted VSF.
       };
+    };
+
+    xdg.configFile."lf/image-preview" = {
+      executable = true;
+      text =
+        # bash
+        ''
+          #!/usr/bin/env bash
+          case "$(file -Lb --mime-type -- "$1")" in
+            image/*)
+              "${pkgs.chafa}"/bin/chafa -f sixel -s "$2x$3" --animate off --polite on -t 1 "$1"
+              ;;
+            *)
+              "${pkgs.pistol}"/bin/pistol "$1"
+              ;;
+          esac
+        '';
     };
 
     xdg.configFile."lf/icons".source = ./icons;
