@@ -20,11 +20,6 @@ set $lock_screen i3lock --nofork --ignore-empty-password --show-keyboard-layout 
 set $take_screenshort gnome-screenshot-wrapper -i
 set $take_screenshort_active_window gnome-screenshot-wrapper -w
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-
-exec_always --no-startup-id xset +dpms dpms 0 300 300
-
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -226,5 +221,5 @@ exec --no-startup-id "setxkbmap -model pc104 -layout us,ua,pl -variant ,,, \
     -option lv3:lwin_switch"
 
 exec_always --no-startup-id autotiling -w 1 4 5 6 7 8 9 0
-
+exec_always --no-startup-id xset +dpms dpms 0 300 300
 exec --no-startup-id ~/.config/i3/bin/set-wallpaper
