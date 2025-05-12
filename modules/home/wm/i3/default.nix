@@ -45,12 +45,8 @@ in with lib; {
     # Rofi.
     # TODO: consider to move this module part to a standalone package with overrides.
     xdg.configFile."rofi/catppuccin-scheme.rasi" = {
-      source = mkMerge [
-        (mkIf (color.variant == "light") (pkgs.substituteAll
-          (mergeAttrs { src = ./rofi/catppuccin-system-grey.rasi; } color)))
-        (mkIf (color.variant == "dark") (pkgs.substituteAll
-          (mergeAttrs { src = ./rofi/catppuccin-system-grey.rasi; } color)))
-      ];
+      source = (pkgs.substituteAll
+        (mergeAttrs { src = ./rofi/catppuccin-system-grey.rasi; } color));
     };
     xdg.configFile."rofi/catppuccin-default.rasi" = {
       source = ./rofi/catppuccin-default.rasi;
