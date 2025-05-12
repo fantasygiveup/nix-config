@@ -135,7 +135,6 @@ in with lib; {
       rofi-commander
       sysstat
       xdotool # is used in conjunction with maim
-      xfce.thunar
       xorg.xev # x11 input analyzer
       xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
       xorg.xmodmap

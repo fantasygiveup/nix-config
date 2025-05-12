@@ -53,7 +53,7 @@ in with lib; {
 
       keybindings = {
         "<a-w>" = "copy-clipboard";
-        "<c-w>" = "copy-clipboard --all";
+        "<c-w>" = "copy-clipboard --full-path";
         "." = "set hidden!";
         "<enter>" = "shell";
         "x" = "$$f"; # execute
@@ -74,6 +74,7 @@ in with lib; {
         "<c-u>" = null;
         "<c-d>" = null;
         "R" = "reload"; # to avoid issues on the mounted VSF.
+        "P" = "%${pkgs.xdragon}/bin/dragon $fx";
       };
     };
 
