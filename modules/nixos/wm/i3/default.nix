@@ -33,7 +33,7 @@ in with lib; {
 
       (pkgs.elegant-sddm.override {
         themeConfig.General = {
-          background = (toString (flakePath + /wallpapers/dark/0042.jpg));
+          background = (toString (flakePath + /wallpapers/0042.jpg));
         };
       })
     ];

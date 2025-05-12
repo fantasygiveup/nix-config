@@ -62,9 +62,9 @@ in with lib; {
         splash = false;
         splash_offset = 2.0;
 
-        preload = [ (toString (flakePath + /wallpapers/light/0080.jpg)) ];
+        preload = [ (toString (flakePath + /wallpapers/0080.jpg)) ];
 
-        wallpaper = [ (toString (flakePath + /wallpapers/light/0080.jpg)) ];
+        wallpaper = [ (toString (flakePath + /wallpapers/0080.jpg)) ];
       };
     };
 

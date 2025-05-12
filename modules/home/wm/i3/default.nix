@@ -1,7 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, user, flakePath, ... }:
 let
   cfg = config.wm.i3;
   color = config.color;
+  wallpapers = "${user.homeDirectory}/github.com/fantasygiveup/wallpapers";
 
 in with lib; {
   options.wm.i3 = {
@@ -11,6 +12,19 @@ in with lib; {
   config = mkIf cfg.enable {
     xdg.configFile."i3/config".source =
       pkgs.substituteAll (mergeAttrs { src = ./i3/config; } color);
+
+    xdg.configFile."i3/bin/set-wallpaper" = {
+      executable = true;
+      text =
+        # bash
+        ''
+          #!/usr/bin/env bash
+          # Fallback to in-repo wallpapers.
+          img=${(toString (flakePath + /wallpapers/0080.jpg))}
+          [ -d ${wallpapers} ] && img=$(${pkgs.fd}/bin/fd . ${wallpapers} -e jpg -e png | shuf -n 1)
+          ${pkgs.nitrogen}/bin/nitrogen --set-scaled "$img" &>/dev/null
+        '';
+    };
 
     xresources.properties = { "Xft.dpi" = 120; };
 
@@ -114,7 +128,6 @@ in with lib; {
       i3blocks-xkb-layout-widget
       i3lock
       lxappearance
-      nitrogen
       pavucontrol # sound widget
       pulseaudioFull
       pulsemixer
