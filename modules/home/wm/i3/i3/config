@@ -34,6 +34,7 @@ for_window [class="Lxappearance"] floating enable
 for_window [class="Blueberry.py"] floating enable
 for_window [class=".blueman-manager-wrapped"] floating enable
 for_window [class="Gnome-screenshot"] floating enable
+for_window [class="lxqt-openssh-askpass"] floating enable
 for_window [floating] border pixel 1
 
 default_border pixel 0

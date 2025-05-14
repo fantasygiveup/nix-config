@@ -40,20 +40,19 @@ in with lib; {
 
     # Do not ask ssh,gpg passwords all the time.
     services.gnome.gnome-keyring.enable = true;
-    security.pam.services.lightdm.enableGnomeKeyring = true;
+    security.pam.services.sddm.enableGnomeKeyring = true;
 
     # Pam must be configured to perform authentication.
-    security = {
-      pam.services.sddm = { };
-      polkit.enable = true;
-    };
+    security = { polkit.enable = true; };
 
     # Fix of:
     #  - "GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit dconf.service not found."
     #  - "error: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name ca.desrt.dconf was not provided by any .service files"
     # issues.
-
     programs.dconf.enable = true;
+
+    # Advised by home services.gpg-agent.
+    services.dbus.packages = [ pkgs.gcr ];
 
     # Handle screen lock session and transfer a sleep event to the "service.logind".
     # See https://discourse.nixos.org/t/how-to-config-hybrid-sleep-after-idle-and-lock/8728.

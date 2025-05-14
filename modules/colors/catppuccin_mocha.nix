@@ -6,10 +6,9 @@
     default = {
       variant = "dark";
       bg0 = "1e1e2e";
-      bg1 = "454545";
-      bg2 = "616161";
-      bg3 = "565656";
-      bg4 = "ececec";
+      bg1 = "2f2f2f";
+      bg2 = "3e3e3e";
+      bg3 = "484848";
       fg0 = "cdd6f4";
       fg1 = "e0e0e0";
       a0 = "45475a";

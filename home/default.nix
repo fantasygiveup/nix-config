@@ -12,7 +12,7 @@ with lib; {
   };
 
   services.cliphist-clipboard.enable = true;
-  services.gpg.enable = true;
+  services.secrets.enable = true;
   services.sd-switch.enable = true;
 
   toolbox.core.enable = true;
