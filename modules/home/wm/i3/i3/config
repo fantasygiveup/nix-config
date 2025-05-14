@@ -208,7 +208,7 @@ bar {
     #-------------------|---------|--------------|---------|-----------|------------- |
 client.focused          #@bg0@   #@bg0@   #@fg0@  #@fg0@   #@bg1@
 client.focused_inactive #@bg0@   #@bg0@   #@fg0@  #@bg0@   #@bg1@
-client.unfocused        #@bg0@aa #@bg0@aa #@a0@aa #@bg0@aa #@bg1@aa
+client.unfocused        #@bg0@cc #@bg0@cc #@a0@cc #@bg0@cc #@bg1@cc
 client.urgent           #@a1@    #@a1@    #@bg0@  #@a1@    #@bg1@
 client.placeholder      #@fg0@   #@fg0@   #@bg0@  #@fg0@   #@bg1@
 client.background       #@bg0@

@@ -52,10 +52,10 @@ in with lib; {
       };
       theme = {
         name = mkMerge [
-          (mkIf (color.variant == "light") "Adwaita")
-          (mkIf (color.variant == "dark") "Adwaita-dark")
+          (mkIf (color.variant == "light") "Mint-L-Darker-Orange")
+          (mkIf (color.variant == "dark") "Mint-L-Dark-Orange")
         ];
-        package = pkgs.gnome-themes-extra;
+        package = pkgs.mint-l-theme;
       };
     };
 
