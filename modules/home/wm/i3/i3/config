@@ -206,12 +206,12 @@ bar {
 
     #  class            | border  |  background  |   text  | indicator | child bolder |
     #-------------------|---------|--------------|---------|-----------|------------- |
-client.focused          #@bg0@   #@bg0@   #@fg0@  #@fg0@   #@bg1@
-client.focused_inactive #@bg0@   #@bg0@   #@fg0@  #@bg0@   #@bg1@
-client.unfocused        #@bg0@cc #@bg0@cc #@a0@cc #@bg0@cc #@bg1@cc
-client.urgent           #@a1@    #@a1@    #@bg0@  #@a1@    #@bg1@
-client.placeholder      #@fg0@   #@fg0@   #@bg0@  #@fg0@   #@bg1@
-client.background       #@bg0@
+client.focused          #@bg1@   #@bg1@   #@fg1@  #@fg1@   #@bg1@
+client.focused_inactive #@bg1@   #@bg1@   #@fg1@  #@bg1@   #@bg1@
+client.unfocused        #@bg1@cc #@bg1@cc #@a0@cc #@bg1@cc #@bg1@cc
+client.urgent           #@a1@    #@a1@    #@bg1@  #@a1@    #@bg1@
+client.placeholder      #@fg1@   #@fg1@   #@bg1@  #@fg1@   #@bg1@
+client.background       #@bg1@
 
 # "caps:ctrl_modifier" - caps as ctrl.
 # "grp:alt_space_toggle" - alt+space to toggle layout.

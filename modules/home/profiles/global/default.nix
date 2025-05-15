@@ -52,8 +52,8 @@ in with lib; {
       };
       theme = {
         name = mkMerge [
-          (mkIf (color.variant == "light") "Mint-L-Darker-Orange")
-          (mkIf (color.variant == "dark") "Mint-L-Dark-Orange")
+          (mkIf (color.variant == "light") "Mint-L-Darker-Blue")
+          (mkIf (color.variant == "dark") "Mint-L-Dark-Blue")
         ];
         package = pkgs.mint-l-theme;
       };
