@@ -178,11 +178,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Gaps.
 gaps inner 0
 gaps outer 0
-gaps bottom 4
-gaps top 4
 
 bar {
     position bottom
