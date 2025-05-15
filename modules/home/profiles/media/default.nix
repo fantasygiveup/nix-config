@@ -17,7 +17,7 @@ in with lib; {
       imv # image viewer
       libreoffice-fresh
       mpv
-      mupdf
+      mupdf # simple pdf viewer
       speechd # speech-dispatcher for foliate
       unstable.qbittorrent
       unstable.yt-dlp
@@ -38,7 +38,7 @@ in with lib; {
       enable = true;
       mount = {
         remote = "gdrive";
-        local = user.sharedDirectory;
+        local = "${user.sharedDirectory}/gdrive";
       };
       package = pkgs.unstable.rclone;
     };

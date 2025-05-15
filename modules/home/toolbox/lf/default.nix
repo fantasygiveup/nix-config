@@ -41,7 +41,7 @@ in with lib; {
           ''${{
                   case $(file --mime-type -Lb $f) in
                       text/*) lf -remote "send $id \$$EDITOR \$fx";;
-                      application/pdf) mupdf $f;;
+                      application/pdf) ${pkgs.mupdf}/bin/mupdf $f;;
                       application/javascript) lf -remote "send $id \$$EDITOR \$fx";;
                       application/x-ndjson) lf -remote "send $id \$$EDITOR \$fx";;
                       inode/x-empty) lf -remote "send $id \$$EDITOR \$fx";;
@@ -67,7 +67,7 @@ in with lib; {
         "gm" = "cd ~/Music";
         "gi" = "cd ~/Pictures";
         "gc" = "cd ~/.config";
-        "gs" = "cd ~/Shared";
+        "gs" = "cd ${user.sharedDirectory}/gdrive";
         "gw" = "cd ${wallpapers}";
         "<c-b>" = "half-up";
         "<c-f>" = "half-down";
