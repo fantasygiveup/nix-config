@@ -13,7 +13,8 @@ with lib; {
 
   services.cliphist-clipboard.enable = true;
   services.secrets.enable = true;
-  services.sd-switch.enable = true;
+  # Nicely reload system units when changing configs.
+  systemd.user.startServices = "sd-switch";
 
   toolbox.core.enable = true;
   toolbox.neovim.enable = true;
