@@ -13,6 +13,8 @@ with lib; {
 
   services.cliphist-clipboard.enable = true;
   services.secrets.enable = true;
+  services.yarr.enable = true;
+
   # Nicely reload system units when changing configs.
   systemd.user.startServices = "sd-switch";
 
