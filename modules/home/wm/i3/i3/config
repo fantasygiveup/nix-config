@@ -19,6 +19,7 @@ set $close_notifications dunstctl close-all
 set $lock_screen i3lock --nofork --ignore-empty-password --show-keyboard-layout -c @bg1@
 set $take_screenshort gnome-screenshot-wrapper -i
 set $take_screenshort_active_window gnome-screenshot-wrapper -w
+set $set_wallpaper_script $HOME/.config/i3/bin/set-wallpaper
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -66,9 +67,9 @@ bindsym $mod+Shift+n exec --no-startup-id "$show_notifications"
 bindsym $mod+Shift+m exec --no-startup-id "$mute_notifications"
 bindsym $mod+Shift+comma exec --no-startup-id "$clear_notifications"
 bindsym $mod+Shift+period exec --no-startup-id "$close_notifications"
+bindsym $mod+Shift+a exec --no-startup-id "$set_wallpaper_script"
 bindsym Print exec --no-startup-id $take_screenshort
 bindsym Ctrl+Shift+Print exec --no-startup-id "$take_screenshort_active_window"
-
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -220,4 +221,4 @@ exec --no-startup-id "setxkbmap -model pc104 -layout us,ua,pl -variant ,,, \
 
 exec_always --no-startup-id autotiling -w 1 4 5 6 7 8 9 0
 exec_always --no-startup-id xset +dpms dpms 0 300 300
-exec --no-startup-id ~/.config/i3/bin/set-wallpaper
+exec_always --no-startup-id "$set_wallpaper_script"

@@ -23,6 +23,7 @@ in with lib; {
           img=${(toString (flakePath + /wallpapers/0080.jpg))}
           [ -d ${wallpapers} ] && img=$(${pkgs.fd}/bin/fd . ${wallpapers} -e jpg -e png | shuf -n 1)
           ${pkgs.nitrogen}/bin/nitrogen --set-scaled "$img" &>/dev/null
+          ${pkgs.libnotify}/bin/notify-send "Wallpaper has been set"
         '';
     };
 
@@ -112,7 +113,6 @@ in with lib; {
 
     home.packages = with pkgs; [
       (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Ubuntu" ]; })
-      autotiling
       bemenu
       cliphist
       dconf-editor
