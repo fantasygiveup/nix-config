@@ -1,5 +1,5 @@
 { ... }: {
-  imports = [ ./default.nix ];
+  imports = [ ./global.nix ];
 
   wm.i3.enable = true;
 
