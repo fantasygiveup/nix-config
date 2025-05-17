@@ -190,6 +190,16 @@
           };
           modules = [ ./home/home-i3.nix ] ++ sharedModules;
         };
+
+        # Run 'make home idanko@st123+i3+dark'.
+        "idanko@st123+i3+dark" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs flakePath;
+            user = users.default;
+          };
+          modules = [ ./home/home-i3.nix ] ++ sharedModulesDarkTheme;
+        };
       };
     };
 }
