@@ -45,6 +45,7 @@ config.inactive_pane_hsb = {
 	brightness = 0.93,
 }
 config.hide_tab_bar_if_only_one_tab = false
+config.tab_bar_at_bottom = true
 
 wezterm.on("increase-font-size", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
@@ -130,6 +131,8 @@ config.colors = {
 config.window_frame = {
 	active_titlebar_bg = "@a0@",
 	inactive_titlebar_bg = "@a0@",
+  border_bottom_height = "0.25cell",
+  border_bottom_color = "#@bg0@",
 }
 
 local function is_editor(pane)

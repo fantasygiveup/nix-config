@@ -179,11 +179,11 @@ bindsym $mod+r mode "resize"
 
 gaps inner 0
 gaps outer 0
-gaps bottom 2
+gaps bottom 0
 gaps top 2
 
 bar {
-    position bottom
+    position top
     strip_workspace_numbers yes
     status_command i3blocks
     tray_output none
