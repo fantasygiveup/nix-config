@@ -28,7 +28,7 @@ wezterm.on("update-right-status", function(window, pane)
 	window:set_right_status(window:active_workspace() .. " ") -- add extra padding for the screen margin
 end)
 
-local font_size = 12
+local font_size = 11.5
 config.font_size = font_size
 config.initial_cols = 511
 config.initial_rows = 511

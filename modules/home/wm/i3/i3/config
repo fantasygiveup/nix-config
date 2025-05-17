@@ -186,7 +186,7 @@ bar {
     strip_workspace_numbers yes
     status_command i3blocks
     tray_output none
-    font pango:JetBrainsMono Nerd Font Mono Bold 12
+    font pango:JetBrainsMono Nerd Font Mono Bold 11.5
 
     colors {
         background #@bg1@
