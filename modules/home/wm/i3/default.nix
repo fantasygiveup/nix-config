@@ -130,11 +130,12 @@ in with lib; {
       rofi
       rofi-commander
       sysstat
+      xclip
+      xsel
       xdotool # is used in conjunction with maim
       xorg.xev # x11 input analyzer
       xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
       xorg.xmodmap
-      xsel
     ];
   };
 }

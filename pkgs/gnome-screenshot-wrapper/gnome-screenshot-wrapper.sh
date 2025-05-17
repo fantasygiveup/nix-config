@@ -11,6 +11,6 @@ case "$1" in
 
 	gnome-screenshot -w -f "$filepath" &>/dev/null
 
-	echo "$filepath"
+	echo "$filepath" | xclip -selection clipboard -t image/png
 	;;
 esac

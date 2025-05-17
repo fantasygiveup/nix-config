@@ -12,7 +12,7 @@ config_directory="${BEMENU_COMMANDER_CONFIG_DIRECTORY:-"${HOME}/.config/bemenu-c
 ref_config_file="${BEMENU_COMMANDER_REF_CONFIG_FILE:-"${config_directory}/ref"}"
 line_height="${BEMENU_COMMANDER_LINE_HEIGHT:-"32"}"
 exec_command="${BEMENU_COMMANDER_EXEC_COMMAND:-"exec"}"
-clipboard_copy_command="${BEMENU_COMMANDER_CLIPBOARD_COPY_COMMAND:-"xsel --clipboard"}"
+clipboard_copy_command="${BEMENU_COMMANDER_CLIPBOARD_COPY_COMMAND:-"xclip -r -selection c"}"
 ref_data_file="${BEMENU_COMMANDER_REF_DATA_FILE:-"$HOME/github.com/fantasygiveup/restricted/ref.gpg"}"
 
 read -r -a bemenu_color_opts <<<"--tb=${color_bg} \

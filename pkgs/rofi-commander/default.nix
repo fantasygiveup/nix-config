@@ -21,7 +21,7 @@ stdenv.mkDerivation {
             pkgs.jq
             pkgs.libnotify
             pkgs.rofi
-            pkgs.xsel
+            pkgs.xclip
           ]
         }"
     done
