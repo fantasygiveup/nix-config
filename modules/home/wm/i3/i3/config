@@ -18,9 +18,9 @@ set $mute_notifications dunstctl close-all; [ $(dunstctl is-paused) = true ] && 
 set $close_notifications dunstctl close-all
 # NOTE: reuse configuration from "services.screen-locker".
 set $lock_screen i3lock --nofork --ignore-empty-password --show-keyboard-layout -c @bg1@
-set $set_wallpaper_script $HOME/.config/i3/bin/set-wallpaper
 set $take_screenshort $HOME/.config/i3/screenshot -i
 set $take_screenshort_active_window $HOME/.config/i3/screenshot -w
+set $set_wallpaper $HOME/.config/i3/wallpaper
 
 font pango:JetBrainsMono Nerd Font Mono Bold 0
 
@@ -66,7 +66,7 @@ bindsym $mod+Shift+n exec --no-startup-id "$show_notifications"
 bindsym $mod+Shift+m exec --no-startup-id "$mute_notifications"
 bindsym $mod+Shift+comma exec --no-startup-id "$clear_notifications"
 bindsym $mod+Shift+period exec --no-startup-id "$close_notifications"
-bindsym $mod+Shift+a exec --no-startup-id "$set_wallpaper_script"
+bindsym $mod+Shift+a exec --no-startup-id "$set_wallpaper"
 bindsym Print exec --no-startup-id $take_screenshort
 bindsym Ctrl+Shift+Print exec --no-startup-id "$take_screenshort_active_window"
 
@@ -221,4 +221,4 @@ exec_always --no-startup-id "setxkbmap -model pc104 -layout us,ua,pl -variant ,,
     -option lv3:lwin_switch"
 
 exec_always --no-startup-id xset +dpms dpms 0 300 300
-exec_always --no-startup-id "$set_wallpaper_script"
+exec_always --no-startup-id "$set_wallpaper"

@@ -13,7 +13,7 @@ in with lib; {
     xdg.configFile."i3/config".source =
       pkgs.substituteAll (mergeAttrs { src = ./i3/config; } color);
 
-    xdg.configFile."i3/bin/set-wallpaper" = {
+    xdg.configFile."i3/wallpaper" = {
       executable = true;
       text =
         # bash
@@ -23,7 +23,10 @@ in with lib; {
           img=${(toString (flakePath + /wallpapers/0080.jpg))}
           [ -d ${wallpapers} ] && img=$(${pkgs.fd}/bin/fd . ${wallpapers} -e jpg -e png | shuf -n 1)
           ${pkgs.nitrogen}/bin/nitrogen --set-scaled "$img" &>/dev/null
-          ${pkgs.libnotify}/bin/notify-send "Wallpaper has been set"
+          ${pkgs.libnotify}/bin/notify-send "Background has been updated"
+        '';
+    };
+
     xdg.configFile."i3/screenshot" = {
       executable = true;
       text =
