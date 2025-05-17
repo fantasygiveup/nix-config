@@ -53,12 +53,5 @@ in with lib; {
 
     # Advised by home services.gpg-agent.
     services.dbus.packages = [ pkgs.gcr ];
-
-    # Handle screen lock session and transfer a sleep event to the "service.logind".
-    # See https://discourse.nixos.org/t/how-to-config-hybrid-sleep-after-idle-and-lock/8728.
-    programs.xss-lock = {
-      enable = true;
-      extraOptions = [ "--transfer-sleep-lock" ];
-    };
   };
 }

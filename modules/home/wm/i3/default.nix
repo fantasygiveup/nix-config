@@ -111,6 +111,14 @@ in with lib; {
       Install = { WantedBy = [ "default.target" ]; };
     };
 
+    services.screen-locker = {
+      enable = true;
+      lockCmd = ''
+        ${pkgs.i3lock}/bin/i3lock --nofork --ignore-empty-password \
+        --show-keyboard-layout -c ${color.bg1}
+      '';
+    };
+
     home.packages = with pkgs; [
       (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Ubuntu" ]; })
       bemenu
