@@ -35,7 +35,7 @@
       g6 = "bc0d33";
       g7 = "f8a8b9";
       g8 = "f7ead3";
-      g9 = "ff9800";
+      g9 = "e95420"; # from Yaru dark
     };
     description = ''
       Catppuccin Latte is the light theme variant.

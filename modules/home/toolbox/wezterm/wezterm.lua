@@ -47,6 +47,21 @@ config.inactive_pane_hsb = {
 config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
 
+config.window_frame = {
+  active_titlebar_bg = "@a0@",
+  inactive_titlebar_bg = "@a0@",
+  border_bottom_height = "0.25cell",
+  border_bottom_color = "#@bg0@",
+}
+
+config.enable_scroll_bar = false
+config.window_padding = {
+  left = "2px",
+  right = "2px",
+  top = "2px",
+  bottom = "0px",
+}
+
 wezterm.on("increase-font-size", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
 	overrides.font_size = (overrides.font_size or config.font_size) + 1.0
@@ -126,13 +141,6 @@ config.colors = {
 			bg_color = "#@bg0@",
 		},
 	},
-}
-
-config.window_frame = {
-	active_titlebar_bg = "@a0@",
-	inactive_titlebar_bg = "@a0@",
-  border_bottom_height = "0.25cell",
-  border_bottom_color = "#@bg0@",
 }
 
 local function is_editor(pane)

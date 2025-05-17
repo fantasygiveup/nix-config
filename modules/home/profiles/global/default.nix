@@ -52,10 +52,10 @@ in with lib; {
       };
       theme = {
         name = mkMerge [
-          (mkIf (color.variant == "light") "Mint-L-Darker-Blue")
-          (mkIf (color.variant == "dark") "Mint-L-Dark-Blue")
+          (mkIf (color.variant == "light") "Yaru")
+          (mkIf (color.variant == "dark") "Yaru-dark")
         ];
-        package = pkgs.mint-l-theme;
+        package = pkgs.yaru-theme;
       };
     };
 

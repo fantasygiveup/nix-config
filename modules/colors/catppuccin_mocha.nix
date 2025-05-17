@@ -6,7 +6,7 @@
     default = {
       variant = "dark";
       bg0 = "1e1e2e";
-      bg1 = "2f2f2f";
+      bg1 = "2c2c2c"; # from Yaru dark
       bg2 = "3e3e3e";
       bg3 = "484848";
       fg0 = "cdd6f4";
@@ -35,7 +35,7 @@
       g6 = "f6bacb";
       g7 = "ec2d62";
       g8 = "9c6b0c";
-      g9 = "ff9800";
+      g9 = "e95420"; # from Yaru dark
     };
     description = ''
       Catppuccin Mocha is the dark theme variant.
