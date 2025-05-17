@@ -21,11 +21,7 @@ set $take_screenshort gnome-screenshot-wrapper -i
 set $take_screenshort_active_window gnome-screenshot-wrapper -w
 set $set_wallpaper_script $HOME/.config/i3/bin/set-wallpaper
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-# TODO: use generic font variable.
-font pango:JetBrainsMono Nerd Font Mono Bold 10
+font pango:JetBrainsMono Nerd Font Mono Bold 0
 
 focus_on_window_activation focus
 workspace_layout tabbed
@@ -38,7 +34,9 @@ for_window [class="Gnome-screenshot"] floating enable
 for_window [class="lxqt-openssh-askpass"] floating enable
 for_window [floating] border pixel 1
 
-default_border pixel 0
+default_border none
+default_floating_border none
+hide_edge_borders both
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -181,6 +179,8 @@ bindsym $mod+r mode "resize"
 
 gaps inner 0
 gaps outer 0
+gaps bottom 2
+gaps top 2
 
 bar {
     position bottom
@@ -204,12 +204,12 @@ bar {
 
     #  class            | border  |  background  |   text  | indicator | child bolder |
     #-------------------|---------|--------------|---------|-----------|------------- |
-client.focused          #@bg1@   #@bg1@   #@fg1@  #@fg1@   #@bg1@
-client.focused_inactive #@bg1@   #@bg1@   #@fg1@  #@bg1@   #@bg1@
-client.unfocused        #@bg1@cc #@bg1@cc #@a0@cc #@bg1@cc #@bg1@cc
-client.urgent           #@a1@    #@a1@    #@bg1@  #@a1@    #@bg1@
-client.placeholder      #@fg1@   #@fg1@   #@bg1@  #@fg1@   #@bg1@
-client.background       #@bg1@
+client.focused          #@bg1@00  #@bg1@00  #@fg1@  #@fg1@   #@bg1@
+client.focused_inactive #@bg1@00  #@bg1@00  #@fg1@  #@bg1@   #@bg1@
+client.unfocused        #@bg1@00  #@bg1@00  #@a0@   #@bg1@   #@bg1@
+client.urgent           #@bg1@00  #@bg1@00  #@bg1@  #@a1@    #@bg1@
+client.placeholder      #@fg1@    #@fg1@    #@bg1@  #@fg1@   #@bg1@
+client.background       #@bg1@00
 
 # "caps:ctrl_modifier" - caps as ctrl.
 # "grp:alt_space_toggle" - alt+space to toggle layout.
@@ -219,6 +219,5 @@ exec --no-startup-id "setxkbmap -model pc104 -layout us,ua,pl -variant ,,, \
     -option grp:alt_space_toggle \
     -option lv3:lwin_switch"
 
-exec_always --no-startup-id autotiling -w 1 4 5 6 7 8 9 0
 exec_always --no-startup-id xset +dpms dpms 0 300 300
 exec_always --no-startup-id "$set_wallpaper_script"
