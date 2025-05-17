@@ -35,7 +35,25 @@ in {
 
     systemd.user.services.rclone-mount = {
       Unit = {
-        Description = "Rclone - syncs your files to any cloud storage.";
+        Description = ''
+          Rclone - syncs your files to any cloud storage.
+
+          Autorization example for Google Drive:
+          - $rclone config
+          - n) New remote
+          - name> gdrive
+          - Storage> 20
+          - client_id>
+          - client_secret>
+          - scope> 1
+          - service_account_file>
+          - y/n>
+          - y/n>
+          - y/n>
+          - y/e/d>
+          - e/n/d/r/c/s/q> q
+        '';
+
         After = [ "graphical-session-pre.target" ];
         PartOf = [ "graphical-session.target" ];
       };
