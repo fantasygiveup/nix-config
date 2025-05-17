@@ -18,9 +18,9 @@ set $mute_notifications dunstctl close-all; [ $(dunstctl is-paused) = true ] && 
 set $close_notifications dunstctl close-all
 # NOTE: reuse configuration from "services.screen-locker".
 set $lock_screen i3lock --nofork --ignore-empty-password --show-keyboard-layout -c @bg1@
-set $take_screenshort gnome-screenshot-wrapper -i
-set $take_screenshort_active_window gnome-screenshot-wrapper -w
 set $set_wallpaper_script $HOME/.config/i3/bin/set-wallpaper
+set $take_screenshort $HOME/.config/i3/screenshot -i
+set $take_screenshort_active_window $HOME/.config/i3/screenshot -w
 
 font pango:JetBrainsMono Nerd Font Mono Bold 0
 

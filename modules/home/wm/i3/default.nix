@@ -24,6 +24,29 @@ in with lib; {
           [ -d ${wallpapers} ] && img=$(${pkgs.fd}/bin/fd . ${wallpapers} -e jpg -e png | shuf -n 1)
           ${pkgs.nitrogen}/bin/nitrogen --set-scaled "$img" &>/dev/null
           ${pkgs.libnotify}/bin/notify-send "Wallpaper has been set"
+    xdg.configFile."i3/screenshot" = {
+      executable = true;
+      text =
+        # bash
+        ''
+          #!/usr/bin/env bash
+
+          set -euo pipefail
+
+          mkdir -p "$HOME/Pictures/Screenshots"
+
+          case "$1" in
+          "-i") ${pkgs.gnome-screenshot}/bin/gnome-screenshot -i ;; # keep it's interactively as it is
+          "-w")
+          	now="$(date '+%Y-%m-%d %H-%M-%S')"
+          	dir="''${2-"$HOME/Pictures/Screenshots"}"
+          	filepath="$dir/Screenshot from $now.png"
+
+          	${pkgs.gnome-screenshot}/bin/gnome-screenshot -w -f "$filepath" &>/dev/null
+
+          	echo "$filepath" | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png
+          	;;
+          esac
         '';
     };
 
@@ -124,7 +147,7 @@ in with lib; {
       bemenu
       cliphist
       dconf-editor
-      gnome-screenshot-wrapper
+      gnome-screenshot
       gnome-tweaks
       i3-current-window-title
       i3-notification-status

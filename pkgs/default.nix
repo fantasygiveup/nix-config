@@ -8,5 +8,4 @@ pkgs: rec {
   i3-notification-status = pkgs.callPackage ./i3-notification-status { };
   i3blocks-xkb-layout-widget =
     pkgs.callPackage ./i3blocks-xkb-layout-widget { };
-  gnome-screenshot-wrapper = pkgs.callPackage ./gnome-screenshot-wrapper { };
 }
