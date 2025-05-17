@@ -17,9 +17,9 @@ in with lib; {
     };
 
     home.sessionVariables = {
-      VISUAL = "${pkgs.neovim}/bin/nvim";
-      EDITOR = "${pkgs.neovim}/bin/nvim";
-      MANPAGER = "${pkgs.neovim}/bin/nvim +Man!";
+      VISUAL = "${pkgs.unstable.neovim}/bin/nvim";
+      EDITOR = "${pkgs.unstable.neovim}/bin/nvim";
+      MANPAGER = "${pkgs.unstable.neovim}/bin/nvim +Man!";
       MANWIDTH = "80";
 
       # Fix the qlite.so not found issue for https://github.com/kkharji/sqlite.lua.
