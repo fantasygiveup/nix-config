@@ -91,8 +91,15 @@ in with lib; {
 
     services.picom.enable = true;
     xdg.configFile."picom/picom.conf".source = ./picom/picom.conf;
+
     xdg.configFile."i3blocks/config".source =
       pkgs.substituteAll (mergeAttrs { src = ./i3blocks/config; } color);
+
+    xdg.configFile."i3blocks/workspace-info" = {
+      source = (pkgs.substituteAll
+        (mergeAttrs { src = ./i3blocks/workspace-info; } color));
+      executable = true;
+    };
 
     services.dunst = {
       enable = true;
@@ -156,6 +163,7 @@ in with lib; {
 
     home.packages = with pkgs; [
       (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Ubuntu" ]; })
+      (python3.withPackages (ppkgs: [ ppkgs.i3ipc ]))
       bemenu
       cliphist
       dconf-editor

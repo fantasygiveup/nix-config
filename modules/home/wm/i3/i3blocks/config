@@ -2,9 +2,9 @@ full_text=
 separator=false
 
 [wintitle]
-command=python3 ~/.config/i3blocks/workspace-info
-color=#@fg1@
-interval=persist
+command=~/.config/i3blocks/workspace-info
+markup=pango
+interval=1
 
 [separator]
 

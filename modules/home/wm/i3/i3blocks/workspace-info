@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+python3 <<END
+from i3ipc import Connection
+
+i3 = Connection()
+
+
+def mapper(x):
+    fg_color = "@fg1@"
+    if x.focused == True:
+        fg_color = "@g9@"
+    return "<span underline=\"single\" color=\"#@fg1@\" background=\"#@bg1@\" underline_color=\"#{}\">{}</span>".format(
+        fg_color, x.window_class)
+
+
+focused_workspace = i3.get_tree().find_focused().workspace()
+windows = list(map(mapper, focused_workspace.leaves()))
+print(" ".join(windows))
+END

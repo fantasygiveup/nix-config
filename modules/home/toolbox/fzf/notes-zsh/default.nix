@@ -17,6 +17,6 @@ in with lib; {
         export FZF_NOTES_PREVIEWER=~/.config/misc/fzf-notes-previewer
       '';
     };
-    home.packages = [ pkgs.fzf pkgs.python3 pkgs.ripgrep pkgs.zsh ];
+    home.packages = [ pkgs.fzf pkgs.ripgrep pkgs.zsh ];
   };
 }

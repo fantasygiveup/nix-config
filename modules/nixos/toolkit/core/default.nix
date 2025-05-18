@@ -33,7 +33,6 @@ in with lib; {
 
       file
       home-manager
-      python3
       tree
       unstable.neovim
 
