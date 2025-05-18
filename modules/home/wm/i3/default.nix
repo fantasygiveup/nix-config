@@ -169,7 +169,6 @@ in with lib; {
       dconf-editor
       gnome-screenshot
       gnome-tweaks
-      i3-current-window-title
       i3-notification-status
       i3blocks
       i3blocks-xkb-layout-widget
