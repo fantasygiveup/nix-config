@@ -2,7 +2,7 @@ full_text=
 separator=false
 
 [wintitle]
-command=i3-current-window-title
+command=python3 ~/.config/i3blocks/workspace-info
 color=#@fg1@
 interval=persist
 

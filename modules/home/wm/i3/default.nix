@@ -27,6 +27,15 @@ in with lib; {
         '';
     };
 
+    xdg.configFile."i3/laptop-screen-off" = {
+      executable = true;
+      text =
+        # bash
+        ''
+          ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1 --off
+        '';
+    };
+
     xdg.configFile."i3/screenshot" = {
       executable = true;
       text =

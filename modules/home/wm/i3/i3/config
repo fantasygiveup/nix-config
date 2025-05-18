@@ -72,6 +72,7 @@ bindsym $mod+Shift+a exec --no-startup-id "$set_wallpaper"
 bindsym $mod+Shift+s exec --no-startup-id "$take_color"
 bindsym Print exec --no-startup-id $take_screenshort
 bindsym Ctrl+Shift+Print exec --no-startup-id "$take_screenshort_active_window"
+bindsym $mod+Shift+5 exec "i3-nagbar -t warning -m 'Turn the eDP-1 screen off?' -B 'Yes, turn it off' '$HOME/.config/i3/laptop-screen-off; pkill -f i3-nagbar'"
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
