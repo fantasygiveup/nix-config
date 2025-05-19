@@ -9,14 +9,22 @@ i3 = Connection()
 
 
 def mapper(x):
-    fg_color = "@fg1@"
-    if x.focused == True:
-        fg_color = "@g9@"
-    return "<span underline=\"single\" color=\"#@fg1@\" background=\"#@bg1@\" underline_color=\"#{}\">{}</span>".format(
-        fg_color, x.window_class)
+    _, v = x
+    return v.focused == True
 
 
 focused_workspace = i3.get_tree().find_focused().workspace()
-windows = list(map(mapper, focused_workspace.leaves()))
-print(" ".join(windows))
+indexed_leaves = list(enumerate(focused_workspace.leaves()))
+index, window = list(filter(mapper, indexed_leaves))[0]
+length = len(indexed_leaves)
+accent_color = "@g9@" if length > 1 else "@fg1@"
+
+window_title = "<span color=\"#@fg1@\" background=\"#@bg1@\" underline=\"single\" underline_color=\"#@fg1@\">{}</span>".format(
+    window.window_class)
+workspace_stats = " <span color=\"#{}\" background=\"#@bg1@\">[{}/{}]</span>".format(
+    accent_color, index + 1, length)
+
+workspace_stats = workspace_stats if length > 1 else ""
+
+print("{}{}".format(window_title, workspace_stats))
 END
