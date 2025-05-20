@@ -124,6 +124,29 @@ in with lib; {
         '';
     };
 
+    xdg.configFile."i3blocks/volume" = {
+      executable = true;
+      text =
+        # bash
+        ''
+          #!/usr/bin/env bash
+
+          set -euo pipefail
+
+          rarrow=""
+          larrow=""
+          volume_percentage="$(${pkgs.pulsemixer}/bin/pulsemixer --get-volume)"
+
+          pattern="<span foreground=\"#${color.bg2}\">$larrow<span background=\"#${color.bg2}\" color=\"#${color.fg1}\"> 🔊 %s%% </span>$rarrow</span>\n"
+
+          if [ -n "''${BLOCK_BUTTON-}" ]; then
+              setsid ${pkgs.pavucontrol}/bin/pavucontrol &>/dev/null || true &
+          fi
+
+          printf "$pattern" "$volume_percentage"
+        '';
+    };
+
     xdg.configFile."i3blocks/workspace-info" = {
       executable = true;
       text =

@@ -13,6 +13,13 @@ command=~/.config/i3blocks/xkb-layout "@bg2@" "@fg1@"
 interval=persist
 markup=pango
 
+[volume]
+command=~/.config/i3blocks/volume
+interval=1
+markup=pango
+
+[separator]
+
 [datetime]
 command=printf "<span foreground=\"#@bg2@\"><span background=\"#@bg2@\" color=\"#@fg1@\">🕒 %s</span></span>\n" "$(date '+%H:%M %a %d %b')"
 interval=60
