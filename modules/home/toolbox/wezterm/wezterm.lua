@@ -18,19 +18,14 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		text = " 🟠 "
 	end
 	return {
-		{ Foreground = { Color = "#@fg0@" } },
-		{ Background = { Color = "#@bg1@" } },
+		{ Foreground = { Color = "#@a1@" } },
+		{ Background = { Color = "#@bg0@" } },
 		{ Text = text },
 	}
 end)
 
 wezterm.on("update-right-status", function(window, pane)
-  local text = window:active_workspace() .. " "  -- add extra padding for the screen margin
-
-  window:set_right_status(wezterm.format({
-    { Foreground = { Color="#@fg1@" } },
-		{ Background = { Color = "#@bg1@" } },
-    { Text = text }}))
+	window:set_right_status(window:active_workspace() .. " ") -- add extra padding for the screen margin
 end)
 
 local font_size = 11.5
@@ -53,18 +48,18 @@ config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
 
 config.window_frame = {
-  active_titlebar_bg = "#@bg1@",
-  inactive_titlebar_bg = "#@bg1@",
-  border_bottom_height = "0.15cell",
-  border_bottom_color = "#@bg1@",
+  active_titlebar_bg = "@a0@",
+  inactive_titlebar_bg = "@a0@",
+  border_bottom_height = "0.25cell",
+  border_bottom_color = "#@bg0@",
 }
 
 config.enable_scroll_bar = false
 config.window_padding = {
-  left = "0.25cell",
-  right = "0.25cell",
-  top = "0.25cell",
-  bottom = "0cell",
+  left = "2px",
+  right = "2px",
+  top = "2px",
+  bottom = "0px",
 }
 
 wezterm.on("increase-font-size", function(window, pane)
@@ -135,15 +130,15 @@ config.colors = {
 		"#@a15@",
 	},
 	tab_bar = {
-		background = "#@bg1@",
+		background = "#@bg0@",
 		-- Hide + button sign.
 		new_tab = {
-			fg_color = "#@bg1@",
-			bg_color = "#@bg1@",
+			fg_color = "#@bg0@",
+			bg_color = "#@bg0@",
 		},
 		new_tab_hover = {
-			fg_color = "#@bg1@",
-			bg_color = "#@bg1@",
+			fg_color = "#@bg0@",
+			bg_color = "#@bg0@",
 		},
 	},
 }

@@ -109,7 +109,7 @@ in with lib; {
           width = 512;
           height = 128;
           origin = "top-right";
-          offset = "6x34";
+          offset = "6x36";
           transparency = 5;
           frame_color = "#${color.bg1}";
           font = "JetBrainsMono Nerd Font Mono 11";
