@@ -2,14 +2,14 @@ full_text=
 separator=false
 
 [wintitle]
-command=~/.config/i3blocks/workspace-info
+command=python3 ~/.config/i3blocks/workspace-info
 markup=pango
 interval=1
 
 [separator]
 
 [keymap]
-command=i3blocks-xkb-layout-widget "@bg2@" "@fg1@"
+command=~/.config/i3blocks/xkb-layout "@bg2@" "@fg1@"
 interval=persist
 markup=pango
 

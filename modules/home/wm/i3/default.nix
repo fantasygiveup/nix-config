@@ -95,10 +95,64 @@ in with lib; {
     xdg.configFile."i3blocks/config".source =
       pkgs.substituteAll (mergeAttrs { src = ./i3blocks/config; } color);
 
-    xdg.configFile."i3blocks/workspace-info" = {
-      source = (pkgs.substituteAll
-        (mergeAttrs { src = ./i3blocks/workspace-info; } color));
+    xdg.configFile."i3blocks/xkb-layout" = {
       executable = true;
+      text =
+        # bash
+        ''
+          #!/usr/bin/env bash
+          # Print keyboard layout with emoji country flag
+
+          set -euo pipefail
+
+          bg="$1"
+          fg="$2"
+
+          xkb_layout() {
+          	while read -r line; do
+          		case "$line" in
+          		us) echo "🇺🇸 us" ;;
+          		ua) echo "🇺🇦 ua" ;;
+          		pl) echo "🇵🇱 pl" ;;
+          		*) echo "locale not found" ;;
+          		esac
+          	done
+          }
+
+          cat <(${pkgs.xkb-switch-i3}/bin/xkb-switch) <(${pkgs.xkb-switch-i3}/bin/xkb-switch -W) | xkb_layout |
+          	xargs -I % echo "<span foreground=\"#$bg\"><span background=\"#$bg\" color=\"#$fg\">%</span></span>"
+        '';
+    };
+
+    xdg.configFile."i3blocks/workspace-info" = {
+      executable = true;
+      text =
+        # python
+        ''
+          from i3ipc import Connection
+
+          i3 = Connection()
+
+
+          def mapper(v):
+              return v.focused == True
+
+
+          windows = i3.get_tree().find_focused().workspace().leaves()
+          window = list(filter(mapper, windows))[0]
+          length = len(windows)
+          accent_color = "${color.g9}" if length > 1 else "${color.fg1}"
+          maybe_sep = " " if length > 1 else ""
+
+          window_title = "<span color=\"#${color.fg1}\" style=\"italic\" font_size=\"small\" background=\"#${color.bg1}\">{}{}</span>".format(
+              window.window_title, maybe_sep)
+          workspace_stats = "<span color=\"#{}\" background=\"#${color.bg1}\" style=\"italic\" font_size=\"small\">[{}]</span>".format(
+              accent_color, length)
+
+          workspace_stats = workspace_stats if length > 1 else ""
+
+          print("{}{}".format(window_title, workspace_stats))
+        '';
     };
 
     services.dunst = {
@@ -171,7 +225,6 @@ in with lib; {
       gnome-tweaks
       i3-notification-status
       i3blocks
-      i3blocks-xkb-layout-widget
       i3lock
       lxappearance
       pavucontrol # sound widget

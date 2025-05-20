@@ -5,6 +5,4 @@ pkgs: rec {
   rofi-commander = pkgs.callPackage ./rofi-commander { };
   erun = pkgs.callPackage ./erun { };
   i3-notification-status = pkgs.callPackage ./i3-notification-status { };
-  i3blocks-xkb-layout-widget =
-    pkgs.callPackage ./i3blocks-xkb-layout-widget { };
 }
