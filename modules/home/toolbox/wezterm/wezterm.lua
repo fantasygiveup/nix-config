@@ -25,7 +25,12 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 end)
 
 wezterm.on("update-right-status", function(window, pane)
-	window:set_right_status(window:active_workspace() .. " ") -- add extra padding for the screen margin
+  window:set_right_status(wezterm.format {
+    { Foreground = { Color = "#@a1@"} },
+    { Background = { Color = "#@bg0@" } },
+    { Attribute = { Underline = "Single" } },
+    { Text = window:active_workspace() },
+  })
 end)
 
 local font_size = 11.5
