@@ -11,7 +11,7 @@ set $clipboard_history rofi-commander cliphist
 set $clipboard_ref rofi-commander ref
 set $clipboard_ref_data rofi-commander ref-data
 set $show_notifications rofi-commander notifications-history
-set $clear_notifications dunstctl close-all; dunstify -b 'Clearing notifications' && dunstctl history-clear
+set $clear_notifications dunstctl close-all; dunstctl history-clear; dunstify -b 'Clearing notifications' && dunstctl history-clear
 set $mute_notifications dunstctl close-all; [ $(dunstctl is-paused) = true ] && \
     (dunstctl set-paused toggle; dunstify -b 'Unmute notifications') || \
     (dunstify -b 'Mute notifications'; dunstctl set-paused toggle)
