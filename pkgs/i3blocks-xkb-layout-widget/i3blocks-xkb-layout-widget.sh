@@ -18,9 +18,5 @@ xkb_layout() {
 	done
 }
 
-if [ -n "${BLOCK_BUTTON-}" ]; then
-	xkb-switch -n
-fi
-
-code="$(xkb-switch)"
-xkb_layout <<<"$(echo "$code")" | xargs -I % echo "<span foreground=\"#$bg\"><span background=\"#$bg\" color=\"#$fg\">%</span></span>"
+cat <(xkb-switch) <(xkb-switch -W) | xkb_layout |
+	xargs -I % echo "<span foreground=\"#$bg\"><span background=\"#$bg\" color=\"#$fg\">%</span></span>"
