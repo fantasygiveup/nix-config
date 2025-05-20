@@ -108,8 +108,8 @@ in with lib; {
           alignment = "center";
           width = 512;
           height = 128;
-          origin = "bottom-right";
-          offset = "6x6";
+          origin = "top-right";
+          offset = "6x34";
           transparency = 5;
           frame_color = "#${color.bg1}";
           font = "JetBrainsMono Nerd Font Mono 11";
