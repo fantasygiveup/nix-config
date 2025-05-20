@@ -8,21 +8,20 @@ from i3ipc import Connection
 i3 = Connection()
 
 
-def mapper(x):
-    _, v = x
+def mapper(v):
     return v.focused == True
 
 
-focused_workspace = i3.get_tree().find_focused().workspace()
-indexed_leaves = list(enumerate(focused_workspace.leaves()))
-index, window = list(filter(mapper, indexed_leaves))[0]
-length = len(indexed_leaves)
+windows = i3.get_tree().find_focused().workspace().leaves()
+window = list(filter(mapper, windows))[0]
+length = len(windows)
 accent_color = "@g9@" if length > 1 else "@fg1@"
+maybe_sep = " " if length > 1 else ""
 
-window_title = "<span color=\"#@fg1@\" background=\"#@bg1@\" underline=\"single\" underline_color=\"#@fg1@\">{}</span>".format(
-    window.window_class)
-workspace_stats = " <span color=\"#{}\" background=\"#@bg1@\">[{}/{}]</span>".format(
-    accent_color, index + 1, length)
+window_title = "<span color=\"#@fg1@\" style=\"italic\" font_size=\"small\" background=\"#@bg1@\">{}{}</span>".format(
+    window.window_title, maybe_sep)
+workspace_stats = "<span color=\"#{}\" background=\"#@bg1@\" style=\"italic\" font_size=\"small\">[{}]</span>".format(
+    accent_color, length)
 
 workspace_stats = workspace_stats if length > 1 else ""
 
