@@ -135,7 +135,7 @@ in with lib; {
 
           rarrow=""
           larrow=""
-          volume_percentage="$(${pkgs.pulsemixer}/bin/pulsemixer --get-volume)"
+          volume_percentage="$(${pkgs.pulsemixer}/bin/pulsemixer --get-volume | ${pkgs.gawk}/bin/awk '{print $1}')"
 
           pattern="<span foreground=\"#${color.bg2}\">$larrow<span background=\"#${color.bg2}\" color=\"#${color.fg1}\"> 🔊 %s%% </span>$rarrow</span>\n"
 
