@@ -28,8 +28,8 @@ wezterm.on("update-right-status", function(window, pane)
   window:set_right_status(wezterm.format {
     { Foreground = { Color = "#@a1@"} },
     { Background = { Color = "#@bg0@" } },
-    { Attribute = { Underline = "Single" } },
-    { Text = window:active_workspace() },
+    { Attribute = { Italic = true } },
+    { Text = window:active_workspace() .. " " }, -- fix right margin by adding a space
   })
 end)
 
