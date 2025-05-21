@@ -213,7 +213,7 @@ client.background       #@bg1@00
 # "caps:ctrl_modifier" - caps as ctrl.
 # "grp:alt_space_toggle" - alt+space to toggle layout.
 # "lv3:lwin_switch" - enable functional key mapping when left win is pressed (eg. "o" -> "ó").
-exec_always --no-startup-id "setxkbmap -model pc104 -layout us,ua,pl -variant ,,, \
+exec_always --no-startup-id "setxkbmap -model pc104 -layout us,pl,ua -variant ,,, \
     -option caps:ctrl_modifier \
     -option grp:alt_space_toggle \
     -option lv3:lwin_switch"
