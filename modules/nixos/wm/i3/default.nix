@@ -1,4 +1,4 @@
-{ lib, config, pkgs, flakePath, ... }:
+{ lib, config, pkgs, users, flakePath, ... }:
 let cfg = config.wm.i3;
 in with lib; {
   options.wm.i3 = { enable = mkEnableOption "Enable i3 windows manager"; };
@@ -53,5 +53,15 @@ in with lib; {
 
     # Advised by home services.gpg-agent.
     services.dbus.packages = [ pkgs.gcr ];
+
+    services.accounts-daemon.enable = true;
+
+    system.activationScripts.setAccountsServiceUserIcon.text = ''
+      mkdir -p /var/lib/AccountsService/icons
+
+      cp -rf ${
+        ./face.icon
+      } /var/lib/AccountsService/icons/${users.default.username}
+    '';
   };
 }

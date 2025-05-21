@@ -251,9 +251,6 @@ in with lib; {
       };
     };
 
-    # Logo.
-    home.file.".face.icon".source = ./face.icon;
-
     # React to i3 events.
     systemd.user.services.i3-hooks = {
       Unit = { Description = "Listen and react to i3 events"; };
