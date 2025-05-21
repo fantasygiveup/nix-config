@@ -79,7 +79,6 @@ in with lib; {
     };
 
     # Rofi.
-    # TODO: consider to move this module part to a standalone package with overrides.
     xdg.configFile."rofi/catppuccin-scheme.rasi" = {
       source = (pkgs.substituteAll
         (mergeAttrs { src = ./rofi/catppuccin-system-grey.rasi; } color));
@@ -178,6 +177,47 @@ in with lib; {
         '';
     };
 
+    xdg.configFile."i3blocks/notifications" = {
+      executable = true;
+      text =
+        # bash
+        ''
+          #!/usr/bin/env bash
+
+          set -euo pipefail
+
+          rarrow=""
+          larrow=""
+
+          pattern="<span foreground=\"%s\">$larrow<span background=\"%s\" color=\"%s\"> 💬 </span>$rarrow</span>\n"
+
+          widget() {
+          	urgent="$(${pkgs.i3}/bin/i3-msg -t get_tree | ${pkgs.jq}/bin/jq '.. | select(.urgent? == true) | {id: .window, name: .name, class: .window_properties.class}')"
+          	notifications_count="$(${pkgs.dunst}/bin/dunstctl count history)"
+
+          	if [[ -n "$urgent" ]]; then
+          		printf "$pattern" "$1" "$1" "$2"
+
+          		# Switch to the latest urgent window..
+          		if [ -n "''${BLOCK_BUTTON-}" ]; then
+          			setsid ${pkgs.i3}/bin/i3-msg '[urgent=latest] focus' &>/dev/null || true &
+          		fi
+          	elif [[ "$notifications_count" -gt 0 ]]; then
+          		printf "$pattern" "$3" "$3" "$4"
+
+          		# Show notification list on any mouth event.
+          		if [ -n "''${BLOCK_BUTTON-}" ]; then
+          			setsid ${pkgs.rofi-commander}/bin/rofi-commander notifications-history &>/dev/null &
+          		fi
+          	else
+          		printf "$pattern" "$5" "$5" "$6"
+          	fi
+          }
+
+          widget $@
+        '';
+    };
+
     services.dunst = {
       enable = true;
       settings = {
@@ -246,7 +286,6 @@ in with lib; {
       dconf-editor
       gnome-screenshot
       gnome-tweaks
-      i3-notification-status
       i3blocks
       i3lock
       lxappearance

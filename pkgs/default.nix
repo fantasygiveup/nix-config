@@ -4,5 +4,4 @@ pkgs: rec {
   bemenu-commander = pkgs.callPackage ./bemenu-commander { };
   rofi-commander = pkgs.callPackage ./rofi-commander { };
   erun = pkgs.callPackage ./erun { };
-  i3-notification-status = pkgs.callPackage ./i3-notification-status { };
 }

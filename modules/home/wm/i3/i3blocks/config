@@ -1,14 +1,14 @@
 full_text=
 separator=false
 
-[wintitle]
+[workspace-info]
 command=python3 ~/.config/i3blocks/workspace-info
 markup=pango
 interval=1
 
 [separator]
 
-[keymap]
+[xkb-layout]
 command=~/.config/i3blocks/xkb-layout "@bg2@" "@fg1@"
 interval=persist
 markup=pango
@@ -25,8 +25,8 @@ command=printf "<span foreground=\"#@bg2@\"><span background=\"#@bg2@\" color
 interval=60
 markup=pango
 
-[notify]
-command=i3-notification-status i3blocks '#@a1@' '#@g6@' '#@g9@' '#@g4@' '#@bg2@' '#@fg1@'
+[notifications]
+command=~/.config/i3blocks/notifications '#@a1@' '#@g6@' '#@g9@' '#@g4@' '#@bg2@' '#@fg1@'
 interval=1
 markup=pango
 
