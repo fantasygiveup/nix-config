@@ -275,6 +275,29 @@ in with lib; {
       '';
     };
 
+    # NOTE: This is a workaround. For some reason, xmodmap does not work when set in the i3 config.
+    # For the same reason, the `oneshot` unit does not work. So it repeats several times after
+    # the login session.
+    systemd.user.services.disable-alt-menu = {
+      Unit = {
+        Description = "Pressing the Alt key does not open the window menu";
+        After = [ "graphical-session-pre.target" ];
+        PartOf = [ "graphical-session.target" ];
+      };
+
+      Service = {
+        Restart = "always";
+        TimeoutSec = 3;
+        RestartSec = 3;
+        StartLimitIntervalSec = "1d";
+        StartLimitBurst = 3;
+        ExecStart =
+          "${pkgs.xorg.xmodmap}/bin/xmodmap -e 'keycode 64 = Control_R'";
+      };
+
+      Install = { WantedBy = [ "graphical-session.target" ]; };
+    };
+
     home.packages = with pkgs; [
       (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Ubuntu" ]; })
       (python3.withPackages (ppkgs: [ ppkgs.i3ipc ]))
