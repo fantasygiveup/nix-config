@@ -64,6 +64,9 @@ in with lib; {
 
     xresources.properties = { "Xft.dpi" = 120; };
 
+    # Do not lock the fullscreen screen video.
+    services.caffeine.enable = true;
+
     # Adjust screen temperature according geospacial data.
     services.gammastep = {
       enable = true;
