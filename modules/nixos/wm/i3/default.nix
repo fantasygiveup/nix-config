@@ -27,6 +27,15 @@ in with lib; {
       };
     };
 
+    # Set user's sddm avatar.
+    system.activationScripts.setAccountsServiceUserIcon.text = ''
+      mkdir -p /var/lib/AccountsService/icons
+
+      cp -rf ${
+        ./face.icon
+      } /var/lib/AccountsService/icons/${users.default.username}
+    '';
+
     environment.systemPackages = with pkgs; [
       bibata-cursors
       ubuntu_font_family
@@ -55,13 +64,5 @@ in with lib; {
     services.dbus.packages = [ pkgs.gcr ];
 
     services.accounts-daemon.enable = true;
-
-    system.activationScripts.setAccountsServiceUserIcon.text = ''
-      mkdir -p /var/lib/AccountsService/icons
-
-      cp -rf ${
-        ./face.icon
-      } /var/lib/AccountsService/icons/${users.default.username}
-    '';
   };
 }
