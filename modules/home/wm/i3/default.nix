@@ -166,7 +166,7 @@ in with lib; {
           windows = i3.get_tree().find_focused().workspace().leaves()
           window = list(filter(mapper, windows))[0]
           length = len(windows)
-          accent_color = "${color.g9}" if length > 1 else "${color.fg1}"
+          accent_color = "${color.g8}" if length > 1 else "${color.fg1}"
           maybe_sep = " " if length > 1 else ""
 
           window_title = "<span color=\"#${color.fg1}\" style=\"italic\" font_size=\"small\" background=\"#${color.bg1}\">{}{}</span>".format(
