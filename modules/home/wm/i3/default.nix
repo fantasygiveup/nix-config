@@ -192,7 +192,7 @@ in with lib; {
           rarrow=""
           larrow=""
 
-          pattern="<span foreground=\"%s\">$larrow<span background=\"%s\" color=\"%s\"> 💬 </span>$rarrow</span>\n"
+          pattern="<span foreground=\"%s\">$larrow<span background=\"%s\" color=\"%s\">💬</span>$rarrow</span>\n"
 
           widget() {
           	urgent="$(${pkgs.i3}/bin/i3-msg -t get_tree | ${pkgs.jq}/bin/jq '.. | select(.urgent? == true) | {id: .window, name: .name, class: .window_properties.class}')"

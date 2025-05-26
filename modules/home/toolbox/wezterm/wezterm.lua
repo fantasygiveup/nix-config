@@ -13,9 +13,9 @@ end
 -- This is where you actually apply your config choices.
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	local text = " ⚪ "
+	local text = "  "
 	if tab.is_active then
-		text = " 🟠 "
+		text = " ● "
 	end
 	return {
 		{ Foreground = { Color = "#@a1@" } },

@@ -52,8 +52,8 @@ in with lib; {
       };
       theme = {
         name = mkMerge [
-          (mkIf (color.variant == "light") "Yaru")
-          (mkIf (color.variant == "dark") "Yaru-dark")
+          (mkIf (color.variant == "light") "Yaru-blue")
+          (mkIf (color.variant == "dark") "Yaru-blue-dark")
         ];
         package = pkgs.yaru-theme;
       };
