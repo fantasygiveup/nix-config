@@ -40,7 +40,6 @@ with lib; {
   profiles.global.enable = true;
   profiles.shell.enable = true;
   profiles.browsing.enable = true;
-  profiles.email.enable = true;
   profiles.social.enable = true;
   profiles.media.enable = true;
   profiles.creative.enable = true;

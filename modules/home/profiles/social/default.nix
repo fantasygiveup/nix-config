@@ -28,5 +28,18 @@ in with lib; {
       "x-scheme-handler/tonsite" = [ "org.telegram.desktop.desktop" ];
       "x-scheme-handler/viber" = [ "viber.desktop" ];
     };
+
+    accounts.email.accounts = {
+      main = { primary = true; };
+      gmail = { };
+      sirona = { };
+      sirona2 = { };
+      strong = { };
+    };
+
+    programs.thunderbird = {
+      enable = true;
+      profiles = { default = { isDefault = true; }; };
+    };
   };
 }
