@@ -20,6 +20,16 @@ in with lib; {
       enableSshSupport = true;
     };
 
+    programs.ssh = {
+      enable = true;
+      addKeysToAgent = "yes";
+      matchBlocks."*" = { identityFile = "~/.ssh/id_rsa"; };
+      matchBlocks."bitbucket.dentsplysirona.com" =
+        lib.hm.dag.entryBefore [ "*" ] {
+          identityFile = "~/.ssh/id_rsa_third";
+        };
+    };
+
     home.packages = with pkgs; [ seahorse ];
   };
 }
