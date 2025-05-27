@@ -21,6 +21,7 @@ in with lib; {
       emmet-ls # lsp for emmet snippets
       erun # elixir script interface
       eslint
+      flutter # dart + flutter
       gnumake # make
       go
       golangci-lint
