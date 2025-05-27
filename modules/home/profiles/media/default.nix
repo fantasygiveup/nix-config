@@ -18,6 +18,7 @@ in with lib; {
       libreoffice-fresh
       mpv
       mupdf # simple pdf viewer
+      shotcut # video editor
       speechd # speech-dispatcher for foliate
       unstable.qbittorrent
       unstable.yt-dlp
