@@ -181,18 +181,21 @@ in with lib; {
     xdg.configFile."rofi/config.rasi" = { source = ./rofi/config.rasi; };
 
     home.packages = with pkgs; [
+      bemenu-commander
       dconf
       dconf-editor
       gnome-tweaks
       gnomeExtensions.dash-to-dock
       gnomeExtensions.disable-workspace-animation
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.ubuntu
       rofi
       rofi-commander
       xclip
       xorg.xev
       xorg.xhost # execute `xhost +` to share clipboard between a docker container and host machine
       xorg.xmodmap
-      bemenu-commander
+      xsel
     ];
   };
 }
