@@ -8,7 +8,7 @@ in with lib; {
   config = mkIf cfg.enable {
     home.file.".config/misc/fzf-project.zsh".source = ./fzf-project.zsh;
     programs.zsh = {
-      initExtra = ''
+      initContent = ''
         . ~/.config/misc/fzf-project.zsh
         bindkey '^g' _fzf_project
       '';

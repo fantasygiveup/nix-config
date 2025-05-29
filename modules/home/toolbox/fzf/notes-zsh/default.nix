@@ -10,7 +10,7 @@ in with lib; {
     home.file.".config/misc/fzf-notes-previewer".source = ./fzf-notes-previewer;
 
     programs.zsh = {
-      initExtra = ''
+      initContent = ''
         . ~/.config/misc/fzf-notes.zsh
         stty -ixon # unbind ctrl-s
         bindkey '^s' _fzf_notes
