@@ -17,6 +17,7 @@ stdenv.mkDerivation {
           lib.makeBinPath [
             pkgs.cliphist
             pkgs.dunst
+            pkgs.gawk
             pkgs.gnupg
             pkgs.jq
             pkgs.libnotify
