@@ -87,16 +87,19 @@ in with lib; {
               '';
             name = "Mute/unmute notifications";
           };
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6" =
+          {
+            binding = "<Alt><Shift>p";
+            command = "rofi-commander commands";
+            name = "Applications";
+          };
         "org/gnome/settings-daemon/plugins/color" = {
           night-light-enabled = true;
           night-light-temperature = gvariant.mkUint32 2800;
         };
         "org/gnome/desktop/wm/keybindings" = {
-          close = [ "<Alt>BackSpace" ];
+          close = [ "<Shift><Alt>q" ];
           toggle-fullscreen = [ "<Shift><Alt>f" ];
-        };
-        "org/gnome/settings-daemon/plugins/media-keys" = {
-          search = [ "<Shift><Alt>p" ];
         };
         "org/gnome/shell" = {
           enabled-extensions = [
@@ -104,6 +107,13 @@ in with lib; {
             "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
             "disable-workspace-animation@ethnarque"
             "auto-move-windows@gnome-shell-extensions.gcampax.github.com"
+          ];
+          disabled-extensions = [
+            "native-window-placement@gnome-shell-extensions.gcampax.github.com"
+            "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com"
+            "ubuntu-dock@ubuntu.com"
+            "ubuntu-appindicators@ubuntu.com"
+            "tiling-assistant@ubuntu.com"
           ];
           last-selected-power-profile = "performance";
           favorite-apps = [
